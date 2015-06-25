@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_titles">
+        <item>Exhibitors</item>
+        <item>Direction</item>
+        <item>Sitemap</item>
+        <item>Schedule</item>
+        <item>Barcode</item>
+        <item>Feedback</item>
+    </string-array>
+
+    <string-array name="menu_sub_title">
+        <item>Who will attend</item>
+        <item>How to get there</item>
+        <item>Whom i\'m visiting</item>
+        <item>knowing the events</item>
+        <item>Your identity</item>
+        <item>Your opinion about us</item>
+    </string-array>
+
+</resources>
