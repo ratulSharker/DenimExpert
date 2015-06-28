@@ -25,23 +25,27 @@ public class SplashScreenActivity extends Activity {
 
         CustomStyling.setCustomFontToTextView(this, "big_title_gipsiero.otf", R.id.splash_screen_title);
 
+
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this,SignupLoginActivity.class);
-                startActivity(intent);
-                SplashScreenActivity.this.finish();
-            }
-        };
+        if(hasFocus)
+        {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(SplashScreenActivity.this,SignupLoginActivity.class);
+                    startActivity(intent);
+                    SplashScreenActivity.this.finish();
+                }
+            };
 
-        //move to login activity within 3 seconds
-        new Handler().postDelayed(runnable, AUTO_HIDE_DELAY_MILLIS);
+            //move to login activity within 3 seconds
+            new Handler().postDelayed(runnable, AUTO_HIDE_DELAY_MILLIS);
+        }
     }
 
     @Override

@@ -36,6 +36,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
 
+        android:cacheColorHint="#00ffffff"
+        android:listSelector="#00ffffff"
         />
 
 

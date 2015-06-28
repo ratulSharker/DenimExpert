@@ -19,7 +19,6 @@ public class CustomStyling {
         TextView appliedTextView = (TextView) activity.findViewById(textViewId);
         Typeface font = Typeface.createFromAsset(activity.getAssets(), fontName);
         appliedTextView.setTypeface(font);
+
     }
-
-
 }

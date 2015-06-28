@@ -55,7 +55,7 @@ public class AutoResizeTextView extends TextView {
     private float mTextSize;
 
     // Temporary upper bounds on the starting text size
-    private float mMaxTextSize = 100;
+    private float mMaxTextSize = 78;
 
     // Lower bounds for text size
     private float mMinTextSize = MIN_TEXT_SIZE;
@@ -91,8 +91,9 @@ public class AutoResizeTextView extends TextView {
     @Override
     protected void onTextChanged(final CharSequence text, final int start, final int before, final int after) {
         mNeedsResize = true;
+
         // Since this view may be reused, it is good to reset the text size
-        resetTextSize();
+        //resetTextSize();
     }
 
     /**
@@ -208,6 +209,7 @@ public class AutoResizeTextView extends TextView {
      */
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+
         if (changed || mNeedsResize) {
             int widthLimit = (right - left) - getCompoundPaddingLeft() - getCompoundPaddingRight();
             int heightLimit = (bottom - top) - getCompoundPaddingBottom() - getCompoundPaddingTop();
