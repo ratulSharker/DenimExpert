@@ -22,11 +22,11 @@ public class MainMenuActivity extends Activity {
 
         this.mListView = (ListView) findViewById(R.id.listView);
 
-
+        //loading the menu list
         Resources resources = this.getResources();
-
         String[] titleItems = resources.getStringArray(R.array.menu_titles);
         String[] subTitleItems = resources.getStringArray(R.array.menu_sub_title);
+
 
         MainMenuListAdapter customAdapter = new MainMenuListAdapter(titleItems, subTitleItems, getApplicationContext());
 

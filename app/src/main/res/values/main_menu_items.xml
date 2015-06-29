@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="menu_titles">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
         <item>Exhibitors</item>
         <item>Direction</item>
         <item>Sitemap</item>
@@ -10,6 +15,11 @@
     </string-array>
 
     <string-array name="menu_sub_title">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
         <item>Who will attend</item>
         <item>How to get there</item>
         <item>Whom i\'m visiting</item>

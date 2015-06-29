@@ -1,6 +1,7 @@
 package com.denimexpertexpo.denimexpo.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,21 +99,31 @@ public class MainMenuListAdapter extends BaseAdapter{
             newRow = this.viewInflater.inflate(R.layout.menu_list_row, null);
         }
 
-        if(position % 2 == 0)
-        {
-            newRow.setBackgroundResource(R.drawable.main_main_list_item_1_selector);
-        }
-        else
-        {
-            newRow.setBackgroundResource(R.drawable.main_main_list_item_2_selector);
-        }
+        String title = listItemTitle[position];
+        String subTitle = listSubtitleItems[position];
 
         ImageView rowImage = (ImageView) newRow.findViewById(R.id.menu_list_image);
         TextView titleTextView = (TextView) newRow.findViewById(R.id.menu_list_title);
         TextView subtitleTextView = (TextView) newRow.findViewById(R.id.menu_list_sub_title);
 
-        String title = listItemTitle[position];
-        String subTitle = listSubtitleItems[position];
+        if(title.isEmpty())
+        {
+            //these are blank rows
+            rowImage.setVisibility(View.INVISIBLE);
+            newRow.setBackgroundColor(Color.parseColor("#00ffffff"));
+        }
+        else
+        {
+            //if reused
+            rowImage.setVisibility(View.VISIBLE);
+
+            if(position % 2 == 0){
+                newRow.setBackgroundResource(R.drawable.main_main_list_item_1_selector);
+            }
+            else{
+                newRow.setBackgroundResource(R.drawable.main_main_list_item_2_selector);
+            }
+        }
 
         titleTextView.setText(title);
         subtitleTextView.setText(subTitle);
