@@ -7,9 +7,17 @@
         <dimen name="splash_screen_header_height">200dip</dimen>
 
         <!-- signup page dimension -->
-        <dimen name="signup_box_padding">25dip</dimen>
+        <dimen name="signup_box_padding">12dip</dimen>
+        <dimen name="signup_edittext_padding">10dip</dimen>
+        <dimen name="signup_editext_font_size">20sp</dimen>
+        <dimen name="signup_top_button_margin">8dip</dimen>
+        <dimen name="signup_top_button_padding">7dip</dimen>
+        <dimen name="signup_skip_button_padding">15dip</dimen>
 
-        <dimen name="corner_radius">15dp</dimen>
+
+
+
+        <dimen name="corner_radius">12dp</dimen>
         <dimen name="activity_vertical_margin">16dp</dimen>
         <dimen name="activity_horizontal_margin">16dp</dimen>
 
