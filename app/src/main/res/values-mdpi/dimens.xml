@@ -30,6 +30,13 @@
     <dimen name="main_menu_list_sub_title_text_size">14sp</dimen>
 
 
+    <!-- barcode scanning page -->
+    <dimen name="barcode_scanning_status_margin">8dip</dimen>
+    <dimen name="barcode_scanning_status_padding">12dip</dimen>
+    <dimen name="barcode_scanning_status_font_size">18sp</dimen>
+    <dimen name="barcode_scanning_area_margin">8dip</dimen>
+
+
     <!-- Barcode result page -->
     <dimen name="barcode_result_textview_vertical_padding">5dp</dimen>
     <dimen name="barcode_result_textview_horizontal_padding">5dp</dimen>
