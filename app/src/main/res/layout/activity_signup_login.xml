@@ -13,7 +13,7 @@
         android:id="@+id/signup_title"
         android:layout_width="match_parent"
 
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/splash_screen_header_height"
         android:layout_above="@+id/relativeLayout"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -26,6 +26,8 @@
         android:textAlignment="center"
         android:textColor="@color/white_transparent"
         android:textIsSelectable="false"
+
+
 
         />
 

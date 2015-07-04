@@ -3,10 +3,12 @@
     android:layout_height="match_parent"
 
 
-    android:orientation="vertical"
-    android:weightSum="2"
     android:background="@drawable/common_background"
-    >
+    android:orientation="vertical"
+    android:padding="0dp"
+
+
+    android:weightSum="2">
 
 
     <LinearLayout
@@ -14,40 +16,34 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
 
-        android:weightSum="2.0"
-        >
+        android:weightSum="2.0">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/banner_image"
-        android:src="@drawable/main_menu_banner"
-        android:scaleType="centerInside"
+        <ImageView
+            android:id="@+id/banner_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:scaleType="centerInside"
 
-        android:layout_weight="1.0"
-        />
+            android:src="@drawable/main_menu_banner" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listView"
 
             android:cacheColorHint="#00ffffff"
-            android:listSelector="#00ffffff"
-
             android:divider="@null"
+
             android:dividerHeight="0dp"
+            android:listSelector="#00ffffff"
             android:scrollbars="none"
-
-
-
             />
 
     </LinearLayout>

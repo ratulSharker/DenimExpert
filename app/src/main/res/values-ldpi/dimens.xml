@@ -23,9 +23,8 @@
     <dimen name="activity_horizontal_margin">6dp</dimen>
 
 
-    <!-- Main menu page -->
+    <!-- Main menu page list item  -->
     <dimen name="main_menu_list_image_margin">10dp</dimen>
-
     <dimen name="main_menu_list_image_size">32dp</dimen>
     <dimen name="main_menu_list_title_text_size">20sp</dimen>
     <dimen name="main_menu_list_sub_title_text_size">14sp</dimen>
