@@ -4,44 +4,4 @@
      would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively). -->
 
 
-
-    <!-- splash screen dimenstions -->
-    <dimen name="splash_screen_header_height">180dip</dimen>
-
-
-    <!-- signup page dimension -->
-    <dimen name="signup_box_padding">12dip</dimen>
-    <dimen name="signup_edittext_padding">8dip</dimen>
-    <dimen name="signup_editext_font_size">18sp</dimen>
-    <dimen name="signup_top_button_margin">5dip</dimen>
-    <dimen name="signup_top_button_padding">4dip</dimen>
-    <dimen name="signup_skip_button_padding">8dip</dimen>
-
-
-    <dimen name="corner_radius">8dp</dimen>
-    <dimen name="activity_vertical_margin">10dp</dimen>
-    <dimen name="activity_horizontal_margin">10dp</dimen>
-
-
-    <!-- Main menu page -->
-    <dimen name="main_menu_list_image_margin">6dp</dimen>
-    <dimen name="main_menu_list_image_size">16dp</dimen>
-    <dimen name="main_menu_list_title_text_size">14sp</dimen>
-    <dimen name="main_menu_list_sub_title_text_size">10sp</dimen>
-    <dimen name="main_menu_list_item_top_padding">8dp</dimen>
-    <dimen name="main_menu_list_item_bottom_padding">8dp</dimen>
-
-
-    <!-- barcode scanning page -->
-    <dimen name="barcode_scanning_status_margin">8dip</dimen>
-    <dimen name="barcode_scanning_status_padding">12dip</dimen>
-    <dimen name="barcode_scanning_status_font_size">18sp</dimen>
-    <dimen name="barcode_scanning_area_margin">8dip</dimen>
-
-
-    <!-- Barcode result page -->
-    <dimen name="barcode_result_textview_vertical_padding">5dp</dimen>
-    <dimen name="barcode_result_textview_horizontal_padding">5dp</dimen>
-    <dimen name="barcode_inter_textview_vertical_gap">5dp</dimen>
-
 </resources>

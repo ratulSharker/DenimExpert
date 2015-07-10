@@ -16,7 +16,7 @@ import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
  */
 public class SplashScreenActivity extends Activity {
 
-    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+    private static final int AUTO_HIDE_DELAY_MILLIS = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

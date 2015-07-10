@@ -16,7 +16,8 @@
 
 
     <!-- Register page dimension -->
-    <dimen name="registration_register_button_padding">10dp</dimen>
+    <dimen name="registration_register_button_padding_top_bottom">10dp</dimen>
+    <dimen name="registration_register_button_padding_left_right">20dp</dimen>
     <dimen name="registration_register_button_margin">10dp</dimen>
     <dimen name="registration_edittext_padding">5dp</dimen>
     <dimen name="registration_edittext_margin">1dp</dimen>
