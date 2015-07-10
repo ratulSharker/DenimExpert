@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,9 +13,7 @@ import com.denimexpertexpo.denimexpo.Adapters.MainMenuListAdapter;
 import com.denimexpertexpo.denimexpo.R;
 
 
-public class MainMenuActivity extends Activity implements android.widget.AdapterView.OnItemClickListener{
-
-    ListView mListView;
+public class MainMenuActivity extends Activity implements android.widget.AdapterView.OnItemClickListener {
 
     //FULL LIST ITEMS
     private final static int LIST_ITEM_EXIBITORS = 5;
@@ -26,7 +22,7 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
     private final static int LIST_ITEM_SCHEDULE = 8;
     private final static int LIST_ITEM_BARCODE = 9;
     private final static int LIST_ITEM_FEEDBACK = 10;
-
+    ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,41 +47,34 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        switch(position)
-        {
-            case LIST_ITEM_EXIBITORS:
-            {
+        switch (position) {
+            case LIST_ITEM_EXIBITORS: {
                 Toast.makeText(this, "Exibitor gui not ready yet", Toast.LENGTH_LONG).show();
             }
-                break;
-            case LIST_ITEM_DIRECTION:
-            {
+            break;
+            case LIST_ITEM_DIRECTION: {
                 Toast.makeText(this, "Direction gui not ready yet", Toast.LENGTH_LONG).show();
             }
-                break;
-            case LIST_ITEM_SITEMAP:
-            {
+            break;
+            case LIST_ITEM_SITEMAP: {
                 Toast.makeText(this, "Sitemap gui not ready yet", Toast.LENGTH_LONG).show();
             }
-                break;
-            case LIST_ITEM_SCHEDULE:
-            {
+            break;
+            case LIST_ITEM_SCHEDULE: {
                 Toast.makeText(this, "Schedule gui not ready yet", Toast.LENGTH_LONG).show();
             }
-                break;
-            case LIST_ITEM_BARCODE:
-            {
+            break;
+            case LIST_ITEM_BARCODE: {
                 Toast.makeText(this, "Barcode pressed", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(MainMenuActivity.this, BarcodeActivity.class);
                 this.startActivity(intent);
             }
-                break;
-            case LIST_ITEM_FEEDBACK:
-            {
+            break;
+            case LIST_ITEM_FEEDBACK: {
                 Toast.makeText(this, "Feedback gui not ready yet", Toast.LENGTH_LONG).show();
             }
-                break;
+            break;
             default:
 
         }

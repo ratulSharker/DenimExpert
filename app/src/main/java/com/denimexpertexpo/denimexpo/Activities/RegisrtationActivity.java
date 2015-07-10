@@ -6,7 +6,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -15,7 +14,7 @@ import com.denimexpertexpo.denimexpo.Fragments.RegistrationSuccessFragment;
 import com.denimexpertexpo.denimexpo.Interfaces.RegistrationEventHandler;
 import com.denimexpertexpo.denimexpo.R;
 
-public class RegisrtationActivity extends Activity implements RegistrationEventHandler{
+public class RegisrtationActivity extends Activity implements RegistrationEventHandler {
 
 
     private static final String REG_FORM_FRAG_TAG = "REG_FORM";
@@ -43,22 +42,16 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
     }
 
 
-
-
-
-
     /*
     RegistrationEventHandler callback implementer
      */
-    public void registrationProcessCompleted(String emailAddr)
-    {
+    public void registrationProcessCompleted(String emailAddr) {
         Toast.makeText(this, "Registration process completed : " + emailAddr, Toast.LENGTH_LONG).show();
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
         Fragment formFrgament = getFragmentManager().findFragmentByTag(REG_FORM_FRAG_TAG);
-        if(formFrgament != null)
-        {
+        if (formFrgament != null) {
             //remove the form frag
             fragmentTransaction.remove(formFrgament);
         }
@@ -66,19 +59,12 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
 
         //add the success frag
         RegistrationSuccessFragment regCompFrag = new RegistrationSuccessFragment();
-        fragmentTransaction.add(R.id.registration_holder, regCompFrag, RegisrtationActivity.REG_SUCESS_FRAG_TAG );
+        fragmentTransaction.add(R.id.registration_holder, regCompFrag, RegisrtationActivity.REG_SUCESS_FRAG_TAG);
 
         fragmentTransaction.commit();
 
 
     }
-
-
-
-
-
-
-
 
 
     @Override
@@ -89,8 +75,7 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
         int id = item.getItemId();
 
 
-        switch(id)
-        {
+        switch (id) {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 break;

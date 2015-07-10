@@ -14,8 +14,7 @@ public class CustomStyling {
     /*
         This function will apply the given "fontName" to the textview with the id of "textViewId"
      */
-    public static void setCustomFontToTextView(Activity activity, String fontName, int textViewId)
-    {
+    public static void setCustomFontToTextView(Activity activity, String fontName, int textViewId) {
         TextView appliedTextView = (TextView) activity.findViewById(textViewId);
         Typeface font = Typeface.createFromAsset(activity.getAssets(), fontName);
         appliedTextView.setTypeface(font);

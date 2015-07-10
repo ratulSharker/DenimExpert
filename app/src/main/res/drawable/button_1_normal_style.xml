@@ -15,11 +15,11 @@
 
         -->
 
-        <gradient
-            android:angle="270"
-            android:endColor="#b0daff"
-            android:startColor="#d5f1ff"
-            android:type="linear" />
+    <gradient
+        android:angle="270"
+        android:endColor="#b0daff"
+        android:startColor="#d5f1ff"
+        android:type="linear" />
 
 
     <corners android:radius="15dp" />

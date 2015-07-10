@@ -6,7 +6,6 @@
     android:thickness="0dp">
 
 
-
     <solid android:color="#333e50" />
 
     <!--
@@ -23,7 +22,6 @@
 
 
         -->
-
 
 
     <corners android:radius="15dp" />

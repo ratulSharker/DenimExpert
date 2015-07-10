@@ -10,6 +10,6 @@ Actually this interface is used, when Fragment switching is done in the registra
 registration activity actually involved with two fragment. when registration process completed,
 the activity need to know about this event, so that it can switch to another fragment :)
  */
-public interface RegistrationEventHandler{
+public interface RegistrationEventHandler {
     public void registrationProcessCompleted(String emailAddr);
 }

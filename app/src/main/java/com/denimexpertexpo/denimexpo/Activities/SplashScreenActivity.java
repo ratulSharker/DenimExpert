@@ -12,7 +12,6 @@ import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
-
  */
 public class SplashScreenActivity extends Activity {
 
@@ -32,12 +31,11 @@ public class SplashScreenActivity extends Activity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        if(hasFocus)
-        {
+        if (hasFocus) {
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(SplashScreenActivity.this,SignupLoginActivity.class);
+                    Intent intent = new Intent(SplashScreenActivity.this, SignupLoginActivity.class);
                     startActivity(intent);
                     SplashScreenActivity.this.finish();
                 }

@@ -43,8 +43,7 @@
 
             android:dividerHeight="0dp"
             android:listSelector="#00ffffff"
-            android:scrollbars="none"
-            />
+            android:scrollbars="none" />
 
     </LinearLayout>
 

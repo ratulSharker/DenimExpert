@@ -283,12 +283,11 @@
             android:layout_margin="@dimen/registration_register_button_margin"
             android:background="@drawable/button_login_signup_selector"
 
-            android:paddingTop="@dimen/registration_register_button_padding_top_bottom"
             android:paddingBottom="@dimen/registration_register_button_padding_top_bottom"
-
             android:paddingLeft="@dimen/registration_register_button_padding_left_right"
-            android:paddingRight="@dimen/registration_register_button_padding_left_right"
 
+            android:paddingRight="@dimen/registration_register_button_padding_left_right"
+            android:paddingTop="@dimen/registration_register_button_padding_top_bottom"
 
 
             android:text="Register"

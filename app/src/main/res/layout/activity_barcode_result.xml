@@ -30,17 +30,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_toLeftOf="@+id/imageView"
         android:background="@drawable/barcode_result_textfield_style"
+
         android:gravity="center"
 
         android:paddingBottom="@dimen/barcode_result_textview_vertical_padding"
-
         android:paddingLeft="@dimen/barcode_result_textview_horizontal_padding"
         android:paddingRight="@dimen/barcode_result_textview_horizontal_padding"
-        android:paddingTop="@dimen/barcode_result_textview_vertical_padding"
 
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/barcode_result_textview_vertical_padding"
 
 
         android:text="Name"
@@ -56,24 +56,23 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/barcode_inter_textview_vertical_gap"
         android:layout_toLeftOf="@+id/imageView"
+
         android:background="@drawable/barcode_result_textfield_style"
 
         android:gravity="center"
 
         android:paddingBottom="@dimen/barcode_result_textview_vertical_padding"
-
         android:paddingLeft="@dimen/barcode_result_textview_horizontal_padding"
-        android:paddingRight="@dimen/barcode_result_textview_horizontal_padding"
 
+        android:paddingRight="@dimen/barcode_result_textview_horizontal_padding"
         android:paddingTop="@dimen/barcode_result_textview_vertical_padding"
+
         android:text="ID"
 
-        android:textAppearance="?android:attr/textAppearanceMedium"
-
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView3"
@@ -82,26 +81,25 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView2"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/barcode_inter_textview_vertical_gap"
         android:layout_toLeftOf="@+id/imageView"
         android:layout_toStartOf="@+id/imageView"
+
         android:background="@drawable/barcode_result_textfield_style"
 
         android:gravity="center"
 
         android:paddingBottom="@dimen/barcode_result_textview_vertical_padding"
-
         android:paddingLeft="@dimen/barcode_result_textview_horizontal_padding"
-        android:paddingRight="@dimen/barcode_result_textview_horizontal_padding"
 
+        android:paddingRight="@dimen/barcode_result_textview_horizontal_padding"
         android:paddingTop="@dimen/barcode_result_textview_vertical_padding"
+
+
         android:text="Contact"
 
-
-        android:textAppearance="?android:attr/textAppearanceMedium"
-
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView4"
@@ -110,26 +108,25 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView3"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/barcode_inter_textview_vertical_gap"
         android:layout_toLeftOf="@+id/imageView"
         android:layout_toStartOf="@+id/imageView"
-        android:background="@drawable/barcode_result_textfield_style"
 
+
+        android:background="@drawable/barcode_result_textfield_style"
 
         android:gravity="center"
 
         android:paddingBottom="@dimen/barcode_result_textview_vertical_padding"
-
         android:paddingLeft="@dimen/barcode_result_textview_horizontal_padding"
-        android:paddingRight="@dimen/barcode_result_textview_horizontal_padding"
 
+        android:paddingRight="@dimen/barcode_result_textview_horizontal_padding"
         android:paddingTop="@dimen/barcode_result_textview_vertical_padding"
+
         android:text="Designation"
 
-        android:textAppearance="?android:attr/textAppearanceMedium"
-
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
     <TextView

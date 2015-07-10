@@ -28,7 +28,6 @@
         android:textIsSelectable="false"
 
 
-
         />
 
 
@@ -43,8 +42,7 @@
         android:layout_centerVertical="true"
 
         android:background="@color/very_light_black_overlay"
-        android:padding="@dimen/signup_box_padding"
-        >
+        android:padding="@dimen/signup_box_padding">
 
         <EditText
             android:id="@+id/editText_username"
@@ -111,11 +109,11 @@
                 android:layout_alignLeft="@+id/editText_password"
                 android:layout_alignStart="@+id/editText_password"
                 android:layout_alignTop="@+id/button_login"
+                android:layout_margin="@dimen/signup_top_button_margin"
+
                 android:layout_weight="1.0"
 
                 android:background="@drawable/button_login_signup_selector"
-
-                android:layout_margin="@dimen/signup_top_button_margin"
                 android:padding="@dimen/signup_top_button_padding"
                 android:text="Signup"
                 android:textColor="#303f54"
@@ -131,11 +129,11 @@
                 android:layout_alignEnd="@+id/editText_password"
                 android:layout_alignRight="@+id/editText_password"
                 android:layout_below="@+id/editText_password"
+                android:layout_margin="@dimen/signup_top_button_margin"
+
                 android:layout_weight="1.0"
 
                 android:background="@drawable/button_login_signup_selector"
-
-                android:layout_margin="@dimen/signup_top_button_margin"
                 android:padding="@dimen/signup_top_button_padding"
                 android:text="Login"
                 android:textColor="#303f54"

@@ -14,8 +14,8 @@ import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
 public class SignupLoginActivity extends Activity {
 
-    EditText mEdittextUsername,mEdittextPassword;
-    Button mBtnRegister,mBtnLogin,mBtnSkiplogin;
+    EditText mEdittextUsername, mEdittextPassword;
+    Button mBtnRegister, mBtnLogin, mBtnSkiplogin;
 
 
     @Override

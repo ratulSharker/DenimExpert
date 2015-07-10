@@ -20,7 +20,5 @@
         -->
 
 
-
-
     <corners android:radius="@dimen/corner_radius" />
 </shape>

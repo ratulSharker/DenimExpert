@@ -33,8 +33,7 @@ public class BarcodeResultActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch(id)
-        {
+        switch (id) {
             case R.id.action_settings:
                 return true;
 

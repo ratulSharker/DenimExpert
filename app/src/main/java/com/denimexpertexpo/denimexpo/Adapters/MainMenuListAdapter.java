@@ -11,12 +11,10 @@ import android.widget.TextView;
 
 import com.denimexpertexpo.denimexpo.R;
 
-import java.util.zip.Inflater;
-
 /**
  * Created by Ra2l on 23/06/2015.
  */
-public class MainMenuListAdapter extends BaseAdapter{
+public class MainMenuListAdapter extends BaseAdapter {
 
     private String[] listItemTitle;
     private String[] listSubtitleItems;
@@ -28,8 +26,7 @@ public class MainMenuListAdapter extends BaseAdapter{
     /**
      * Simple constructor
      */
-    public MainMenuListAdapter(String[] titleItems, String[] subTitleItems, Context context)
-    {
+    public MainMenuListAdapter(String[] titleItems, String[] subTitleItems, Context context) {
         this.listItemTitle = titleItems;
         this.listSubtitleItems = subTitleItems;
 
@@ -94,8 +91,7 @@ public class MainMenuListAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View newRow = convertView;
-        if(newRow == null)
-        {
+        if (newRow == null) {
             newRow = this.viewInflater.inflate(R.layout.menu_list_row, null);
         }
 
@@ -106,21 +102,17 @@ public class MainMenuListAdapter extends BaseAdapter{
         TextView titleTextView = (TextView) newRow.findViewById(R.id.menu_list_title);
         TextView subtitleTextView = (TextView) newRow.findViewById(R.id.menu_list_sub_title);
 
-        if(title.isEmpty())
-        {
+        if (title.isEmpty()) {
             //these are blank rows
             rowImage.setVisibility(View.INVISIBLE);
             newRow.setBackgroundColor(Color.parseColor("#00ffffff"));
-        }
-        else
-        {
+        } else {
             //if reused
             rowImage.setVisibility(View.VISIBLE);
 
-            if(position % 2 == 0){
+            if (position % 2 == 0) {
                 newRow.setBackgroundResource(R.drawable.main_main_list_item_1_selector);
-            }
-            else{
+            } else {
                 newRow.setBackgroundResource(R.drawable.main_main_list_item_2_selector);
             }
         }

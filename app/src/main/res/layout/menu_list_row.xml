@@ -1,51 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-    android:paddingTop="@dimen/main_menu_list_item_top_padding"
     android:paddingBottom="@dimen/main_menu_list_item_bottom_padding"
-    >
+    android:paddingTop="@dimen/main_menu_list_item_top_padding">
 
     <ImageView
-        android:src="@drawable/list_item"
+        android:id="@+id/menu_list_image"
         android:layout_width="@dimen/main_menu_list_image_size"
         android:layout_height="@dimen/main_menu_list_image_size"
-        android:id="@+id/menu_list_image"
-
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
 
+        android:layout_alignParentTop="true"
         android:layout_margin="@dimen/main_menu_list_image_margin"
-        />
+
+        android:src="@drawable/list_item" />
 
     <TextView
+        android:id="@+id/menu_list_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/main_menu_list_title_text_size"
-        android:text="Title"
-        android:id="@+id/menu_list_title"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/menu_list_image"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-
         android:gravity="center_vertical"
-        />
+        android:text="Title"
+
+        android:textSize="@dimen/main_menu_list_title_text_size" />
 
     <TextView
+        android:id="@+id/menu_list_sub_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/main_menu_list_sub_title_text_size"
-        android:text="sub-title"
-        android:id="@+id/menu_list_sub_title"
-
-
-        android:layout_below="@+id/menu_list_title"
-        android:layout_alignLeft="@+id/menu_list_title"
-        android:layout_alignStart="@+id/menu_list_title"
-        android:layout_alignRight="@+id/menu_list_title"
         android:layout_alignEnd="@+id/menu_list_title"
+        android:layout_alignLeft="@+id/menu_list_title"
 
+
+        android:layout_alignRight="@+id/menu_list_title"
+        android:layout_alignStart="@+id/menu_list_title"
+        android:layout_below="@+id/menu_list_title"
         android:gravity="center_vertical"
-        />
+        android:text="sub-title"
+
+        android:textSize="@dimen/main_menu_list_sub_title_text_size" />
 </RelativeLayout>
