@@ -1,0 +1,291 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- TITLE 01 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/registration_form_title_style"
+            android:padding="10dp"
+            android:text="Personal Details"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/register_title_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="First Name"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="Last Name"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <!-- TITLE 02 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/registration_form_title_style"
+            android:padding="10dp"
+            android:text="Contact and Basic Info"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="Email"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="Mobile"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="Industry Type"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="Job Title"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="Concerned Department"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <!-- TITLE 03 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/registration_form_title_style"
+            android:padding="10dp"
+            android:text="Company Info"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="company web page"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <!-- TITLE 04 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/registration_form_title_style"
+            android:padding="10dp"
+            android:text="Address"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/editText10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/registration_edittext_margin"
+            android:background="@drawable/signup_login_edit_text_style"
+            android:gravity="center_horizontal"
+            android:hint="House Name"
+            android:padding="@dimen/registration_register_button_padding" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2.0">
+
+            <EditText
+                android:id="@+id/editText11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/registration_edittext_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/signup_login_edit_text_style"
+                android:gravity="center_horizontal"
+                android:hint="House No"
+                android:padding="@dimen/registration_register_button_padding" />
+
+            <EditText
+                android:id="@+id/editText12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/registration_edittext_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/signup_login_edit_text_style"
+                android:gravity="center_horizontal"
+                android:hint="Level"
+                android:padding="@dimen/registration_register_button_padding" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2.0">
+
+            <EditText
+                android:id="@+id/editText13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/registration_edittext_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/signup_login_edit_text_style"
+                android:gravity="center_horizontal"
+                android:hint="Road No"
+                android:padding="@dimen/registration_register_button_padding" />
+
+            <EditText
+                android:id="@+id/editText14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/registration_edittext_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/signup_login_edit_text_style"
+                android:gravity="center_horizontal"
+                android:hint="Sector"
+                android:padding="@dimen/registration_register_button_padding" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2.0">
+
+            <EditText
+                android:id="@+id/editText15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/registration_edittext_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/signup_login_edit_text_style"
+                android:gravity="center_horizontal"
+                android:hint="Area"
+                android:padding="@dimen/registration_register_button_padding" />
+
+            <EditText
+                android:id="@+id/editText16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/registration_edittext_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/signup_login_edit_text_style"
+                android:gravity="center_horizontal"
+                android:hint="City"
+                android:padding="@dimen/registration_register_button_padding" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2.0">
+
+            <EditText
+                android:id="@+id/editText17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/registration_edittext_margin"
+                android:layout_weight="0.8"
+                android:background="@drawable/signup_login_edit_text_style"
+                android:gravity="center_horizontal"
+                android:hint="State/Province"
+                android:padding="@dimen/registration_register_button_padding" />
+
+            <EditText
+                android:id="@+id/editText18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/registration_edittext_margin"
+                android:layout_weight="1.2"
+                android:background="@drawable/signup_login_edit_text_style"
+                android:gravity="center_horizontal"
+                android:hint="ZipCode"
+                android:padding="@dimen/registration_register_button_padding" />
+
+        </LinearLayout>
+
+
+        <Spinner
+            android:id="@+id/register_country_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/registration_register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/registration_register_button_margin"
+            android:background="@drawable/button_login_signup_selector"
+            android:padding="@dimen/registration_register_button_padding"
+            android:text="Register"
+            android:textColor="#303f54"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

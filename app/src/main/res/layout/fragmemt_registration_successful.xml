@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+
+    android:weightSum="4"
+    >
+
+    <android.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1.0"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/thumbs_up"
+        android:scaleType="centerInside"
+        android:layout_below="@+id/registration_success_msgbox"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+
+        android:layout_weight="1.0"
+        />
+
+    <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Thanks Your Request is accepted. You will be notified by email (rajorshibiswas@yahoo.com) shortly. "
+        android:id="@+id/registration_success_msgbox"
+
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:layout_weight="1.0"
+        />
+
+    <android.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1.0"
+        />
+
+</LinearLayout>

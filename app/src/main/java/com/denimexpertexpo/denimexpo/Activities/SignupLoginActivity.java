@@ -37,7 +37,9 @@ public class SignupLoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //handle the register button request
-                Toast.makeText(SignupLoginActivity.this, "Register clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SignupLoginActivity.this, "Register clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SignupLoginActivity.this, RegisrtationActivity.class);
+                startActivity(intent);
             }
         });
 

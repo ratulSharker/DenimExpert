@@ -13,5 +13,6 @@
     <string name="main_menu_back_title">Main Menu</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_barcode_result">BarcodeResultActivity</string>
+    <string name="title_activity_regisrtation">RegisrtationActivity</string>
     
 </resources>

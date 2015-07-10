@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.denimexpertexpo.denimexpo"
     xmlns:tools="http://schemas.android.com/tools"
-    >
+    package="com.denimexpertexpo.denimexpo" >
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
-        tools:replace="icon,label">
+        tools:replace="icon,label" >
         <activity
             android:name=".Activities.SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -39,7 +39,12 @@
         <activity
             android:name=".Activities.BarcodeResultActivity"
             android:label="@string/title_activity_barcode_result"
-            android:parentActivityName=".Activities.BarcodeActivity">
+            android:parentActivityName=".Activities.BarcodeActivity" >
+        </activity>
+        <activity
+            android:name=".Activities.RegisrtationActivity"
+            android:label="@string/title_activity_regisrtation"
+            android:parentActivityName=".Activities.SignupLoginActivity">
         </activity>
     </application>
 

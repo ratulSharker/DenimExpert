@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+
+    android:paddingTop="@dimen/main_menu_list_item_top_padding"
+    android:paddingBottom="@dimen/main_menu_list_item_bottom_padding"
+    >
 
     <ImageView
         android:src="@drawable/list_item"
@@ -42,5 +46,6 @@
         android:layout_alignRight="@+id/menu_list_title"
         android:layout_alignEnd="@+id/menu_list_title"
 
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        />
 </RelativeLayout>
