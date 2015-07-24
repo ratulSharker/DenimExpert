@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+    API KEY FOUND FROM THE FOLLOWING LINK, PROJECT NAMED 'DENIM EXPO'
+    https://console.developers.google.com/project/denim-expo/apiui/credential
+    -->
+
+   <string name="google_api_key" translate="false" templateMergeStrategy="preserve">
+       AIzaSyCAUW0zA2KkgUEDWmX7zVjB4RNcsphdgD8
+   </string>
+
+</resources>

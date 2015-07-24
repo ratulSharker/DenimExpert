@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/common_background"
+    tools:context="com.denimexpertexpo.denimexpo.Activities.DirectionActivity"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        android:weightSum="2.0"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout"
+        >
+
+        <Button
+            android:id="@+id/button_locate_exhibition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/signup_top_button_margin"
+
+            android:layout_weight="1.0"
+
+            android:background="@drawable/button_login_signup_selector"
+            android:padding="@dimen/signup_top_button_padding"
+            android:text="Locate Exhibition"
+            android:textColor="#303f54"
+            android:textStyle="bold"
+
+            />
+
+        <Button
+            android:id="@+id/button_update_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/signup_top_button_margin"
+            android:layout_weight="1.0"
+            android:background="@drawable/button_login_signup_selector"
+            android:padding="@dimen/signup_top_button_padding"
+            android:text="Refresh Direon"
+            android:textColor="#303f54"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        android:clipChildren="true"
+        android:background="@drawable/direction_map_rounded_rectangle"
+        >
+
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map"
+            tools:context=".MapsActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -16,12 +16,12 @@ import com.denimexpertexpo.denimexpo.R;
 public class MainMenuActivity extends Activity implements android.widget.AdapterView.OnItemClickListener {
 
     //FULL LIST ITEMS
-    private final static int LIST_ITEM_EXIBITORS = 5;
-    private final static int LIST_ITEM_DIRECTION = 6;
-    private final static int LIST_ITEM_SITEMAP = 7;
-    private final static int LIST_ITEM_SCHEDULE = 8;
-    private final static int LIST_ITEM_BARCODE = 9;
-    private final static int LIST_ITEM_FEEDBACK = 10;
+    private final static int LIST_ITEM_EXIBITORS = 4;
+    private final static int LIST_ITEM_DIRECTION = 5;
+    private final static int LIST_ITEM_SITEMAP = 6;
+    private final static int LIST_ITEM_SCHEDULE = 7;
+    private final static int LIST_ITEM_BARCODE = 8;
+    private final static int LIST_ITEM_FEEDBACK = 9;
     ListView mListView;
 
     @Override
@@ -53,7 +53,10 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
             }
             break;
             case LIST_ITEM_DIRECTION: {
-                Toast.makeText(this, "Direction gui not ready yet", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Direction pressed", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(MainMenuActivity.this, DirectionActivity.class);
+                this.startActivity(intent);
             }
             break;
             case LIST_ITEM_SITEMAP: {

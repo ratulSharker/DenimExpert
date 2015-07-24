@@ -100,7 +100,8 @@
             android:layout_below="@id/editText_password"
             android:layout_marginTop="@dimen/signup_box_padding"
             android:orientation="horizontal"
-            android:weightSum="2.0">
+            android:weightSum="2.0"
+            >
 
             <Button
                 android:id="@+id/button_signup"
