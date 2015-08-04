@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    >
+
+
+    <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/schedule_list_item_event_name"
+        android:gravity="center"
+        android:layout_weight="35"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/schedule_list_item_start"
+        android:gravity="right"
+        android:layout_weight="30"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:gravity="center"
+        android:layout_weight="5"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/schedule_list_item_end"
+        android:gravity="left"
+        android:layout_weight="30"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        />
+</LinearLayout>

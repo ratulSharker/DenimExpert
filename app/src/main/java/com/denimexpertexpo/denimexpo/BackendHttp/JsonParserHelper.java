@@ -1,9 +1,16 @@
 package com.denimexpertexpo.denimexpo.BackendHttp;
 
+import com.denimexpertexpo.denimexpo.DenimDataClasses.Schedule;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ratul on 7/13/2015.
@@ -39,4 +46,22 @@ public class JsonParserHelper  {
     }
 
 
+    public static ArrayList<Schedule> parseDownTheSchedules(String result)
+    {
+        ArrayList<Schedule> schedules = new ArrayList<Schedule>();
+
+        try
+        {
+            ObjectMapper mapper = new ObjectMapper();
+            schedules = mapper.readValue(result,
+                    new TypeReference<ArrayList<Schedule>>() {});
+
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+        return schedules;
+    }
 }

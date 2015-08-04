@@ -47,4 +47,14 @@
     <dimen name="barcode_result_textview_horizontal_padding">10dp</dimen>
     <dimen name="barcode_inter_textview_vertical_gap">10dp</dimen>
 
+    <!-- direction page -->
+    <dimen name="direction_page_map_top_padding">8dp</dimen>
+
+    <!-- GIVE IT A TEST -->
+    <!-- schedule page -->
+    <dimen name="schedule_page_list_text_height">40dp</dimen>
+    <dimen name="schedule_page_list_text_vertical_margin">5dp</dimen>
+
+
+
 </resources>

@@ -23,7 +23,7 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
 
     //some external constant to be used outside the class
     public static final String LOCATION_API_URL = "http://apps.bangladeshdenimexpo.com/api/location.php";
-
+    public static final String SCHEDULE_API_URL = "http://apps.bangladeshdenimexpo.com/api/schedule.php";
 
 
     private AsyncHttpRequestHandler mDelegate;
@@ -35,8 +35,11 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
 
     private final String TAG        = "AsyncHttpClient.TAG";
 
-    /*
-    AsyncHttpClient constructor
+
+    /**
+     * Constructor for the AsyncHttpClient
+     *
+     * @param obj
      */
     public AsyncHttpClient(AsyncHttpRequestHandler obj)
     {

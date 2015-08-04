@@ -14,6 +14,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
@@ -44,7 +46,8 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
      */
     private GoogleMap gMap;
     private ProgressDialog apiProgressDialouge;
-
+    private Button btnLocateExhibition, btnRefreshDirection;
+    private Marker markerExhibition, markerUser;
 
     /*
     data related objects
@@ -58,6 +61,7 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
 
     private LocationManager locationManager;
     private LocationUpdateListener gpsLocationUpdateListener, networkLocationUpdateListener;
+
 
     private class LocationUpdateListener implements LocationListener
     {
@@ -106,11 +110,39 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
         //setup the map
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
+        this.btnLocateExhibition = (Button)this.findViewById(R.id.button_locate_exhibition);
+        this.btnRefreshDirection = (Button)this.findViewById(R.id.button_update_direction);
+
+        this.btnLocateExhibition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (gMap != null && serverLatLng != null) {
+                    gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(serverLatLng, 15), 2500, null);
+                    gMap.setMyLocationEnabled(true);
+                }
+            }
+        });
+
+        this.btnRefreshDirection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (gMap != null) {
+                    btnRefreshDirection.setEnabled(false);
+                    btnLocateExhibition.setEnabled(false);
+                    setUpMapIfNeeded();
+                }
+
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        btnLocateExhibition.setEnabled(false);
+        btnRefreshDirection.setEnabled(false);
+
         this.setUpMapIfNeeded();
     }
 
@@ -128,6 +160,7 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
     /*
         AsyncHttoRequestHandler Functionality
          */
+    @Override
     public void onResponseRecieved(String response) {
 
         this.serverLatLng = JsonParserHelper.parseDownTheLocation(response);
@@ -156,6 +189,7 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
         }
     }
 
+    @Override
     public void onHttpErrorOccured() {
         this.apiProgressDialouge.dismiss();
         Toast.makeText(this, "Error in retrieveing api response", Toast.LENGTH_LONG).show();
@@ -203,6 +237,8 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
         for (int i = 0; i < directionPoints.size(); i++) {
             rectLine.add(directionPoints.get(i));
         }
+
+        //removing the polyline if already added
         if (newPolyline != null) {
             newPolyline.remove();
         }
@@ -211,24 +247,42 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
 
         this.apiProgressDialouge.dismiss();
 
-        //set camera animation here baby
-        Marker userMarker = gMap.addMarker(new MarkerOptions()
-                .position(userLatLng)
-                .title("You")
-                .snippet("Here are you")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_snowman)));
 
-        Marker exibitionMarker = gMap.addMarker(new MarkerOptions()
-                .position(serverLatLng)
-                .title("Denim Exibition")
-                .snippet("Exhibition 2015")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_showroom)));
+        if(markerUser == null)
+        {
+            //set camera animation here baby
+            markerUser = gMap.addMarker(new MarkerOptions()
+                    .position(userLatLng)
+                    .title("You")
+                    .snippet("Here are you")
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_snowman)));
+        }
+        else
+        {
+            markerUser.setPosition(userLatLng);
+        }
+
+
+        if(markerExhibition == null)
+        {
+            markerExhibition = gMap.addMarker(new MarkerOptions()
+                    .position(serverLatLng)
+                    .title("Denim Exibition")
+                    .snippet("Exhibition 2015")
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_showroom)));
+        }
+        else
+        {
+            markerExhibition.setPosition(serverLatLng);
+        }
+
 
 
         gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15), 2500, null);
-
         gMap.setMyLocationEnabled(true);
 
+        this.btnLocateExhibition.setEnabled(true);
+        this.btnRefreshDirection.setEnabled(true);
     }
 
 
@@ -310,11 +364,9 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
                 this.apiProgressDialouge = new ProgressDialog(this);
                 this.apiProgressDialouge.setTitle("Loading");
                 this.apiProgressDialouge.setMessage("Getting your location");
-
-
-                this.apiProgressDialouge.show();
             }
 
+            this.apiProgressDialouge.show();
 
             this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, gpsLocationUpdateListener);
             this.locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, networkLocationUpdateListener);

@@ -14,5 +14,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_barcode_result">BarcodeResultActivity</string>
     <string name="title_activity_regisrtation">RegisrtationActivity</string>
+    <string name="title_activity_schedule">ScheduleActivity</string>
+    <string name="title_activity_schedule_details">ScheduleDetailsActivity</string>
 
 </resources>

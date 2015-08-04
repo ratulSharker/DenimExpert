@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2.0">
+
+
+        <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Event Name"
+            android:id="@+id/schedule_list_item_event_name"
+            android:layout_weight="1.0"
+
+            android:textSize="45sp"
+
+            android:gravity="center"
+
+            android:layout_marginTop="@dimen/schedule_page_list_text_vertical_margin"
+            android:layout_marginBottom="@dimen/schedule_page_list_text_vertical_margin"
+
+            />
+
+        <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="(9:00 - 13:00)"
+            android:id="@+id/schedule_list_item_from_to"
+            android:layout_weight="1.0"
+            android:gravity="center"
+
+            android:textSize="45sp"
+
+            android:layout_marginTop="@dimen/schedule_page_list_text_vertical_margin"
+            android:layout_marginBottom="@dimen/schedule_page_list_text_vertical_margin"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

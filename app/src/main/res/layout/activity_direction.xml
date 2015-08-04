@@ -44,7 +44,7 @@
             android:layout_weight="1.0"
             android:background="@drawable/button_login_signup_selector"
             android:padding="@dimen/signup_top_button_padding"
-            android:text="Refresh Direon"
+            android:text="Refresh Direction"
             android:textColor="#303f54"
             android:textStyle="bold"
 
@@ -52,7 +52,7 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -60,7 +60,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/linearLayout"
         android:clipChildren="true"
-        android:background="@drawable/direction_map_rounded_rectangle"
+
+        android:paddingTop="@dimen/direction_page_map_top_padding"
+
         >
 
 
@@ -73,9 +75,17 @@
 
             />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/test"
+
+            >
+
+        </LinearLayout>
 
 
-    </LinearLayout>
+    </FrameLayout>
 
 
 

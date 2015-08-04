@@ -19,8 +19,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
-        tools:replace="icon,label"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        tools:replace="icon,label" >
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -64,10 +64,25 @@
         <activity
             android:name=".Activities.DirectionActivity"
             android:label="@string/title_activity_main"
-            android:parentActivityName=".Activities.MainMenuActivity" >
+            android:parentActivityName=".Activities.MainMenuActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.denimexpertexpo.denimexpo.Activities.MainMenuActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.ScheduleActivity"
+            android:label="@string/title_activity_schedule" >
+        </activity>
+
+        <provider
+            android:name=".DBHelper.ScheduleProvider"
+            android:authorities="com.denimexpertexpo.denimexpo.DBHelper.ScheduleProvider"
+            android:exported="false" />
+
+        <activity
+            android:name=".Activities.ScheduleDetailsActivity"
+            android:label="@string/title_activity_schedule_details" >
         </activity>
     </application>
 

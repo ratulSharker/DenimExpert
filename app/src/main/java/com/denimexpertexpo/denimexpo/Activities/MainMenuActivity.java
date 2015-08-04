@@ -54,9 +54,7 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
             break;
             case LIST_ITEM_DIRECTION: {
                 Toast.makeText(this, "Direction pressed", Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(MainMenuActivity.this, DirectionActivity.class);
-                this.startActivity(intent);
+                this.startActivity(DirectionActivity.class);
             }
             break;
             case LIST_ITEM_SITEMAP: {
@@ -64,14 +62,13 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
             }
             break;
             case LIST_ITEM_SCHEDULE: {
-                Toast.makeText(this, "Schedule gui not ready yet", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Schedule pressed", Toast.LENGTH_LONG).show();
+                this.startActivity(ScheduleActivity.class);
             }
             break;
             case LIST_ITEM_BARCODE: {
                 Toast.makeText(this, "Barcode pressed", Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(MainMenuActivity.this, BarcodeActivity.class);
-                this.startActivity(intent);
+                this.startActivity(BarcodeActivity.class);
             }
             break;
             case LIST_ITEM_FEEDBACK: {
@@ -81,6 +78,11 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
             default:
 
         }
+    }
 
+
+    public void startActivity(Class cls) {
+        Intent intent = new Intent(MainMenuActivity.this, cls);
+        super.startActivity(intent);
     }
 }

@@ -18,7 +18,6 @@ public class MainMenuListAdapter extends BaseAdapter {
 
     private String[] listItemTitle;
     private String[] listSubtitleItems;
-    private Context context;
 
     private LayoutInflater viewInflater;
 
