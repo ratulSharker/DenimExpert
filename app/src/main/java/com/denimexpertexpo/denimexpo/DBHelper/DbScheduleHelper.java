@@ -13,13 +13,13 @@ public class DbScheduleHelper extends SQLiteOpenHelper {
 
 
     public DbScheduleHelper(Context context){
-        super(context, Contract.DB_NAME, null, Contract.DB_VERSION);
+        super(context, ScheduleContract.DB_NAME, null, ScheduleContract.DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //create the SCHEDULE table
-        String createSchedule = String.format("create table %s (%s int primary key," +
+        String createSchedule = String.format("create table IF NOT EXISTS %s (%s int primary key," +
                 "%s text," +    //event name
                 "%s text," +    //time added
                 "%s text," +    //start time

@@ -9,9 +9,13 @@ import java.security.PublicKey;
 /**
  * Created by ratul on 7/31/2015.
  */
-public class ScheduleContract extends Contract{
+public class ScheduleContract{
+
+    public static final String DB_NAME  =   "denim_schedule.db";
+    public static final int DB_VERSION  =   1;
 
     public static final String TABLE_NAME   =   "schedule";
+    public static final String AUTHORITY_SCHEDULE = "com.denimexpertexpo.denimexpo.DBHelper.ScheduleProvider";
 
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY_SCHEDULE + "/" + TABLE_NAME);
 
@@ -30,5 +34,4 @@ public class ScheduleContract extends Contract{
         public static final String  DETAILS     = "details";
         public static final String  DURATION    = "duration";
     }
-
 }

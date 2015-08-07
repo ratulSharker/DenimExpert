@@ -1,6 +1,10 @@
 package com.denimexpertexpo.denimexpo.BackendHttp;
 
+import android.util.Log;
+
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Schedule;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.Visitors.Visitor;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.Visitors;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.gms.maps.model.LatLng;
@@ -46,6 +50,7 @@ public class JsonParserHelper  {
     }
 
 
+
     public static ArrayList<Schedule> parseDownTheSchedules(String result)
     {
         ArrayList<Schedule> schedules = new ArrayList<Schedule>();
@@ -54,14 +59,35 @@ public class JsonParserHelper  {
         {
             ObjectMapper mapper = new ObjectMapper();
             schedules = mapper.readValue(result,
-                    new TypeReference<ArrayList<Schedule>>() {});
+                    new TypeReference<ArrayList<Schedule>>()
+                    {
+
+                    });
 
         }
         catch (Exception ex)
         {
-
+            Log.d(JsonParserHelper.class.getSimpleName(), "problem with parseDownTheSchedules");
         }
-
         return schedules;
     }
+
+
+    public static Visitors parseDownTheVisitors(String result)
+    {
+        Visitors  visitors = null;
+
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            visitors = mapper.readValue(result, Visitors.class);
+        }
+        catch (Exception ex)
+        {
+            Log.d(JsonParserHelper.class.getSimpleName(), "problem with parseDownTheVisitors " + ex);
+        }
+
+        return visitors;
+    }
+
+
 }

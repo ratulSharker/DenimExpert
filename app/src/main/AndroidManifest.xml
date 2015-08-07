@@ -79,10 +79,22 @@
             android:name=".DBHelper.ScheduleProvider"
             android:authorities="com.denimexpertexpo.denimexpo.DBHelper.ScheduleProvider"
             android:exported="false" />
+        <provider
+            android:name=".DBHelper.VisitorProvider"
+            android:authorities="com.denimexpertexpo.denimexpo.DBHelper.VisitorProvider"
+            android:exported="false" />
 
         <activity
             android:name=".Activities.ScheduleDetailsActivity"
             android:label="@string/title_activity_schedule_details" >
+        </activity>
+        <activity
+            android:name=".Activities.VisitorActivity"
+            android:label="@string/title_activity_visitor" >
+        </activity>
+        <activity
+            android:name=".Activities.VisitorDetailsActivity"
+            android:label="@string/title_activity_visitor_details" >
         </activity>
     </application>
 

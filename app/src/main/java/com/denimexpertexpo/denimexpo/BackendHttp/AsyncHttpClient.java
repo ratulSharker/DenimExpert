@@ -25,6 +25,11 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
     public static final String LOCATION_API_URL = "http://apps.bangladeshdenimexpo.com/api/location.php";
     public static final String SCHEDULE_API_URL = "http://apps.bangladeshdenimexpo.com/api/schedule.php";
 
+    private static final String VISITOR_API_BASE = "http://apps.bangladeshdenimexpo.com/api/visitors.php";
+    public static final String BuildVisitorApiUrl(long offset, long limit)
+    {
+        return VISITOR_API_BASE + "?offset=" + offset + "&limit=" + limit;
+    }
 
     private AsyncHttpRequestHandler mDelegate;
 

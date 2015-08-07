@@ -3,7 +3,7 @@ package com.denimexpertexpo.denimexpo.DenimDataClasses;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Date;
+
 
 /**
  * Created by ratul on 7/26/2015.

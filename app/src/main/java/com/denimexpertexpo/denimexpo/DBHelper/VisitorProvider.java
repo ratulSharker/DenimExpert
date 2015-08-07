@@ -11,21 +11,22 @@ import android.net.Uri;
 import android.text.TextUtils;
 
 /**
- * Created by ratul on 8/2/2015.
+ * Created by ratul on 8/7/2015.
  */
-public class ScheduleProvider extends ContentProvider {
+public class VisitorProvider extends ContentProvider {
 
-    private DbScheduleHelper dbScheduleHelper;
+    private DbVisitorHelper dbVisitorHelper;
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
     static {
-        uriMatcher.addURI(ScheduleContract.AUTHORITY_SCHEDULE, ScheduleContract.TABLE_NAME, ScheduleContract.SCHEDULE_DIR);
-        uriMatcher.addURI(ScheduleContract.AUTHORITY_SCHEDULE, ScheduleContract.TABLE_NAME + "/#", ScheduleContract.SCHEDULE_ITEM);
+        uriMatcher.addURI(VisitorContract.AUTHORITY_VISITOR, VisitorContract.TABLE_NAME, VisitorContract.VISITOR_DIR);
+        uriMatcher.addURI(VisitorContract.AUTHORITY_VISITOR, VisitorContract.TABLE_NAME + "/#", VisitorContract.VISITOR_ITEM);
     }
 
     @Override
     public boolean onCreate() {
-        dbScheduleHelper = new DbScheduleHelper(getContext());
+        this.dbVisitorHelper = new DbVisitorHelper(getContext());
         return true;
     }
 
@@ -33,19 +34,16 @@ public class ScheduleProvider extends ContentProvider {
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-        queryBuilder.setTables(ScheduleContract.TABLE_NAME);
+        queryBuilder.setTables(VisitorContract.TABLE_NAME);
 
-        switch(uriMatcher.match(uri))
-        {
-            case ScheduleContract.SCHEDULE_DIR:
-            {
+        switch (uriMatcher.match(uri)) {
+            case VisitorContract.VISITOR_DIR: {
 
             }
             break;
 
-            case ScheduleContract.SCHEDULE_ITEM:
-            {
-                queryBuilder.appendWhere(ScheduleContract.Column.ID+ "=" + uri.getLastPathSegment());
+            case VisitorContract.VISITOR_ITEM: {
+                queryBuilder.appendWhere(VisitorContract.Column.ID + "=" + uri.getLastPathSegment());
 
             }
             break;
@@ -54,9 +52,9 @@ public class ScheduleProvider extends ContentProvider {
                 throw new IllegalArgumentException("Illegal uri" + uri);
         }
 
-        String orderBy = (TextUtils.isEmpty(sortOrder)) ? ScheduleContract.DEFAULT_SORT_ORDER : sortOrder;
+        String orderBy = (TextUtils.isEmpty(sortOrder)) ? VisitorContract.DEFAULT_SORT_ORDER : sortOrder;
 
-        SQLiteDatabase db = dbScheduleHelper.getWritableDatabase();
+        SQLiteDatabase db = dbVisitorHelper.getWritableDatabase();
         Cursor cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, orderBy);
 
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -65,32 +63,33 @@ public class ScheduleProvider extends ContentProvider {
     }
 
     @Override
-    //no update implementation needed because this functionality is not supported for the schedule provider
     public String getType(Uri uri) {
         return null;
     }
 
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
+
+
         Uri ret = null;
 
-        if(uriMatcher.match(uri) != ScheduleContract.SCHEDULE_DIR)
-        {
+        if (uriMatcher.match(uri) != VisitorContract.VISITOR_DIR) {
             throw new IllegalArgumentException("Illegal uri" + uri);
         }
 
-        SQLiteDatabase db = dbScheduleHelper.getWritableDatabase();
-        long rowID = db.insertWithOnConflict(ScheduleContract.TABLE_NAME, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+        SQLiteDatabase db = dbVisitorHelper.getWritableDatabase();
+        long rowID = db.insertWithOnConflict(VisitorContract.TABLE_NAME, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
 
         //was inserted successfully
-        if(rowID != -1)
-        {
-            long id = contentValues.getAsLong(ScheduleContract.Column.ID);
+        if (rowID != -1) {
+            long id = contentValues.getAsLong(VisitorContract.Column.ID);
             ret = ContentUris.withAppendedId(uri, id);
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return ret;
+
     }
+
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
@@ -98,18 +97,15 @@ public class ScheduleProvider extends ContentProvider {
         String where;
 
         //calculate the where clause
-        switch (uriMatcher.match(uri))
-        {
-            case ScheduleContract.SCHEDULE_DIR:
-            {
+        switch (uriMatcher.match(uri)) {
+            case VisitorContract.VISITOR_DIR: {
                 where = (selection == null) ? "1" : selection;
             }
             break;
 
-            case ScheduleContract.SCHEDULE_ITEM:
-            {
+            case VisitorContract.VISITOR_ITEM: {
                 long id = ContentUris.parseId(uri);
-                where = ScheduleContract.Column.ID + "=" + id
+                where = VisitorContract.Column.ID + "=" + id
                         + (TextUtils.isEmpty(selection) ? "" : " and (" + selection + ")");
             }
             break;
@@ -118,19 +114,18 @@ public class ScheduleProvider extends ContentProvider {
                 throw new IllegalArgumentException("Illegal uri" + uri);
         }
 
-        SQLiteDatabase db = dbScheduleHelper.getWritableDatabase();
-        int ret = db.delete(ScheduleContract.TABLE_NAME, where, selectionArgs);
+        SQLiteDatabase db = dbVisitorHelper.getWritableDatabase();
+        int ret = db.delete(VisitorContract.TABLE_NAME, where, selectionArgs);
 
-        if(ret > 0)
-        {
+        if (ret > 0) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
 
         return ret;
+
     }
 
     @Override
-    //no update implementation needed because this functionality is not supported for the schedule provider
     public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
         return 0;
     }

@@ -3,12 +3,14 @@ package com.denimexpertexpo.denimexpo.Activities;
 import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +32,6 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
         , LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener {
 
 
-
     private static final int LOADER_ID = 233; //arbitrary loader id
 
     private final String[] FROM = {
@@ -47,6 +48,7 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
 
     private SimpleCursorAdapter mAdapter;
     private ListView mListView;
+    private View mListFooterView;
 
 
     @Override
@@ -55,7 +57,10 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
         setContentView(R.layout.activity_schedule);
 
 
-        mListView = (ListView)findViewById(R.id.schedule_list);
+        mListView = (ListView) findViewById(R.id.schedule_list);
+
+        mListFooterView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_list_view, null, false);
+        this.mListView.addFooterView(mListFooterView);
 
         //sending http request
         AsyncHttpClient asyncHttpClient = new AsyncHttpClient(this);
@@ -94,34 +99,50 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
     /**
      * AsycHttpClient Callbacks
      */
-    public void onResponseRecieved(String response)
-    {
-        ArrayList<Schedule> arrayList =  JsonParserHelper.parseDownTheSchedules(response);
-
-        ContentValues contentValues = new ContentValues();
-
-        int deletedRow = getContentResolver().delete(ScheduleContract.CONTENT_URI, null, null);
-
-        for(Schedule schedule : arrayList) {
-            contentValues.clear();
-
-            contentValues.put(ScheduleContract.Column.ID, schedule.mId);
-            contentValues.put(ScheduleContract.Column.EVENT_NAME, schedule.mEventName);
-            contentValues.put(ScheduleContract.Column.START_TIME, schedule.mTimeWhenStarted);
-            contentValues.put(ScheduleContract.Column.END_TIME, schedule.mTimeWhenEnd);
-            contentValues.put(ScheduleContract.Column.ADD_TIME, schedule.mTimeWhenAdded);
-            contentValues.put(ScheduleContract.Column.DETAILS, schedule.mDetails);
-            contentValues.put(ScheduleContract.Column.DURATION, schedule.mDuration);
+    public void onResponseRecieved(String response) {
 
 
-            getContentResolver().insert(ScheduleContract.CONTENT_URI, contentValues);
+        new AsyncTask<String, String, String>() {
 
-        }
+            @Override
+            protected String doInBackground(String... strings) {
 
+                String response = strings[0];
+
+                ArrayList<Schedule> arrayList = JsonParserHelper.parseDownTheSchedules(response);
+                ContentValues contentValues = new ContentValues();
+
+                //clear the whole table first
+                int deletedRow = getContentResolver().delete(ScheduleContract.CONTENT_URI, null, null);
+
+
+                for (Schedule schedule : arrayList) {
+                    contentValues.clear();
+
+                    contentValues.put(ScheduleContract.Column.ID, schedule.mId);
+                    contentValues.put(ScheduleContract.Column.EVENT_NAME, schedule.mEventName);
+                    contentValues.put(ScheduleContract.Column.START_TIME, schedule.mTimeWhenStarted);
+                    contentValues.put(ScheduleContract.Column.END_TIME, schedule.mTimeWhenEnd);
+                    contentValues.put(ScheduleContract.Column.ADD_TIME, schedule.mTimeWhenAdded);
+                    contentValues.put(ScheduleContract.Column.DETAILS, schedule.mDetails);
+                    contentValues.put(ScheduleContract.Column.DURATION, schedule.mDuration);
+
+                    getContentResolver().insert(ScheduleContract.CONTENT_URI, contentValues);
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                mListView.removeFooterView(mListFooterView);
+            }
+        }.execute(response);
     }
-    public void onHttpErrorOccured()
-    {
-        Toast.makeText(this, "Error while syncing...", Toast.LENGTH_SHORT).show();
+
+    public void onHttpErrorOccured() {
+        Toast.makeText(this, "No internet connection, cant get the latest schedules...", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -147,8 +168,6 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
     }
 
 
-
-
     /*
     list view click listener
      */
@@ -159,23 +178,5 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
         Intent detailsIntent = new Intent(ScheduleActivity.this, ScheduleDetailsActivity.class);
         detailsIntent.putExtra(ScheduleDetailsActivity.ID_KEY, id);
         startActivity(detailsIntent);
-    }
-
-
-    /*
-    next phase devlopment, webServices reply must be processed in an asyncTask
-     */
-    public class RefreshSchedule extends AsyncTask<String, String, String>
-    {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
     }
 }

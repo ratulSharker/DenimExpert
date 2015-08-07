@@ -17,11 +17,12 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
 
     //FULL LIST ITEMS
     private final static int LIST_ITEM_EXIBITORS = 4;
-    private final static int LIST_ITEM_DIRECTION = 5;
-    private final static int LIST_ITEM_SITEMAP = 6;
-    private final static int LIST_ITEM_SCHEDULE = 7;
-    private final static int LIST_ITEM_BARCODE = 8;
-    private final static int LIST_ITEM_FEEDBACK = 9;
+    private final static int LIST_ITEM_VISITORS = 5;
+    private final static int LIST_ITEM_DIRECTION = 6;
+    private final static int LIST_ITEM_SITEMAP = 7;
+    private final static int LIST_ITEM_SCHEDULE = 8;
+    private final static int LIST_ITEM_BARCODE = 9;
+    private final static int LIST_ITEM_FEEDBACK = 10;
     ListView mListView;
 
     @Override
@@ -50,6 +51,12 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
         switch (position) {
             case LIST_ITEM_EXIBITORS: {
                 Toast.makeText(this, "Exibitor gui not ready yet", Toast.LENGTH_LONG).show();
+            }
+            break;
+            case LIST_ITEM_VISITORS:
+            {
+                Toast.makeText(this, "Visitor pressed", Toast.LENGTH_LONG).show();
+                this.startActivity(VisitorActivity.class);
             }
             break;
             case LIST_ITEM_DIRECTION: {
