@@ -36,6 +36,11 @@ public class AsyncVisitorHelper {
 
             Visitors visitors = JsonParserHelper.parseDownTheVisitors(responses[0]);
 
+            if(Long.parseLong(visitors.mCount) == 0)
+            {
+                return null;
+            }
+
             ContentValues contentValues = new ContentValues();
             long largestID = 0;
 
@@ -72,6 +77,16 @@ public class AsyncVisitorHelper {
         @Override
         protected void onPostExecute(String s) {
             //do in background return largest processed id & retrieved number of visitors
+
+            if(s == null)
+            {
+                if(asyncVisitorHelperListener != null)
+                {
+                    asyncVisitorHelperListener.visitorTableUpdatedWith(-1, -1);
+                }
+
+                return;
+            }
 
             String split[] = s.split(" ");
             long largestID = Long.parseLong(split[0]);

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,56 +16,76 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
 import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpRequestHandler;
-import com.denimexpertexpo.denimexpo.DBHelper.VisitorContract;
+import com.denimexpertexpo.denimexpo.DBHelper.ExhibitorContract;
 import com.denimexpertexpo.denimexpo.R;
-import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncVisitorHelper;
-import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncVisitorHelperListener;
+import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncExhibitorHelper;
 
-public class VisitorActivity extends Activity implements AsyncHttpRequestHandler,
-        LoaderManager.LoaderCallbacks<Cursor>, AsyncVisitorHelperListener, AdapterView.OnItemClickListener{
+public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandler,
+        LoaderManager.LoaderCallbacks<Cursor>, AsyncExhibitorHelper.AsyncExhibitorHelperListener,
+        AdapterView.OnItemClickListener{
 
-    private static final int LOADER_ID = 404; //arbitrary loader id
-    private static final long HOW_MANY_NUMBER_OF_VISITOR_WILL_LOAD_AT_TIME = 250;
+
+    private static final int LOADER_ID = 4321; //arbitrary loader id
+    private static final long HOW_MANY_NUMBER_OF_EXHIBITOR_WILL_LOAD_AT_TIME = 250;
     private final String[] FROM = {
-            VisitorContract.Column.FULL_NAME
+            ExhibitorContract.Column.FIRST_NAME
     };
     private final int[] TO = {
             R.id.visito_list_row_name
     };
 
-
     private ListView mListView;
     private SimpleCursorAdapter mAdapter;
-    private AsyncVisitorHelper mAsyncVisitorHelper;
+
+
+    private AsyncExhibitorHelper mAsyncExhibitorHelper;
     private View mListFooterView;
     private Boolean mIsViewForeground;
     private long updateOffset;
 
 
-    /**
-     * Life cycle callback
+
+    /*
+     * Lifecycle Callbacks
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visitor);
+        setContentView(R.layout.activity_exhibitor);
 
-
-        this.mListView = (ListView) this.findViewById(R.id.visitor_list);
+        this.mListView = (ListView) findViewById(R.id.exhibitor_list_view);
 
         mListFooterView = ((LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_list_view, null, false);
         this.mListView.addFooterView(mListFooterView);
 
-        mAsyncVisitorHelper = new AsyncVisitorHelper(this, this);
+        mAsyncExhibitorHelper = new AsyncExhibitorHelper(this, this);
 
         mAdapter = new SimpleCursorAdapter(this, R.layout.visitor_list_row, null, FROM, TO, 0);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);
         getLoaderManager().initLoader(LOADER_ID, null, this);
+
+        mAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Cursor cursor, int i) {
+                if(view.getId() == R.id.visito_list_row_name)
+                {
+                    String firstName = cursor.getString(cursor.getColumnIndex(ExhibitorContract.Column.FIRST_NAME));
+                    String lastName = cursor.getString(cursor.getColumnIndex(ExhibitorContract.Column.LAST_NAME));
+                    ((TextView)view).setText(firstName + " " + lastName );
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        });
 
         updateOffset = 0;
     }
@@ -76,7 +97,7 @@ public class VisitorActivity extends Activity implements AsyncHttpRequestHandler
 
         //getting data
         AsyncHttpClient httpClient = new AsyncHttpClient(this);
-        httpClient.execute(AsyncHttpClient.BuildVisitorApiUrl(updateOffset, HOW_MANY_NUMBER_OF_VISITOR_WILL_LOAD_AT_TIME));
+        httpClient.execute(AsyncHttpClient.BuildExhibitorApiUrl(updateOffset, HOW_MANY_NUMBER_OF_EXHIBITOR_WILL_LOAD_AT_TIME));
     }
 
     @Override
@@ -89,7 +110,7 @@ public class VisitorActivity extends Activity implements AsyncHttpRequestHandler
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_visitor, menu);
+        getMenuInflater().inflate(R.menu.menu_exhibitor, menu);
         return true;
     }
 
@@ -109,31 +130,28 @@ public class VisitorActivity extends Activity implements AsyncHttpRequestHandler
     }
 
 
-    /**
-     * AsycHttpClient Callbacks
+
+    /*
+     * AsyncHttpRequestHandler callbacks
      */
     @Override
     public void onResponseRecieved(String response) {
-        //Toast.makeText(this,response, Toast.LENGTH_SHORT).show();
-        mAsyncVisitorHelper.processRecievedVisitorResponse(response);
+        //Log.e("Echibitor respon", response);
+        mAsyncExhibitorHelper.processRecievedExhibitorResponse(response);
     }
 
     @Override
     public void onHttpErrorOccured() {
-        Toast.makeText(this,"No internet connection, cant get the latest visitors", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"No internet connection, cant get the latest echibitor", Toast.LENGTH_LONG).show();
     }
 
 
-
-
-
-
-    /*
-     *  Background loader realted code
+    /**
+     * Loader realted callbacks
      */
     @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
-        return new CursorLoader(this, VisitorContract.CONTENT_URI, null, null, null, VisitorContract.DEFAULT_SORT_ORDER);
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        return new CursorLoader(this, ExhibitorContract.CONTENT_URI, null, null, null, ExhibitorContract.DEFAULT_SORT_ORDER);
     }
 
     @Override
@@ -142,25 +160,20 @@ public class VisitorActivity extends Activity implements AsyncHttpRequestHandler
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(Loader<Cursor> loader)  {
         mAdapter.swapCursor(null);
     }
 
-
-    /**
-     * AsyncVisitorHelper Callback
-     */
     @Override
-    public void visitorTableUpdatedWith(long numberOfVisitor, long lastVisitorID) {
+    public void exhibitorTableUpdatedWith(long numberOfExhibitor, long lastExhibitorID) {
 
-        if(lastVisitorID != -1)
-            updateOffset = lastVisitorID;
+        if(lastExhibitorID != -1)
+            updateOffset = lastExhibitorID;
 
-
-        if(numberOfVisitor == HOW_MANY_NUMBER_OF_VISITOR_WILL_LOAD_AT_TIME && this.mIsViewForeground)
+        if(numberOfExhibitor == HOW_MANY_NUMBER_OF_EXHIBITOR_WILL_LOAD_AT_TIME && this.mIsViewForeground)
         {
             AsyncHttpClient httpClient = new AsyncHttpClient(this);
-            httpClient.execute(AsyncHttpClient.BuildVisitorApiUrl(updateOffset, HOW_MANY_NUMBER_OF_VISITOR_WILL_LOAD_AT_TIME));
+            httpClient.execute(AsyncHttpClient.BuildExhibitorApiUrl(updateOffset, HOW_MANY_NUMBER_OF_EXHIBITOR_WILL_LOAD_AT_TIME));
         }
         else
         {
@@ -168,16 +181,16 @@ public class VisitorActivity extends Activity implements AsyncHttpRequestHandler
         }
     }
 
-
-    /*
-    list view click listener
+    /**
+     * onItemClickListener Adpaterview click callback
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
 
-        Intent detailsIntent = new Intent(VisitorActivity.this, VisitorDetailsActivity.class);
-        detailsIntent.putExtra(VisitorDetailsActivity.FROM_DB, true);
-        detailsIntent.putExtra(VisitorDetailsActivity.ID_KEY, id);
+        Intent detailsIntent = new Intent(ExhibitorActivity.this, ExhibitorDetailsActivity.class);
+        detailsIntent.putExtra(ExhibitorDetailsActivity.FROM_DB, true);
+        detailsIntent.putExtra(ExhibitorDetailsActivity.ID_KEY, id);
+        Log.e("from list", id + "");
         startActivity(detailsIntent);
     }
 }

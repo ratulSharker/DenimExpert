@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.BarcodeResultActivity"/>
+      <point      
+        x = "500"      
+        y = "100"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.BarcodeResultActivity"/>
+      <point      
+        x = "1480"      
+        y = "100"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.RegisrtationActivity"/>
+      <point      
+        x = "792"      
+        y = "7580"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.MainMenuActivity"/>
+      <point      
+        x = "156"      
+        y = "7844"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.SignupLoginActivity"/>
+      <point      
+        x = "1388"      
+        y = "6516"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.ExhibitorActivity"/>
+      <point      
+        x = "500"      
+        y = "1000"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.ExhibitorActivity"/>
+      <point      
+        x = "1480"      
+        y = "1000"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.BarcodeActivity"/>
+      <point      
+        x = "1312"      
+        y = "5784"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.SitemapActivity"/>
+      <point      
+        x = "500"      
+        y = "1900"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.SitemapActivity"/>
+      <point      
+        x = "1356"      
+        y = "2240"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.SplashScreenActivity"/>
+      <point      
+        x = "1316"      
+        y = "7452"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.VisitorActivity"/>
+      <point      
+        x = "500"      
+        y = "2800"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.VisitorActivity"/>
+      <point      
+        x = "1480"      
+        y = "2800"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.VisitorDetailsActivity"/>
+      <point      
+        x = "500"      
+        y = "3700"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.VisitorDetailsActivity"/>
+      <point      
+        x = "1480"      
+        y = "3700"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.ScheduleActivity"/>
+      <point      
+        x = "500"      
+        y = "4600"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.ScheduleActivity"/>
+      <point      
+        x = "1480"      
+        y = "4600"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.DirectionActivity"/>
+      <point      
+        x = "500"      
+        y = "5500"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.DirectionActivity"/>
+      <point      
+        x = "1480"      
+        y = "5500"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.ScheduleDetailsActivity"/>
+      <point      
+        x = "500"      
+        y = "6400"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.ScheduleDetailsActivity"/>
+      <point      
+        x = "1480"      
+        y = "6400"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>

@@ -25,9 +25,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
             android:text="Name : "
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+             />
 
         <TextView
             android:id="@+id/textView20"

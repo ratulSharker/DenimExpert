@@ -1,0 +1,334 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.denimexpertexpo.denimexpo.Activities.ExhibitorDetailsActivity"
+    android:background="@drawable/common_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ratul Sharker"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="@id/textView16"
+            android:layout_toEndOf="@+id/textView16"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_above="@+id/textView17"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Email : "
+            android:layout_alignLeft="@id/textView16"
+            android:layout_below="@id/textView16"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sharker.ratul.08@gmail.com"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView16"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignBottom="@+id/textView17"
+            android:layout_alignTop="@+id/textView17"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Phone : "
+            android:layout_alignLeft="@id/textView17"
+            android:layout_below="@id/textView17"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="8801921404767"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView18"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+             />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comapny Name : "
+            android:layout_below="@id/echibitor_details_phone"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_companyname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Denim Comapny name"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView19"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Website : "
+            android:layout_below="@id/echibitor_details_companyname"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="www.denim.com"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView20"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Address : "
+            android:layout_below="@id/echibitor_details_website"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_company_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="42/1 patil bari road"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView21"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile : "
+            android:layout_below="@id/echibitor_details_company_address"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="8801916871300, 88108470032387"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView22"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Industry Type : "
+            android:layout_below="@id/echibitor_details_mobile"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_industry_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Denim Fabric"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView23"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignBottom="@+id/textView23"
+            android:layout_alignTop="@+id/textView23"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Annual Turnover : "
+            android:layout_below="@id/echibitor_details_industry_type"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_annual_turnover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10000 $"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView24"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignBottom="@+id/textView24"
+            android:layout_alignTop="@+id/textView24"
+            android:gravity="center_vertical"/>
+
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Employees : "
+            android:layout_below="@id/echibitor_details_annual_turnover"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_num_of_emplyees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView25"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignBottom="@+id/textView25"
+            android:layout_alignTop="@+id/textView25"
+            android:gravity="center_vertical"/>
+
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buyers Name : "
+            android:layout_below="@id/echibitor_details_num_of_emplyees"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_buyers_nmae"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A, B, C, D, E"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView26"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Details : "
+            android:layout_below="@id/echibitor_details_buyers_nmae"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_product_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is a product, it's very favorite jeans pant :)"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView27"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buyer Country : "
+            android:layout_below="@id/echibitor_details_product_details"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_product_buyer_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bangladesh, India, Dubai, Pripyat"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView28"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Business : "
+            android:layout_below="@id/echibitor_details_product_buyer_country"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_product_business"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Denim Export import"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView29"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product : "
+            android:layout_below="@id/echibitor_details_product_business"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/light_ash"
+            />
+
+        <TextView
+            android:id="@+id/echibitor_details_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Denim Jeans"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/textView30"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+    </RelativeLayout>
+
+</ScrollView>

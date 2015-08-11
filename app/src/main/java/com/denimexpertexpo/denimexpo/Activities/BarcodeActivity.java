@@ -1,26 +1,37 @@
 package com.denimexpertexpo.denimexpo.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
+import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpRequestHandler;
+import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
 import com.denimexpertexpo.denimexpo.CustomViews.BarcodeScannerView;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.Exhibitors;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.Visitors;
 import com.denimexpertexpo.denimexpo.Interfaces.ViewResizer;
 import com.denimexpertexpo.denimexpo.R;
+import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncExhibitorHelper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class BarcodeActivity extends Activity implements ZXingScannerView.ResultHandler, ViewResizer {
+public class BarcodeActivity extends Activity implements ZXingScannerView.ResultHandler,
+        ViewResizer, AsyncHttpRequestHandler {
 
     private TextView txtBarcodeStatus;
     private BarcodeScannerView viewScanner;
@@ -41,7 +52,6 @@ public class BarcodeActivity extends Activity implements ZXingScannerView.Result
         this.viewScanner.setViewResizer(this);
 
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -89,25 +99,13 @@ public class BarcodeActivity extends Activity implements ZXingScannerView.Result
         Toast.makeText(this, rawResult.getText(), Toast.LENGTH_LONG).show();
 
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                progressDialog.dismiss();
-                Intent intent = new Intent(BarcodeActivity.this, BarcodeResultActivity.class);
-                startActivity(intent);
-            }
-        };
-
-        //move to details
-        new Handler().postDelayed(runnable, 3000);
-
-
-        //move to details view
         //TODO -- add a http request to make request to server
         progressDialog = ProgressDialog.show(this, "Loading", "Please wait...", true);
 
-    }
 
+        AsyncHttpClient asyncHttpClient = new AsyncHttpClient(this);
+        asyncHttpClient.execute(AsyncHttpClient.BuildBarcodeApiUrl(rawResult.getText()));
+    }
     @Override
     public void heightWidthKnown(int height, int width) {
         Display display = getWindowManager().getDefaultDisplay();
@@ -118,9 +116,85 @@ public class BarcodeActivity extends Activity implements ZXingScannerView.Result
 
 
         RelativeLayout.LayoutParams existingParams = (RelativeLayout.LayoutParams) viewScanner.getLayoutParams();
-
         existingParams.width = (int) ((screen_width / screen_height) * height);
 
         viewScanner.setLayoutParams(existingParams);
+    }
+
+
+    @Override
+    public void onResponseRecieved(String response) {
+        Log.e("barcode response ", response);
+        this.progressDialog.dismiss();
+
+        int userType = JsonParserHelper.parseAppropriateUserTypeFromBarcodeApi(response);
+
+        Log.e("Usertype returned ", userType + " ");
+
+        switch (userType)
+        {
+            case JsonParserHelper.INVALID_USER_TYPE:
+            {
+                //Toast.makeText(this, "Invalid user, no user registered with this barcode", Toast.LENGTH_LONG).show();
+
+                AlertDialog.Builder alertDialougeBuilder = new AlertDialog.Builder(this);
+                alertDialougeBuilder.setPositiveButton("Rescan", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        viewScanner.setResultHandler(BarcodeActivity.this);
+                        viewScanner.startCamera();
+                        txtBarcodeStatus.setText("Waiting for barcode...");
+                    }
+                });
+                alertDialougeBuilder.setNegativeButton("Main menu", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        onBackPressed();
+                    }
+                });
+                alertDialougeBuilder.setTitle("Sorry");
+                alertDialougeBuilder.setMessage("No user found to show");
+
+                alertDialougeBuilder.show();
+            }
+            break;
+            case JsonParserHelper.EXHIBITOR_USER_TYPE:
+            {
+                //show exhibitor details page
+                Exhibitors exhibitors = JsonParserHelper.parseDownTheExhibitors(response);
+                if(exhibitors != null &&
+                        exhibitors.mExhibitorList != null &&
+                        exhibitors.mExhibitorList.size() == 1)
+                {
+                    Intent exhibitorDetails = new Intent(BarcodeActivity.this, ExhibitorDetailsActivity.class);
+                    exhibitorDetails.putExtra(ExhibitorDetailsActivity.FROM_OBJECT, true);
+                    exhibitorDetails.putExtra(ExhibitorDetailsActivity.OBJECT_KEY, exhibitors.mExhibitorList.get(0));
+
+                    startActivity(exhibitorDetails);
+                }
+            }
+            break;
+            case JsonParserHelper.VISITOR_USER_TYPE:
+            {
+                //show visitor details page
+                Visitors visitors = JsonParserHelper.parseDownTheVisitors(response);
+                if(visitors != null &&
+                        visitors.mVisitorList != null &&
+                        visitors.mVisitorList.size() == 1)
+                {
+                    Intent visitorDetails = new Intent(BarcodeActivity.this, VisitorDetailsActivity.class);
+                    visitorDetails.putExtra(VisitorDetailsActivity.FROM_OBJECT, true);
+                    visitorDetails.putExtra(VisitorDetailsActivity.OBJECT_KEY, visitors.mVisitorList.get(0));
+                    startActivity(visitorDetails);
+                }
+            }
+            break;
+        }
+    }
+
+    @Override
+    public void onHttpErrorOccured() {
+        this.progressDialog.dismiss();
+        Toast.makeText(this, "No internet connection, cant fetch the barcode result", Toast.LENGTH_LONG).show();
     }
 }

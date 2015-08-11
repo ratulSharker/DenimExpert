@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -32,48 +33,21 @@ public class Visitors {
      */
 
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static class Visitor{
-    @JsonProperty("id")
-    public String mId;
-
-    @JsonProperty("generated_id")
-    public String mGenId;
-
-    @JsonProperty("first_name")
-    public String mFirstName;
-
-    @JsonProperty("last_name")
-    public String mLastName;
-
-    @JsonProperty("full_name")
-    public String mFullName;
-
-    @JsonProperty("email")
-    public String mEmail;
-
-    @JsonProperty("phone")
-    public String mPhone;
-
-    @JsonProperty("company_name")
-    public String mCompanyName;
-
-    @JsonProperty("website")
-    public String mWebsite;
-
-    @JsonProperty("address")
-    public String mAdress;
-
-    @JsonProperty("industry_type")
-    public String mIndustryType;
-
-    @JsonProperty("job_title")
-    public String mJobtitle;
-
-    @JsonProperty("department")
-    public String mDepartment;
-
-    @JsonProperty("date")
-    public String mDate;
+  public static class Visitor implements Serializable {
+    @JsonProperty("id")    public String mId;
+    @JsonProperty("generated_id")    public String mGenId;
+    @JsonProperty("first_name")    public String mFirstName;
+    @JsonProperty("last_name")    public String mLastName;
+    @JsonProperty("full_name")    public String mFullName;
+    @JsonProperty("email")    public String mEmail;
+    @JsonProperty("phone")    public String mPhone;
+    @JsonProperty("company_name")    public String mCompanyName;
+    @JsonProperty("website")    public String mWebsite;
+    @JsonProperty("address")    public String mAdress;
+    @JsonProperty("industry_type")    public String mIndustryType;
+    @JsonProperty("job_title")    public String mJobtitle;
+    @JsonProperty("department")    public String mDepartment;
+    @JsonProperty("date")    public String mDate;
 
 
     public Visitor(@JsonProperty("id") String  Id,

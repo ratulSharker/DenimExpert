@@ -9,4 +9,7 @@
     <color name="transparent">#00000000</color>
     <color name="light_ash">#ff999999</color>
 
+    <color name="white">#ffffffff</color>
+
+
 </resources>

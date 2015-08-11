@@ -20,15 +20,26 @@ import java.util.logging.Handler;
  */
 public class AsyncHttpClient extends AsyncTask <String, String, String>{
 
-
     //some external constant to be used outside the class
     public static final String LOCATION_API_URL = "http://apps.bangladeshdenimexpo.com/api/location.php";
     public static final String SCHEDULE_API_URL = "http://apps.bangladeshdenimexpo.com/api/schedule.php";
+    public static final String EVENTMAP_API_URL = "http://apps.bangladeshdenimexpo.com/api/eventmap.php";
 
     private static final String VISITOR_API_BASE = "http://apps.bangladeshdenimexpo.com/api/visitors.php";
     public static final String BuildVisitorApiUrl(long offset, long limit)
     {
         return VISITOR_API_BASE + "?offset=" + offset + "&limit=" + limit;
+    }
+
+    private static final String EXHIBITOR_API_BASE = "http://apps.bangladeshdenimexpo.com/api/exhibitors.php";
+    public static final String BuildExhibitorApiUrl(long offset, long limit)
+    {
+        return EXHIBITOR_API_BASE + "?offset=" + offset + "&limit=" + limit;
+    }
+
+    private static final String BARCODE_API_BASE = "http://apps.bangladeshdenimexpo.com/api/barcodeinfo.php";
+    public static final String BuildBarcodeApiUrl(String gen_id){
+        return BARCODE_API_BASE + "?generated_id="+ gen_id;
     }
 
     private AsyncHttpRequestHandler mDelegate;

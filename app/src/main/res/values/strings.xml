@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DenimExpo</string>
+    <string name="app_name">Denim Expo</string>
 
     <string name="title_activity_signup_login">Authentication</string>
 
@@ -18,5 +18,8 @@
     <string name="title_activity_schedule_details">ScheduleDetailsActivity</string>
     <string name="title_activity_visitor">VisitorActivity</string>
     <string name="title_activity_visitor_details">VisitorDetailsActivity</string>
+    <string name="title_activity_exhibitor">ExhibitorActivity</string>
+    <string name="title_activity_sitemap">SitemapActivity</string>
+    <string name="title_activity_exhibitor_details">ExhibitorDetailsActivity</string>
 
 </resources>

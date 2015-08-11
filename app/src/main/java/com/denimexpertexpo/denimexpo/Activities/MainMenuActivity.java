@@ -36,9 +36,19 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
         Resources resources = this.getResources();
         String[] titleItems = resources.getStringArray(R.array.menu_titles);
         String[] subTitleItems = resources.getStringArray(R.array.menu_sub_title);
+        int []  iconReference = {
+          -1,-1,-1,-1,
+                R.drawable.main_menu_list_item_exhibitor,
+                R.drawable.main_menu_list_item_visitor,
+                R.drawable.main_menu_list_item_direction,
+                R.drawable.main_menu_list_item_sitemap,
+                R.drawable.main_menu_list_item_schedule,
+                R.drawable.main_menu_list_item_barcode,
+                R.drawable.main_menu_list_item_feedback
+        };
 
 
-        MainMenuListAdapter customAdapter = new MainMenuListAdapter(titleItems, subTitleItems, getApplicationContext());
+        MainMenuListAdapter customAdapter = new MainMenuListAdapter(titleItems, subTitleItems, iconReference, getApplicationContext());
         this.mListView.setAdapter(customAdapter);
 
         this.mListView.setOnItemClickListener(this);
@@ -50,7 +60,7 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
 
         switch (position) {
             case LIST_ITEM_EXIBITORS: {
-                Toast.makeText(this, "Exibitor gui not ready yet", Toast.LENGTH_LONG).show();
+                this.startActivity(ExhibitorActivity.class);
             }
             break;
             case LIST_ITEM_VISITORS:
@@ -66,6 +76,7 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
             break;
             case LIST_ITEM_SITEMAP: {
                 Toast.makeText(this, "Sitemap gui not ready yet", Toast.LENGTH_LONG).show();
+                this.startActivity(SitemapActivity.class);
             }
             break;
             case LIST_ITEM_SCHEDULE: {

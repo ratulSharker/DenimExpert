@@ -18,6 +18,7 @@ public class MainMenuListAdapter extends BaseAdapter {
 
     private String[] listItemTitle;
     private String[] listSubtitleItems;
+    private int[]   icons;
 
     private LayoutInflater viewInflater;
 
@@ -25,9 +26,10 @@ public class MainMenuListAdapter extends BaseAdapter {
     /**
      * Simple constructor
      */
-    public MainMenuListAdapter(String[] titleItems, String[] subTitleItems, Context context) {
+    public MainMenuListAdapter(String[] titleItems, String[] subTitleItems, int[] icons, Context context) {
         this.listItemTitle = titleItems;
         this.listSubtitleItems = subTitleItems;
+        this.icons = icons;
 
         //save the layout inflater for the later use
         this.viewInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -100,6 +102,9 @@ public class MainMenuListAdapter extends BaseAdapter {
         ImageView rowImage = (ImageView) newRow.findViewById(R.id.menu_list_image);
         TextView titleTextView = (TextView) newRow.findViewById(R.id.menu_list_title);
         TextView subtitleTextView = (TextView) newRow.findViewById(R.id.menu_list_sub_title);
+
+
+        rowImage.setImageResource(icons[position]);
 
         if (title.isEmpty()) {
             //these are blank rows

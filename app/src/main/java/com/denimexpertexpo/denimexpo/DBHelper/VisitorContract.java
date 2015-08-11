@@ -19,7 +19,7 @@ public class VisitorContract {
     public static final int VISITOR_ITEM   = 1;
     public static final int VISITOR_DIR    = 2;
 
-    public static final String DEFAULT_SORT_ORDER = Column.ID + " DESC";
+    public static final String DEFAULT_SORT_ORDER = Column.FULL_NAME + " COLLATE NOCASE ASC";
 
     public class Column
     {

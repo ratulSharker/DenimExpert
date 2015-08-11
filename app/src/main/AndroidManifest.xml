@@ -83,6 +83,10 @@
             android:name=".DBHelper.VisitorProvider"
             android:authorities="com.denimexpertexpo.denimexpo.DBHelper.VisitorProvider"
             android:exported="false" />
+        <provider
+            android:name=".DBHelper.ExhibitorProvider"
+            android:authorities="com.denimexpertexpo.denimexpo.DBHelper.ExhibitorProvider"
+            android:exported="false" />
 
         <activity
             android:name=".Activities.ScheduleDetailsActivity"
@@ -95,6 +99,18 @@
         <activity
             android:name=".Activities.VisitorDetailsActivity"
             android:label="@string/title_activity_visitor_details" >
+        </activity>
+        <activity
+            android:name=".Activities.ExhibitorActivity"
+            android:label="@string/title_activity_exhibitor" >
+        </activity>
+        <activity
+            android:name=".Activities.SitemapActivity"
+            android:label="@string/title_activity_sitemap" >
+        </activity>
+        <activity
+            android:name=".Activities.ExhibitorDetailsActivity"
+            android:label="@string/title_activity_exhibitor_details" >
         </activity>
     </application>
 
