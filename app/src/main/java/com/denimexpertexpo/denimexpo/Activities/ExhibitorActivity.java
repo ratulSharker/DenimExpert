@@ -24,6 +24,7 @@ import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpRequestHandler;
 import com.denimexpertexpo.denimexpo.DBHelper.ExhibitorContract;
 import com.denimexpertexpo.denimexpo.R;
 import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncExhibitorHelper;
+import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
 public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandler,
         LoaderManager.LoaderCallbacks<Cursor>, AsyncExhibitorHelper.AsyncExhibitorHelperListener,
@@ -57,6 +58,10 @@ public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exhibitor);
+
+        //adding the back button
+        CustomStyling.addHomeBackButton(this, "Exhibitors");
+
 
         this.mListView = (ListView) findViewById(R.id.exhibitor_list_view);
 
@@ -107,12 +112,14 @@ public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandl
 
     }
 
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_exhibitor, menu);
         return true;
     }
+*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -125,6 +132,7 @@ public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandl
         if (id == R.id.action_settings) {
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -193,4 +201,5 @@ public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandl
         Log.e("from list", id + "");
         startActivity(detailsIntent);
     }
+
 }

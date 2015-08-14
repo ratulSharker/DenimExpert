@@ -51,20 +51,13 @@
             android:theme="@android:style/Theme.Holo.NoActionBar" />
         <activity
             android:name=".Activities.BarcodeActivity"
-            android:label="@string/title_activity_barcode"
-            android:parentActivityName=".Activities.MainMenuActivity" />
-        <activity
-            android:name=".Activities.BarcodeResultActivity"
-            android:label="@string/title_activity_barcode_result"
-            android:parentActivityName=".Activities.BarcodeActivity" />
+            android:label="@string/title_activity_barcode" />
         <activity
             android:name=".Activities.RegisrtationActivity"
-            android:label="@string/title_activity_regisrtation"
-            android:parentActivityName=".Activities.SignupLoginActivity" />
+            android:label="@string/title_activity_regisrtation" />
         <activity
             android:name=".Activities.DirectionActivity"
             android:label="@string/title_activity_main"
-            android:parentActivityName=".Activities.MainMenuActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

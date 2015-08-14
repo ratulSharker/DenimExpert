@@ -1,21 +1,36 @@
 package com.denimexpertexpo.denimexpo.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
+import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpRequestHandler;
+import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
+import com.denimexpertexpo.denimexpo.Constants.DenimContstants;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.AuthenticationReply;
 import com.denimexpertexpo.denimexpo.R;
 import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
+import java.io.UnsupportedEncodingException;
 
-public class SignupLoginActivity extends Activity {
 
-    EditText mEdittextUsername, mEdittextPassword;
-    Button mBtnRegister, mBtnLogin, mBtnSkiplogin;
+public class SignupLoginActivity extends Activity implements AsyncHttpRequestHandler{
+
+    private EditText mEdittextUsername, mEdittextPassword;
+    private Button mBtnRegister, mBtnLogin, mBtnSkiplogin;
+
+
+    private ProgressDialog mProgressDialog;
+
 
 
     @Override
@@ -47,7 +62,27 @@ public class SignupLoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //handle the register button request
-                Toast.makeText(SignupLoginActivity.this, "Login clicked", Toast.LENGTH_SHORT).show();
+                if(verifyUsernameAndPasswordBoxLocally())
+                {
+                    try{
+                        String buildedUrl = AsyncHttpClient.BuildLoginApiUrl(mEdittextUsername.getText().toString()
+                                , mEdittextPassword.getText().toString());
+                        AsyncHttpClient asyncHttpClient = new AsyncHttpClient(SignupLoginActivity.this);
+                        asyncHttpClient.execute(buildedUrl);
+
+                        mProgressDialog = new ProgressDialog(SignupLoginActivity.this);
+                        mProgressDialog.setCancelable(false);
+                        mProgressDialog.setMessage("Please wait...");
+                        mProgressDialog.setTitle("Authenticating");
+                        mProgressDialog.show();
+                    }
+                    catch (UnsupportedEncodingException ex)
+                    {
+                        Log.e("wrong", ex.toString());
+                    }
+
+
+                }
             }
         });
 
@@ -57,10 +92,94 @@ public class SignupLoginActivity extends Activity {
                 //handle the register button request
                 Toast.makeText(SignupLoginActivity.this, "Skip clicked", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(SignupLoginActivity.this, MainMenuActivity.class);
-                startActivity(intent);
-                SignupLoginActivity.this.finish();
+                proceedToMainMenuWithRegistration(false);
             }
         });
+    }
+
+
+    private Boolean verifyUsernameAndPasswordBoxLocally()
+    {
+        if(this.mEdittextUsername.getText().length() == 0)
+        {
+            this.showOkAlertDialouge("Sorry", "Username can't be empty");
+            return false;
+        }
+        else if(this.mEdittextPassword.getText().length() == 0)
+        {
+            this.showOkAlertDialouge("Sorry", "Password cant be empty");
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+
+
+    /*
+    AsyncHttpRequestHandler
+     */
+    @Override
+    public void onResponseRecieved(String response) {
+        Log.e("response", response);
+        this.mProgressDialog.dismiss();
+
+        //parse the response
+        AuthenticationReply authenticationReply = JsonParserHelper.parseLoginTryResponse(response);
+        if(authenticationReply != null && authenticationReply.mFound.compareTo("true")== 0)
+        {
+            Log.e("Authenticated", "Authenticated");
+
+            //save the last authorized credential to the sharedPreferences
+            SharedPreferences.Editor editor = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putString(DenimContstants.SHARED_PREFS_USERNAME, mEdittextUsername.getText().toString());
+            editor.putString(DenimContstants.SHARED_PREFS_PASSWORD, mEdittextPassword.getText().toString());
+            editor.commit();
+
+
+            proceedToMainMenuWithRegistration(true);
+        }
+        else
+        {
+            this.showOkAlertDialouge("Unauthorized", "Wrong username or password");
+        }
+    }
+
+    @Override
+    public void onHttpErrorOccured() {
+        Log.e("Http error", "error on login activity");
+
+        this.mProgressDialog.dismiss();
+        this.showOkAlertDialouge("Sorry", "Can't authenticate due to no internet connection");
+    }
+
+
+    /*
+    Private helper method
+     */
+    private void showOkAlertDialouge(String title, String msg)
+    {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder.setCancelable(false);
+        alertBuilder.setPositiveButton("Ok", null);
+        alertBuilder.setTitle(title);
+        alertBuilder.setMessage(msg);
+        alertBuilder.create().show();
+    }
+
+    private void proceedToMainMenuWithRegistration(Boolean registered)
+    {
+        //disabling the registered flag
+        SharedPreferences.Editor editor = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(DenimContstants.SHARED_PREFS_REGISTERED, registered);
+        editor.commit();
+
+        Intent intent = new Intent(SignupLoginActivity.this, MainMenuActivity.class);
+        startActivity(intent);
+
+        if(registered)
+            SignupLoginActivity.this.finish();
     }
 }

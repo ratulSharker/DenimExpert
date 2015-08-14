@@ -3,20 +3,29 @@ package com.denimexpertexpo.denimexpo.Activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
+import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpRequestHandler;
+import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
+import com.denimexpertexpo.denimexpo.Constants.DenimContstants;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.AuthenticationReply;
 import com.denimexpertexpo.denimexpo.R;
 import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
+
+import java.io.UnsupportedEncodingException;
 
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends Activity implements AsyncHttpRequestHandler{
 
     private static final int AUTO_HIDE_DELAY_MILLIS = 1500;
 
@@ -26,10 +35,7 @@ public class SplashScreenActivity extends Activity {
         setContentView(R.layout.activity_splash_screen);
 
         CustomStyling.setCustomFontToTextView(this, "big_title_gipsiero.otf", R.id.splash_screen_title);
-
-        this.checkDPI();
-
-
+        //this.checkDPI();
     }
 
     @Override
@@ -37,17 +43,37 @@ public class SplashScreenActivity extends Activity {
         super.onWindowFocusChanged(hasFocus);
 
         if (hasFocus) {
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(SplashScreenActivity.this, SignupLoginActivity.class);
-                    startActivity(intent);
-                    SplashScreenActivity.this.finish();
-                }
-            };
 
-            //move to login activity within 3 seconds
-            new Handler().postDelayed(runnable, AUTO_HIDE_DELAY_MILLIS);
+
+            SharedPreferences preferences = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE);
+            String username = preferences.getString(DenimContstants.SHARED_PREFS_USERNAME, null);
+            String password = preferences.getString(DenimContstants.SHARED_PREFS_PASSWORD, null);
+
+            Log.e("Login credential", username + ")(" + password);
+
+            if(username == null || password == null)
+            {
+                //no username & password in the sharedPreference
+                //goto the login screen after the splash ended
+                this.proceedToNextActivity(SignupLoginActivity.class);
+            }
+            else
+            {
+                //a valid username & password found in the sharedPreference
+                //verify rhe username & password through login api
+                try{
+                    Log.e("Trying authenticating", "HTTP");
+                    String buildedUrl = AsyncHttpClient.BuildLoginApiUrl(username, password);
+                    AsyncHttpClient asyncHttpClient = new AsyncHttpClient(this);
+                    asyncHttpClient.execute(buildedUrl);
+
+                }
+                catch (UnsupportedEncodingException ex)
+                {
+                    //can't encode username password, relogin
+                    this.proceedToNextActivity(SignupLoginActivity.class);
+                }
+            }
         }
     }
 
@@ -57,8 +83,42 @@ public class SplashScreenActivity extends Activity {
     }
 
 
+
+    /*
+    Async Http request Handler
+     */
+    @Override
+    public void onResponseRecieved(String response) {
+        //login response returned
+        //parse the response
+        AuthenticationReply authenticationReply = JsonParserHelper.parseLoginTryResponse(response);
+        if(authenticationReply != null && authenticationReply.mFound.compareTo("true")== 0)
+        {
+            Log.e("Authenticated", "HTTP");
+            //authorized
+            //proceed to the main menu
+            this.proceedToNextActivity(MainMenuActivity.class);
+        }
+        else
+        {
+            Log.e("UnAuthorized", "HTTP");
+            //unauthorized
+            //proceed to the login screen
+            this.proceedToNextActivity(SignupLoginActivity.class);
+        }
+    }
+
+    @Override
+    public void onHttpErrorOccured() {
+
+        Log.e("No internet connection", "HTTP");
+        //no iinternet connection
+        //proceed to the main menu
+        this.proceedToNextActivity(MainMenuActivity.class);
+    }
+
     /**
-     * it let me know, in which device family i'm running
+     * private helper methods
      */
     private void checkDPI()
     {
@@ -81,4 +141,19 @@ public class SplashScreenActivity extends Activity {
                 break;
         }
     }
+    private void proceedToNextActivity(final Class nextActivity)
+    {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashScreenActivity.this, nextActivity);
+                startActivity(intent);
+                SplashScreenActivity.this.finish();
+            }
+        };
+
+        //move to login activity within 3 seconds
+        new Handler().postDelayed(runnable, AUTO_HIDE_DELAY_MILLIS);
+    }
+
 }

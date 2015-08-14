@@ -2,6 +2,7 @@ package com.denimexpertexpo.denimexpo.BackendHttp;
 
 import android.util.Log;
 
+import com.denimexpertexpo.denimexpo.DenimDataClasses.AuthenticationReply;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.BarcodeTypeChecker;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Exhibitors;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Schedule;
@@ -155,5 +156,21 @@ public class JsonParserHelper  {
        }
 
         return sitemapUpdateInfo;
+    }
+
+    public static AuthenticationReply parseLoginTryResponse(String result)
+    {
+        AuthenticationReply authenticationReply = null;
+
+        try{
+           ObjectMapper objectMapper = new ObjectMapper();
+            authenticationReply = objectMapper.readValue(result, AuthenticationReply.class);
+        }
+        catch (Exception ex)
+        {
+            Log.e("Sitemap update info", ex.toString());
+        }
+
+        return authenticationReply;
     }
 }

@@ -20,4 +20,11 @@ public class CustomStyling {
         appliedTextView.setTypeface(font);
 
     }
+
+    public static void addHomeBackButton(Activity activity, String title)
+    {
+        //activity.getActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getActionBar().setTitle(title);
+
+    }
 }

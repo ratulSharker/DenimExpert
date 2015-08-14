@@ -7,7 +7,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.denimexpertexpo.denimexpo.Activities.ExhibitorDetailsActivity"
-    android:background="@drawable/common_background">
+    android:background="@drawable/common_background"
+    android:scrollbars="none">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,6 +22,7 @@
             android:text="Name : "
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -34,7 +36,9 @@
             android:layout_toEndOf="@+id/textView16"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_above="@+id/textView17"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+            />
 
         <TextView
             android:id="@+id/textView17"
@@ -46,6 +50,7 @@
             android:layout_below="@id/textView16"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -58,7 +63,8 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignBottom="@+id/textView17"
             android:layout_alignTop="@+id/textView17"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:background="@drawable/visitor_exhibitor_details_field_background"/>
 
         <TextView
             android:id="@+id/textView18"
@@ -70,6 +76,7 @@
             android:layout_below="@id/textView17"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -80,7 +87,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView18"
             android:textAppearance="?android:attr/textAppearanceMedium"
-             />
+            android:background="@drawable/visitor_exhibitor_details_field_background" />
 
         <TextView
             android:id="@+id/textView19"
@@ -90,6 +97,7 @@
             android:layout_below="@id/echibitor_details_phone"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -100,6 +108,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView19"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
         <TextView
@@ -110,6 +119,7 @@
             android:layout_below="@id/echibitor_details_companyname"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -120,6 +130,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView20"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
         <TextView
@@ -130,6 +141,7 @@
             android:layout_below="@id/echibitor_details_website"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -140,6 +152,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView21"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
         <TextView
@@ -150,6 +163,7 @@
             android:layout_below="@id/echibitor_details_company_address"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -160,6 +174,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView22"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
         <TextView
@@ -170,6 +185,7 @@
             android:layout_below="@id/echibitor_details_mobile"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -182,7 +198,9 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignBottom="@+id/textView23"
             android:layout_alignTop="@+id/textView23"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+            />
 
         <TextView
             android:id="@+id/textView24"
@@ -192,6 +210,7 @@
             android:layout_below="@id/echibitor_details_industry_type"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -204,7 +223,8 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignBottom="@+id/textView24"
             android:layout_alignTop="@+id/textView24"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:background="@drawable/visitor_exhibitor_details_field_background"/>
 
 
         <TextView
@@ -215,6 +235,7 @@
             android:layout_below="@id/echibitor_details_annual_turnover"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -227,7 +248,8 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignBottom="@+id/textView25"
             android:layout_alignTop="@+id/textView25"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:background="@drawable/visitor_exhibitor_details_field_background"/>
 
 
         <TextView
@@ -238,6 +260,7 @@
             android:layout_below="@id/echibitor_details_num_of_emplyees"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -248,6 +271,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView26"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
         <TextView
@@ -258,6 +282,7 @@
             android:layout_below="@id/echibitor_details_buyers_nmae"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -268,6 +293,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView27"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
         <TextView
@@ -278,6 +304,7 @@
             android:layout_below="@id/echibitor_details_product_details"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -288,6 +315,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView28"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
         <TextView
@@ -298,6 +326,7 @@
             android:layout_below="@id/echibitor_details_product_buyer_country"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -308,6 +337,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView29"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
         <TextView
@@ -318,6 +348,7 @@
             android:layout_below="@id/echibitor_details_product_business"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
+            android:background="@drawable/registration_form_title_style"
             />
 
         <TextView
@@ -328,6 +359,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/textView30"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
             />
     </RelativeLayout>
 

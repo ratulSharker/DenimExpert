@@ -13,6 +13,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.ByteArrayOutputStream;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.logging.Handler;
 
 /**
@@ -41,6 +43,14 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
     public static final String BuildBarcodeApiUrl(String gen_id){
         return BARCODE_API_BASE + "?generated_id="+ gen_id;
     }
+
+    private static final String LOGIN_API_BASE = "http://exhibitor.bangladeshdenimexpo.com/index.php/test/LoginVerify";
+    public static final String BuildLoginApiUrl(String username, String password) throws UnsupportedEncodingException
+    {
+        return LOGIN_API_BASE + "?username=" + URLEncoder.encode(username, "UTF-8") + "&password=" + URLEncoder.encode(password, "UTF-8");
+    }
+
+
 
     private AsyncHttpRequestHandler mDelegate;
 

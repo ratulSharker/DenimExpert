@@ -25,6 +25,7 @@ import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
 import com.denimexpertexpo.denimexpo.DBHelper.ScheduleContract;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Schedule;
 import com.denimexpertexpo.denimexpo.R;
+import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
 import java.util.ArrayList;
 
@@ -56,9 +57,9 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
+        CustomStyling.addHomeBackButton(this, "Schedules");
 
         mListView = (ListView) findViewById(R.id.schedule_list);
-
         mListFooterView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_list_view, null, false);
         this.mListView.addFooterView(mListFooterView);
 
@@ -74,13 +75,14 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
         getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_schedule, menu);
         return true;
     }
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

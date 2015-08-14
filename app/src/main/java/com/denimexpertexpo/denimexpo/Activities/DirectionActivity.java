@@ -24,6 +24,7 @@ import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
 import com.denimexpertexpo.denimexpo.R;
 import com.denimexpertexpo.denimexpo.DirectionApi.DirectionListener;
 import com.denimexpertexpo.denimexpo.DirectionApi.GetDirectionsAsyncTask;
+import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -107,8 +108,9 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_direction);
 
-        //setup the map
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //adding the home back button
+        CustomStyling.addHomeBackButton(this, "Direction");
 
         this.btnLocateExhibition = (Button)this.findViewById(R.id.button_locate_exhibition);
         this.btnRefreshDirection = (Button)this.findViewById(R.id.button_update_direction);
@@ -199,12 +201,14 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
     /*
     Menu option related functionality
      */
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -222,7 +226,7 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
                 return true;
 
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                //NavUtils.navigateUpFromSameTask(this);
                 break;
 
         }

@@ -25,6 +25,7 @@ import com.denimexpertexpo.denimexpo.DenimDataClasses.Visitors;
 import com.denimexpertexpo.denimexpo.Interfaces.ViewResizer;
 import com.denimexpertexpo.denimexpo.R;
 import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncExhibitorHelper;
+import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.zxing.Result;
 
@@ -43,8 +44,7 @@ public class BarcodeActivity extends Activity implements ZXingScannerView.Result
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barcode);
 
-        getActionBar().setTitle(R.string.main_menu_back_title);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        CustomStyling.addHomeBackButton(this, "Barcode Scanner");
 
 
         this.txtBarcodeStatus = (TextView) this.findViewById(R.id.barcode_status_text);
@@ -76,11 +76,13 @@ public class BarcodeActivity extends Activity implements ZXingScannerView.Result
 
         switch (id) {
 
+            /*
             case android.R.id.home:
                 //back pressed
                 NavUtils.navigateUpFromSameTask(this);
 
                 break;
+                */
         }
         return super.onOptionsItemSelected(item);
     }

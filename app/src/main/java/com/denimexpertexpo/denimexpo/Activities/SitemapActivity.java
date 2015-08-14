@@ -20,8 +20,10 @@ import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
 import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpImageHelper;
 import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpRequestHandler;
 import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
+import com.denimexpertexpo.denimexpo.Constants.DenimContstants;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.SitemapUpdateInfo;
 import com.denimexpertexpo.denimexpo.R;
+import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
 import java.io.File;
 
@@ -31,9 +33,7 @@ public class SitemapActivity extends Activity implements AsyncHttpImageHelper.on
     private TextView    mMsg;
     private String mImagePath;
 
-    private static final String SHARED_PREFS_NAME = SitemapActivity.class.getName();
-    private static final String SHARED_PREFS_LAST_EVENT_MAP_ID_KEY = "shared_pref_event_map_id";
-    private static final String SHARED_PREFS_LAST_EVENT_MAP_LOCATION = "shared_pref_event_map_filesystem_path";
+
 
 
     //this id is used for saving in the savedInstance intent for retrieving the last retreived path
@@ -47,6 +47,7 @@ public class SitemapActivity extends Activity implements AsyncHttpImageHelper.on
         this.mImageView = (SubsamplingScaleImageView)findViewById(R.id.sitemap_image);
         this.mMsg = (TextView)findViewById(R.id.sitemap_msg);
 
+        CustomStyling.addHomeBackButton(this, "Event Map");
 
 
         //whenever app rotated, then get the saved image path
@@ -88,14 +89,14 @@ public class SitemapActivity extends Activity implements AsyncHttpImageHelper.on
         outState.putString(SAVED_IMG_PATH_KEY, this.mImagePath);
         super.onSaveInstanceState(outState);
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_sitemap, menu);
         return true;
     }
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -134,8 +135,8 @@ public class SitemapActivity extends Activity implements AsyncHttpImageHelper.on
             mImagePath = path;
 
             //save in stone :D
-            SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFS_NAME, MODE_PRIVATE).edit();
-            editor.putString(SHARED_PREFS_LAST_EVENT_MAP_LOCATION, mImagePath);
+            SharedPreferences.Editor editor = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putString(DenimContstants.SHARED_PREFS_LAST_EVENT_MAP_LOCATION, mImagePath);
             editor.commit();
 
         }
@@ -159,9 +160,9 @@ public class SitemapActivity extends Activity implements AsyncHttpImageHelper.on
         //otherwise show the image thing
 
         SitemapUpdateInfo sitemapUpdateInfo = JsonParserHelper.parseSiteMapUpdateInfo(response);
-        SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS_NAME, MODE_PRIVATE);
-        String savedSitemapId = sharedPreferences.getString(SHARED_PREFS_LAST_EVENT_MAP_ID_KEY, null);
-        String savedFilePath = sharedPreferences.getString(SHARED_PREFS_LAST_EVENT_MAP_LOCATION, null);
+        SharedPreferences sharedPreferences = this.getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE);
+        String savedSitemapId = sharedPreferences.getString(DenimContstants.SHARED_PREFS_LAST_EVENT_MAP_ID_KEY, null);
+        String savedFilePath = sharedPreferences.getString(DenimContstants.SHARED_PREFS_LAST_EVENT_MAP_LOCATION, null);
 
         if(sitemapUpdateInfo != null &&     //do the null checking
                 savedSitemapId != null &&
@@ -192,9 +193,9 @@ public class SitemapActivity extends Activity implements AsyncHttpImageHelper.on
             if(sitemapUpdateInfo != null && sitemapUpdateInfo.mEventMapId != null)
             {
 
-                SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFS_NAME, MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE).edit();
                 //event map api id api return a valid somehing :)
-                editor.putString(SHARED_PREFS_LAST_EVENT_MAP_ID_KEY, sitemapUpdateInfo.mEventMapId);
+                editor.putString(DenimContstants.SHARED_PREFS_LAST_EVENT_MAP_ID_KEY, sitemapUpdateInfo.mEventMapId);
                 editor.commit();
 
                 AsyncHttpImageHelper asyncHttpImageHelper = new AsyncHttpImageHelper(this, this);

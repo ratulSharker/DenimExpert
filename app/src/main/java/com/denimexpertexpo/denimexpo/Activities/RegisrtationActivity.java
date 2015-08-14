@@ -13,6 +13,7 @@ import com.denimexpertexpo.denimexpo.Fragments.RegistrationFormFragment;
 import com.denimexpertexpo.denimexpo.Fragments.RegistrationSuccessFragment;
 import com.denimexpertexpo.denimexpo.Interfaces.RegistrationEventHandler;
 import com.denimexpertexpo.denimexpo.R;
+import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
 public class RegisrtationActivity extends Activity implements RegistrationEventHandler {
 
@@ -37,8 +38,7 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
         fragmentTransaction.commit();
 
 
-        getActionBar().setTitle("Login");
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        CustomStyling.addHomeBackButton(this, "Signup");
     }
 
 
@@ -76,9 +76,11 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
 
 
         switch (id) {
+ /*
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 break;
+                */
         }
 
         return true;

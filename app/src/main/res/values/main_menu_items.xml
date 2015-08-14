@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="menu_titles">
+    <string-array name="menu_titles_registered">
         <item> </item>
         <item> </item>
         <item> </item>
@@ -13,8 +13,20 @@
         <item>Barcode</item>
         <item>Feedback</item>
     </string-array>
+    <string-array name="menu_titles_unregistered">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item>Exhibitors</item>
+        <item>Visitors</item>
+        <item>Direction</item>
+        <item>Eventmap</item>
+        <item>Schedule</item>
+        <item>Feedback</item>
+    </string-array>
 
-    <string-array name="menu_sub_title">
+    <string-array name="menu_sub_title_registered">
         <item> </item>
         <item> </item>
         <item> </item>
@@ -27,5 +39,18 @@
         <item>Your identity</item>
         <item>Your opinion about us</item>
     </string-array>
+    <string-array name="menu_sub_title_unregistered">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item>Who will arrange</item>
+        <item>Who will attend</item>
+        <item>How to get there</item>
+        <item>Whom i\'m visiting</item>
+        <item>knowing the events</item>
+        <item>Your opinion about us</item>
+    </string-array>
+
 
 </resources>

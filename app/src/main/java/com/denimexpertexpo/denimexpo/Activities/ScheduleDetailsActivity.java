@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.denimexpertexpo.denimexpo.DBHelper.ScheduleContract;
 import com.denimexpertexpo.denimexpo.R;
+import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
 public class ScheduleDetailsActivity extends Activity {
 
@@ -29,6 +30,9 @@ public class ScheduleDetailsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_details);
+
+
+        CustomStyling.addHomeBackButton(this, "Schedule Details");
 
         //gather the view reference
         mEventName = (TextView) findViewById(R.id.schedule_detail_event_name);
@@ -64,14 +68,14 @@ public class ScheduleDetailsActivity extends Activity {
 
         Toast.makeText(this, id + " clicked", Toast.LENGTH_LONG).show();
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_schedule_details, menu);
         return true;
     }
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

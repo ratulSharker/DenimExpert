@@ -6,22 +6,6 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.denimexpertexpo.denimexpo.Activities.BarcodeResultActivity"/>
-      <point      
-        x = "500"      
-        y = "100"/>
-    </statePointEntry>
-    <statePointEntry>
-      <state      
-        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
-        className = "com.denimexpertexpo.denimexpo.Activities.BarcodeResultActivity"/>
-      <point      
-        x = "1480"      
-        y = "100"/>
-    </statePointEntry>
-    <statePointEntry>
-      <state      
-        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.denimexpertexpo.denimexpo.Activities.RegisrtationActivity"/>
       <point      
         x = "792"      
@@ -40,8 +24,8 @@
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.denimexpertexpo.denimexpo.Activities.SignupLoginActivity"/>
       <point      
-        x = "1388"      
-        y = "6516"/>
+        x = "1672"      
+        y = "6944"/>
     </statePointEntry>
     <statePointEntry>
       <state      
@@ -90,6 +74,22 @@
       <point      
         x = "1316"      
         y = "7452"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.ExhibitorDetailsActivity"/>
+      <point      
+        x = "500"      
+        y = "1900"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.denimexpertexpo.denimexpo.Activities.ExhibitorDetailsActivity"/>
+      <point      
+        x = "1480"      
+        y = "1900"/>
     </statePointEntry>
     <statePointEntry>
       <state      

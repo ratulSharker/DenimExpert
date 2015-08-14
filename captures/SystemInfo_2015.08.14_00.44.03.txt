@@ -1,0 +1,98 @@
+Applications Memory Usage (kB):
+Uptime: 32975307 Realtime: 176162054
+
+Total PSS by process:
+    72818 kB: com.facebook.orca (pid 26361)
+    60817 kB: com.android.launcher (pid 801)
+    40448 kB: system (pid 501)
+    37574 kB: android.process.acore (pid 25582)
+    31507 kB: com.denimexpertexpo.denimexpo (pid 32425)
+    30440 kB: com.android.systemui (pid 609)
+    23662 kB: com.google.android.gms (pid 27952)
+    17202 kB: com.google.process.gapps (pid 869)
+    15287 kB: com.android.inputmethod.latin (pid 745)
+    14430 kB: org.coursera.android (pid 31857)
+    14060 kB: com.google.android.gms.persistent (pid 857)
+    13288 kB: com.google.process.location (pid 824)
+    11795 kB: com.android.vending (pid 31379)
+     7882 kB: com.android.phone (pid 682)
+     6969 kB: com.android.contacts (pid 32197)
+     6600 kB: android.process.media (pid 28612)
+     6348 kB: com.estrongs.android.pop (pid 31183)
+     6174 kB: com.lenovo.anyshare.gps (pid 30965)
+     5359 kB: eu.chainfire.supersu (pid 31358)
+     5276 kB: com.android.gallery3d (pid 30927)
+     4375 kB: com.android.settings (pid 31338)
+     4181 kB: com.google.android.apps.uploader (pid 31840)
+     3086 kB: com.android.quicksearchbox (pid 31490)
+     2882 kB: com.mediatek.batterywarning (pid 32138)
+     2761 kB: com.android.musicfx (pid 31320)
+     2729 kB: com.android.defcontainer (pid 31288)
+     2679 kB: com.google.android.partnersetup (pid 31448)
+     2602 kB: com.mediatek.bluetooth (pid 764)
+     2583 kB: com.android.keychain (pid 31964)
+     2301 kB: com.mediatek.atci.service (pid 32116)
+     2195 kB: com.android.location.fused (pid 840)
+     2135 kB: com.mediatek.thermalmanager (pid 779)
+     2019 kB: com.svox.pico (pid 31465)
+
+Total PSS by OOM adjustment:
+    40448 kB: System
+               40448 kB: system (pid 501)
+    43059 kB: Persistent
+               30440 kB: com.android.systemui (pid 609)
+                7882 kB: com.android.phone (pid 682)
+                2602 kB: com.mediatek.bluetooth (pid 764)
+                2135 kB: com.mediatek.thermalmanager (pid 779)
+    31507 kB: Foreground
+               31507 kB: com.denimexpertexpo.denimexpo (pid 32425)
+   134850 kB: Perceptible
+               72818 kB: com.facebook.orca (pid 26361)
+               17202 kB: com.google.process.gapps (pid 869)
+               15287 kB: com.android.inputmethod.latin (pid 745)
+               14060 kB: com.google.android.gms.persistent (pid 857)
+               13288 kB: com.google.process.location (pid 824)
+                2195 kB: com.android.location.fused (pid 840)
+     9851 kB: A Services
+                6969 kB: com.android.contacts (pid 32197)
+                2882 kB: com.mediatek.batterywarning (pid 32138)
+    60817 kB: Home
+               60817 kB: com.android.launcher (pid 801)
+     8475 kB: B Services
+                6174 kB: com.lenovo.anyshare.gps (pid 30965)
+                2301 kB: com.mediatek.atci.service (pid 32116)
+   135457 kB: Background
+               37574 kB: android.process.acore (pid 25582)
+               23662 kB: com.google.android.gms (pid 27952)
+               14430 kB: org.coursera.android (pid 31857)
+               11795 kB: com.android.vending (pid 31379)
+                6600 kB: android.process.media (pid 28612)
+                6348 kB: com.estrongs.android.pop (pid 31183)
+                5359 kB: eu.chainfire.supersu (pid 31358)
+                5276 kB: com.android.gallery3d (pid 30927)
+                4375 kB: com.android.settings (pid 31338)
+                4181 kB: com.google.android.apps.uploader (pid 31840)
+                3086 kB: com.android.quicksearchbox (pid 31490)
+                2761 kB: com.android.musicfx (pid 31320)
+                2729 kB: com.android.defcontainer (pid 31288)
+                2679 kB: com.google.android.partnersetup (pid 31448)
+                2583 kB: com.android.keychain (pid 31964)
+                2019 kB: com.svox.pico (pid 31465)
+
+Total PSS by category:
+   167173 kB: Dalvik
+    91963 kB: Other dev
+    87715 kB: Unknown
+    42159 kB: .so mmap
+    29183 kB: .dex mmap
+    25032 kB: Other mmap
+    20932 kB: .apk mmap
+      273 kB: .ttf mmap
+       16 kB: .jar mmap
+       12 kB: Cursor
+        6 kB: Ashmem
+        0 kB: Native
+
+Total PSS: 464464 kB
+      KSM: 0 kB saved from shared 0 kB
+           0 kB unshared; 0 kB volatile

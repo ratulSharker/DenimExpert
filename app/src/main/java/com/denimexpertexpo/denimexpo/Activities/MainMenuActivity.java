@@ -2,6 +2,7 @@ package com.denimexpertexpo.denimexpo.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -10,20 +11,53 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.denimexpertexpo.denimexpo.Adapters.MainMenuListAdapter;
+import com.denimexpertexpo.denimexpo.Constants.DenimContstants;
 import com.denimexpertexpo.denimexpo.R;
 
 
 public class MainMenuActivity extends Activity implements android.widget.AdapterView.OnItemClickListener {
 
     //FULL LIST ITEMS
-    private final static int LIST_ITEM_EXIBITORS = 4;
-    private final static int LIST_ITEM_VISITORS = 5;
-    private final static int LIST_ITEM_DIRECTION = 6;
-    private final static int LIST_ITEM_SITEMAP = 7;
-    private final static int LIST_ITEM_SCHEDULE = 8;
-    private final static int LIST_ITEM_BARCODE = 9;
-    private final static int LIST_ITEM_FEEDBACK = 10;
-    ListView mListView;
+    private final static int LIST_ITEM_REGISTERED_EXIBITORS     = 4;
+    private final static int LIST_ITEM_REGISTERED_VISITORS      = 5;
+    private final static int LIST_ITEM_REGISTERED_DIRECTION     = 6;
+    private final static int LIST_ITEM_REGISTERED_SITEMAP       = 7;
+    private final static int LIST_ITEM_REGISTERED_SCHEDULE      = 8;
+    private final static int LIST_ITEM_REGISTERED_BARCODE       = 9;
+    private final static int LIST_ITEM_REGISTERED_FEEDBACK      = 10;
+
+    private final static int LIST_ITEM_UNREGISTERED_EXIBITORS   = 4;
+    private final static int LIST_ITEM_UNREGISTERED_VISITORS    = 5;
+    private final static int LIST_ITEM_UNREGISTERED_DIRECTION   = 6;
+    private final static int LIST_ITEM_UNREGISTERED_SITEMAP     = 7;
+    private final static int LIST_ITEM_UNREGISTERED_SCHEDULE    = 8;
+    private final static int LIST_ITEM_UNREGISTERED_FEEDBACK    = 9;
+
+    private static final int[] REGISTERED_ICON_LIST = {
+            -1,-1,-1,-1,
+            R.drawable.main_menu_list_item_exhibitor,
+            R.drawable.main_menu_list_item_visitor,
+            R.drawable.main_menu_list_item_direction,
+            R.drawable.main_menu_list_item_sitemap,
+            R.drawable.main_menu_list_item_schedule,
+            R.drawable.main_menu_list_item_barcode,
+            R.drawable.main_menu_list_item_feedback
+    };
+
+    private static final int[] UNREGISTERED_ICON_LIST = {
+            -1,-1,-1,-1,
+            R.drawable.main_menu_list_item_exhibitor,
+            R.drawable.main_menu_list_item_visitor,
+            R.drawable.main_menu_list_item_direction,
+            R.drawable.main_menu_list_item_sitemap,
+            R.drawable.main_menu_list_item_schedule,
+            R.drawable.main_menu_list_item_feedback
+    };
+
+
+
+    private Boolean     mIsRegistered;
+    private ListView    mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,25 +66,32 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
 
         this.mListView = (ListView) findViewById(R.id.listView);
 
-        //loading the menu list
+        //get the states
+        SharedPreferences prefs = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE);
+        mIsRegistered = prefs.getBoolean(DenimContstants.SHARED_PREFS_REGISTERED, false);
+
         Resources resources = this.getResources();
-        String[] titleItems = resources.getStringArray(R.array.menu_titles);
-        String[] subTitleItems = resources.getStringArray(R.array.menu_sub_title);
-        int []  iconReference = {
-          -1,-1,-1,-1,
-                R.drawable.main_menu_list_item_exhibitor,
-                R.drawable.main_menu_list_item_visitor,
-                R.drawable.main_menu_list_item_direction,
-                R.drawable.main_menu_list_item_sitemap,
-                R.drawable.main_menu_list_item_schedule,
-                R.drawable.main_menu_list_item_barcode,
-                R.drawable.main_menu_list_item_feedback
-        };
+        MainMenuListAdapter customAdapter;
 
+        if(mIsRegistered)
+        {
+            //loading registered menu item
+            customAdapter = new MainMenuListAdapter(resources.getStringArray(R.array.menu_titles_registered),
+                                                    resources.getStringArray(R.array.menu_sub_title_registered),
+                                                    REGISTERED_ICON_LIST,
+                                                    getApplicationContext());
 
-        MainMenuListAdapter customAdapter = new MainMenuListAdapter(titleItems, subTitleItems, iconReference, getApplicationContext());
+        }
+        else
+        {
+            //loading registered menu item
+            customAdapter = new MainMenuListAdapter(resources.getStringArray(R.array.menu_titles_unregistered),
+                                                    resources.getStringArray(R.array.menu_sub_title_unregistered),
+                                                    UNREGISTERED_ICON_LIST,
+                                                    getApplicationContext());
+        }
+
         this.mListView.setAdapter(customAdapter);
-
         this.mListView.setOnItemClickListener(this);
     }
 
@@ -58,43 +99,83 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        switch (position) {
-            case LIST_ITEM_EXIBITORS: {
-                this.startActivity(ExhibitorActivity.class);
+        if(mIsRegistered)
+        {
+            //switch over the registered list
+            switch (position) {
+                case LIST_ITEM_REGISTERED_EXIBITORS: {
+                    this.startActivity(ExhibitorActivity.class);
+                }
+                break;
+                case LIST_ITEM_REGISTERED_VISITORS:
+                {
+                    Toast.makeText(this, "Visitor pressed", Toast.LENGTH_LONG).show();
+                    this.startActivity(VisitorActivity.class);
+                }
+                break;
+                case LIST_ITEM_REGISTERED_DIRECTION: {
+                    Toast.makeText(this, "Direction pressed", Toast.LENGTH_LONG).show();
+                    this.startActivity(DirectionActivity.class);
+                }
+                break;
+                case LIST_ITEM_REGISTERED_SITEMAP: {
+                    Toast.makeText(this, "Sitemap gui not ready yet", Toast.LENGTH_LONG).show();
+                    this.startActivity(SitemapActivity.class);
+                }
+                break;
+                case LIST_ITEM_REGISTERED_SCHEDULE: {
+                    Toast.makeText(this, "Schedule pressed", Toast.LENGTH_LONG).show();
+                    this.startActivity(ScheduleActivity.class);
+                }
+                break;
+                case LIST_ITEM_REGISTERED_BARCODE: {
+                    Toast.makeText(this, "Barcode pressed", Toast.LENGTH_LONG).show();
+                    this.startActivity(BarcodeActivity.class);
+                }
+                break;
+                case LIST_ITEM_REGISTERED_FEEDBACK: {
+                    Toast.makeText(this, "Feedback gui not ready yet", Toast.LENGTH_LONG).show();
+                }
+                break;
+                default:
             }
-            break;
-            case LIST_ITEM_VISITORS:
-            {
-                Toast.makeText(this, "Visitor pressed", Toast.LENGTH_LONG).show();
-                this.startActivity(VisitorActivity.class);
+        }
+        else
+        {
+            //switch over the unregistered list
+            //switch over the registered list
+            switch (position) {
+                case LIST_ITEM_UNREGISTERED_EXIBITORS: {
+                    this.startActivity(ExhibitorActivity.class);
+                }
+                break;
+                case LIST_ITEM_UNREGISTERED_VISITORS:
+                {
+                    Toast.makeText(this, "Visitor pressed", Toast.LENGTH_LONG).show();
+                    this.startActivity(VisitorActivity.class);
+                }
+                break;
+                case LIST_ITEM_UNREGISTERED_DIRECTION: {
+                    Toast.makeText(this, "Direction pressed", Toast.LENGTH_LONG).show();
+                    this.startActivity(DirectionActivity.class);
+                }
+                break;
+                case LIST_ITEM_UNREGISTERED_SITEMAP: {
+                    Toast.makeText(this, "Sitemap gui not ready yet", Toast.LENGTH_LONG).show();
+                    this.startActivity(SitemapActivity.class);
+                }
+                break;
+                case LIST_ITEM_UNREGISTERED_SCHEDULE: {
+                    Toast.makeText(this, "Schedule pressed", Toast.LENGTH_LONG).show();
+                    this.startActivity(ScheduleActivity.class);
+                }
+                break;
+                case LIST_ITEM_UNREGISTERED_FEEDBACK: {
+                    Toast.makeText(this, "Feedback gui not ready yet", Toast.LENGTH_LONG).show();
+                }
+                break;
+                default:
             }
-            break;
-            case LIST_ITEM_DIRECTION: {
-                Toast.makeText(this, "Direction pressed", Toast.LENGTH_LONG).show();
-                this.startActivity(DirectionActivity.class);
-            }
-            break;
-            case LIST_ITEM_SITEMAP: {
-                Toast.makeText(this, "Sitemap gui not ready yet", Toast.LENGTH_LONG).show();
-                this.startActivity(SitemapActivity.class);
-            }
-            break;
-            case LIST_ITEM_SCHEDULE: {
-                Toast.makeText(this, "Schedule pressed", Toast.LENGTH_LONG).show();
-                this.startActivity(ScheduleActivity.class);
-            }
-            break;
-            case LIST_ITEM_BARCODE: {
-                Toast.makeText(this, "Barcode pressed", Toast.LENGTH_LONG).show();
-                this.startActivity(BarcodeActivity.class);
-            }
-            break;
-            case LIST_ITEM_FEEDBACK: {
-                Toast.makeText(this, "Feedback gui not ready yet", Toast.LENGTH_LONG).show();
-            }
-            break;
-            default:
-
         }
     }
 
