@@ -19,7 +19,7 @@ public class ExhibitorContract {
     public static final int EXHIBITOR_ITEM   = 1;
     public static final int EXHIBITOR_DIR    = 2;
 
-    public static final String DEFAULT_SORT_ORDER = Column.FIRST_NAME + " COLLATE NOCASE ASC";
+    public static final String DEFAULT_SORT_ORDER = Column.COMPANY_NAME + " COLLATE NOCASE ASC";
 
     public class Column
     {

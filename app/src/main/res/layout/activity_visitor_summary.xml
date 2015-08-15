@@ -1,0 +1,191 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/common_background"
+    tools:context="com.denimexpertexpo.denimexpo.Activities.VisitorSummaryActivity"
+    android:orientation="vertical"
+    android:weightSum="4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/visitor_exhibitor_details_field_background"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/visitor_summary_applicant"
+            android:layout_weight="1"
+            />
+        
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/holder"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="0"
+                    android:gravity="center"
+                    android:id="@+id/visitor_summary_number_of_applicant"/>
+
+            </LinearLayout>
+
+
+            <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Applicant"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/visitor_exhibitor_details_field_background"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/visitor_summary_visitor"
+            android:layout_weight="1"
+            />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/visitor_summary_number_of_visitor"/>
+            <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Visitor"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/visitor_exhibitor_details_field_background"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/visitor_summary_company"
+            android:layout_weight="1"
+            />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/visitor_summary_number_of_company"/>
+            <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Company"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/visitor_exhibitor_details_field_background"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/visitor_summary_countries"
+            android:layout_weight="1"
+            />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/visitor_summary_number_of_countries"/>
+            <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Countries"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

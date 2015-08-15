@@ -8,6 +8,7 @@ import com.denimexpertexpo.denimexpo.DenimDataClasses.Exhibitors;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Schedule;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.SitemapUpdateInfo;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Visitors;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.VisitorsSummary;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.gms.maps.model.LatLng;
@@ -172,5 +173,19 @@ public class JsonParserHelper  {
         }
 
         return authenticationReply;
+    }
+
+    public static VisitorsSummary parseVisitrorSummaryResponse(String result)
+    {
+        VisitorsSummary visitorsSummary = null;
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            visitorsSummary = objectMapper.readValue(result, VisitorsSummary.class);
+        }
+        catch (Exception ex)
+        {
+            Log.e("Visitor summary info", ex.toString());
+        }
+        return visitorsSummary;
     }
 }

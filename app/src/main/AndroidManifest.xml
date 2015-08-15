@@ -105,6 +105,10 @@
             android:name=".Activities.ExhibitorDetailsActivity"
             android:label="@string/title_activity_exhibitor_details" >
         </activity>
+        <activity
+            android:name=".Activities.VisitorSummaryActivity"
+            android:label="@string/title_activity_visitor_summary" >
+        </activity>
     </application>
 
 </manifest>

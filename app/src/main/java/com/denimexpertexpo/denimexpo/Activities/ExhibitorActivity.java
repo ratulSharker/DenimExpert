@@ -34,7 +34,7 @@ public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandl
     private static final int LOADER_ID = 4321; //arbitrary loader id
     private static final long HOW_MANY_NUMBER_OF_EXHIBITOR_WILL_LOAD_AT_TIME = 250;
     private final String[] FROM = {
-            ExhibitorContract.Column.FIRST_NAME
+            ExhibitorContract.Column.COMPANY_NAME
     };
     private final int[] TO = {
             R.id.visito_list_row_name
@@ -75,6 +75,9 @@ public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandl
         mListView.setOnItemClickListener(this);
         getLoaderManager().initLoader(LOADER_ID, null, this);
 
+        /*
+        // in first phase, client want their full name, but then want only company name
+        // this code is a view binder implementation, which will append first & last name to the row view
         mAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             @Override
             public boolean setViewValue(View view, Cursor cursor, int i) {
@@ -91,6 +94,7 @@ public class ExhibitorActivity extends Activity implements AsyncHttpRequestHandl
                 }
             }
         });
+        */
 
         updateOffset = 0;
     }

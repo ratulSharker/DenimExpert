@@ -21,5 +21,6 @@
     <string name="title_activity_exhibitor">ExhibitorActivity</string>
     <string name="title_activity_sitemap">SitemapActivity</string>
     <string name="title_activity_exhibitor_details">ExhibitorDetailsActivity</string>
+    <string name="title_activity_visitor_summary">VisitorSummary</string>
 
 </resources>
