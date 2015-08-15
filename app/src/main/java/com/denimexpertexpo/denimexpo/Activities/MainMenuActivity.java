@@ -148,15 +148,22 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainMenuActivity.this);
                     alertBuilder.setTitle("Warning");
                     alertBuilder.setMessage("You will be logged out, are you sure ?");
-                    alertBuilder.setPositiveButton("Yeah", new DialogInterface.OnClickListener() {
+                    alertBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+
+                            SharedPreferences.Editor editor = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE).edit();
+                            editor.remove(DenimContstants.SHARED_PREFS_USERNAME);
+                            editor.remove(DenimContstants.SHARED_PREFS_PASSWORD);
+                            editor.remove(DenimContstants.SHARED_PREFS_REGISTERED);
+                            editor.commit();
+
                             Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage( getBaseContext().getPackageName() );
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
                     });
-                    alertBuilder.setNegativeButton("ohh no", null);
+                    alertBuilder.setNegativeButton("No", null);
                     alertBuilder.create().show();
                 }
                 break;
