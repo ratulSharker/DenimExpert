@@ -31,7 +31,7 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
     mNumOfCountry;
 
     private ProgressDialog mProgressDialouge;
-
+    private Boolean isWebServiceCalled;
 
 
     @Override
@@ -43,17 +43,19 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
         this.mNumOfVisitor = (TextView) findViewById(R.id.visitor_summary_number_of_visitor);
         this.mNumOfCompany = (TextView) findViewById(R.id.visitor_summary_number_of_company);
         this.mNumOfCountry = (TextView) findViewById(R.id.visitor_summary_number_of_countries);
+    }
 
-
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isWebServiceCalled = false;
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        if (hasFocus) {
+        if (hasFocus && isWebServiceCalled == false) {
             //start an webrequest thing
             AsyncHttpClient asyncHttpClient = new AsyncHttpClient(this);
             asyncHttpClient.execute(AsyncHttpClient.VISITOR_SUMMARY_API_URL);
@@ -63,28 +65,30 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
             mProgressDialouge.setMessage("Updated data");
             mProgressDialouge.setCancelable(true);
             mProgressDialouge.show();
+
+            isWebServiceCalled = true;
         }
     }
-            @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_visitor_summary, menu);
-        return true;
-    }
+//            @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_visitor_summary, menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 
@@ -108,9 +112,6 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
             this.mNumOfCountry.setText(visitorsSummary.mTotalCountry);
 
 
-
-
-
             //save the data into the Shared Preferences
             SharedPreferences.Editor editor = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE).edit();
             editor.putString(DenimContstants.SHARED_PREFS_VISITOR_SUMMARY_APPLICANT, applicant+"");
@@ -125,6 +126,11 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
             this.loadLocalSummary();
         }
 
+        resizeTextAccordinToAvailableRect(mNumOfApplicant);
+        resizeTextAccordinToAvailableRect(mNumOfVisitor);
+        resizeTextAccordinToAvailableRect(mNumOfCompany);
+        resizeTextAccordinToAvailableRect(mNumOfCountry);
+
     }
 
     @Override
@@ -133,10 +139,13 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
         this.mProgressDialouge.dismiss();
 
         this.loadLocalSummary();
-
-        resizeTextAccordin();
-
         this.showOkAlertDialouge("Sorry", "Cant show updated data, due to no internet connection");
+
+
+        resizeTextAccordinToAvailableRect(mNumOfApplicant);
+        resizeTextAccordinToAvailableRect(mNumOfVisitor);
+        resizeTextAccordinToAvailableRect(mNumOfCompany);
+        resizeTextAccordinToAvailableRect(mNumOfCountry);
     }
 
 
@@ -172,20 +181,17 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
     }
 
 
-    private void resizeTextAccordin()
+    private void resizeTextAccordinToAvailableRect(TextView targetTextView)
     {
-        Paint textPaint = new TextPaint(mNumOfApplicant.getPaint());
+        Paint textPaint = new TextPaint(targetTextView.getPaint());
 
         int height = 0;
         int width = 0;
 
-        Log.e(mNumOfApplicant.getLayout().getHeight() + ":" + mNumOfApplicant.getLayout().getWidth(), textPaint.getTextSize() + "");
+        Log.e(targetTextView.getLayout().getHeight() + ":" + targetTextView.getLayout().getWidth(), textPaint.getTextSize() + "");
 
-        for(int holderHeight = 102, holderWidth = 368;
-                holderHeight  > height + Math.abs(textPaint.ascent()) + Math.abs(textPaint.descent())
-                        && holderWidth >width + 10;
-
-
+        for(int holderHeight = targetTextView.getMeasuredHeight(), holderWidth = targetTextView.getMeasuredWidth();
+                holderHeight  > height + Math.abs(textPaint.ascent()) + Math.abs(textPaint.descent()) && holderWidth >width + 10;
                 textPaint.setTextSize(textPaint.getTextSize() + 2))
         {
             Rect bounds = new Rect();
@@ -197,8 +203,7 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
 
         }
 
-
-        mNumOfApplicant.setTextSize(textPaint.getTextSize());
+        targetTextView.setTextSize(textPaint.getTextSize());
         Log.e("Setting font size", textPaint.getTextSize() + "");
     }
 }

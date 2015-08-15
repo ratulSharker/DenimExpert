@@ -15,20 +15,23 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-#-keepattributes *Annotation*,EnclosingMethod,Signature
-#-keepnames class com.fasterxml.jackson.** { *; }
-# -dontwarn com.fasterxml.jackson.databind.**
-# -keep class org.codehaus.** { *; }
-# -keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
-# public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *; }
-#-keep class com.denimexpertexpo.denimexpo.DenimDataClasses.** {
-# public protected private *;
-#}
-#
-#-keepclassmembers class * implements java.io.Serializable {
-#    private static final java.io.ObjectStreamField[] serialPersistentFields;
-#    private void writeObject(java.io.ObjectOutputStream);
-#    private void readObject(java.io.ObjectInputStream);
-#    java.lang.Object writeReplace();
-#    java.lang.Object readResolve();
-#}
+
+
+
+-keepattributes *Annotation*,EnclosingMethod,Signature
+-keepnames class com.fasterxml.jackson.** { *; }
+ -dontwarn com.fasterxml.jackson.databind.**
+ -keep class org.codehaus.** { *; }
+ -keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
+ public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *; }
+-keep class com.denimexpertexpo.denimexpo.DenimDataClasses.** {
+ public protected private *;
+}
+
+-keepclassmembers class * implements java.io.Serializable {
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}

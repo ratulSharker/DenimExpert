@@ -26,7 +26,7 @@
         android:textAlignment="center"
         android:textColor="@color/white_transparent"
         android:textIsSelectable="false"
-
+        android:visibility="invisible"
 
         />
 

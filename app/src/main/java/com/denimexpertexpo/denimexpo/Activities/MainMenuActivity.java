@@ -1,6 +1,8 @@
 package com.denimexpertexpo.denimexpo.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -25,6 +27,7 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
     private final static int LIST_ITEM_REGISTERED_SCHEDULE      = 8;
     private final static int LIST_ITEM_REGISTERED_BARCODE       = 9;
     private final static int LIST_ITEM_REGISTERED_FEEDBACK      = 10;
+    private final static int LIST_ITEM_REGISTERED_LOGOUT        = 11;
 
     private final static int LIST_ITEM_UNREGISTERED_EXIBITORS   = 4;
     private final static int LIST_ITEM_UNREGISTERED_VISITORS    = 5;
@@ -41,7 +44,8 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
             R.drawable.main_menu_list_item_sitemap,
             R.drawable.main_menu_list_item_schedule,
             R.drawable.main_menu_list_item_barcode,
-            R.drawable.main_menu_list_item_feedback
+            R.drawable.main_menu_list_item_feedback,
+            R.drawable.main_menu_list_item_logout
     };
 
     private static final int[] UNREGISTERED_ICON_LIST = {
@@ -136,6 +140,24 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
                 break;
                 case LIST_ITEM_REGISTERED_FEEDBACK: {
                     Toast.makeText(this, "Feedback gui not ready yet", Toast.LENGTH_LONG).show();
+                }
+                break;
+
+                case LIST_ITEM_REGISTERED_LOGOUT: {
+
+                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainMenuActivity.this);
+                    alertBuilder.setTitle("Warning");
+                    alertBuilder.setMessage("You will be logged out, are you sure ?");
+                    alertBuilder.setPositiveButton("Yeah", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        }
+                    });
+                    alertBuilder.setNegativeButton("ohh no", null);
+                    alertBuilder.create().show();
                 }
                 break;
                 default:
