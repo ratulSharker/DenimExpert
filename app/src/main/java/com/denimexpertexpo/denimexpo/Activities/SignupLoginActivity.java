@@ -3,8 +3,10 @@ package com.denimexpertexpo.denimexpo.Activities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ContentUris;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,8 +18,12 @@ import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
 import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpRequestHandler;
 import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
 import com.denimexpertexpo.denimexpo.Constants.DenimContstants;
+import com.denimexpertexpo.denimexpo.DBHelper.VisitorContract;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.AuthenticationReply;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.Visitors;
 import com.denimexpertexpo.denimexpo.R;
+import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncExhibitorHelper;
+import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncVisitorHelper;
 import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
 import java.io.UnsupportedEncodingException;
@@ -124,10 +130,11 @@ public class SignupLoginActivity extends Activity implements AsyncHttpRequestHan
     @Override
     public void onResponseRecieved(String response) {
         Log.e("response", response);
-        this.mProgressDialog.dismiss();
+        mProgressDialog.setTitle("Authenticated");
+        mProgressDialog.setMessage("getting user details");
 
         //parse the response
-        AuthenticationReply authenticationReply = JsonParserHelper.parseLoginTryResponse(response);
+        final AuthenticationReply authenticationReply = JsonParserHelper.parseLoginTryResponse(response);
         if(authenticationReply != null && authenticationReply.mFound.compareTo("true")== 0)
         {
             Log.e("Authenticated", "Authenticated");
@@ -136,10 +143,57 @@ public class SignupLoginActivity extends Activity implements AsyncHttpRequestHan
             SharedPreferences.Editor editor = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE).edit();
             editor.putString(DenimContstants.SHARED_PREFS_USERNAME, mEdittextUsername.getText().toString());
             editor.putString(DenimContstants.SHARED_PREFS_PASSWORD, mEdittextPassword.getText().toString());
+
+            //saving the user type & id for later use -- dont forget to erase these before logout
+            editor.putString(DenimContstants.SHARED_PREFS_USER_TYPE, authenticationReply.mUsertype.toLowerCase());
+            editor.putString(DenimContstants.SHARED_PREFS_USER_ID, authenticationReply.mId);
             editor.commit();
 
+            //now we get the userttpe
+            //depending on the usertype we do the request
+            //then after fetching it, put it on the database, depending on which kind of user he is
+            String userDetailsURL = "";
+            if(authenticationReply.mUsertype.toLowerCase().compareTo(DenimContstants.USER_TYPE_VISITOR) == 0)
+            {
+                //build the visitor url
+                userDetailsURL = AsyncHttpClient.BuildSpecificVisitorDetailsApiUrl(authenticationReply.mId);
+            }
+            else if(authenticationReply.mUsertype.toLowerCase().compareTo(DenimContstants.USER_TYPE_EXHIBITOR) == 0)
+            {
+                //build the exhibitor url
+                userDetailsURL = AsyncHttpClient.BuildSpecificExhibitorDetailsApiUrl(authenticationReply.mId);
+            }
 
-            proceedToMainMenuWithRegistration(true);
+            //now send the request with inplace AsyncHttpResponseHandler
+            AsyncHttpClient asyncHttpClient = new AsyncHttpClient(new AsyncHttpRequestHandler() {
+                @Override
+                public void onResponseRecieved(String response) {
+
+                    mProgressDialog.dismiss();
+
+                    if(authenticationReply.mUsertype.toLowerCase().compareTo(DenimContstants.USER_TYPE_VISITOR) == 0)
+                    {
+                        AsyncVisitorHelper asyncVisitorHelper = new AsyncVisitorHelper(SignupLoginActivity.this, null);
+                        asyncVisitorHelper.processRecievedVisitorResponse(response);
+
+                    }
+                    else if(authenticationReply.mUsertype.toLowerCase().compareTo(DenimContstants.USER_TYPE_EXHIBITOR) == 0)
+                    {
+                        //handle the response as exhibitor
+                        AsyncExhibitorHelper asyncExhibitorHelper = new AsyncExhibitorHelper(SignupLoginActivity.this, null);
+                        asyncExhibitorHelper.processRecievedExhibitorResponse(response);
+                    }
+
+                    //now we can proceed to the
+                    proceedToMainMenuWithRegistration(true);
+                }
+
+                @Override
+                public void onHttpErrorOccured() {
+                    showOkAlertDialouge("Sorry", "Can't fetch the user details, try later");
+                }
+            });
+            asyncHttpClient.execute(userDetailsURL);
         }
         else
         {

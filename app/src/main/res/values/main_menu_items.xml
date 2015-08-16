@@ -39,7 +39,7 @@
         <item>knowing the events</item>
         <item>Your identity</item>
         <item>Your opinion about us</item>
-        <item>get yourself logged out</item>
+        <item>logged in as </item>
     </string-array>
     <string-array name="menu_sub_title_unregistered">
         <item> </item>

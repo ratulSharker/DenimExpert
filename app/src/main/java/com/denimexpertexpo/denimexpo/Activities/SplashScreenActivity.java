@@ -16,6 +16,8 @@ import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
 import com.denimexpertexpo.denimexpo.Constants.DenimContstants;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.AuthenticationReply;
 import com.denimexpertexpo.denimexpo.R;
+import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncExhibitorHelper;
+import com.denimexpertexpo.denimexpo.SpecialAsyncTask.AsyncVisitorHelper;
 import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
 import java.io.UnsupportedEncodingException;
@@ -43,7 +45,6 @@ public class SplashScreenActivity extends Activity implements AsyncHttpRequestHa
         super.onWindowFocusChanged(hasFocus);
 
         if (hasFocus) {
-
 
             SharedPreferences preferences = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE);
             String username = preferences.getString(DenimContstants.SHARED_PREFS_USERNAME, null);
@@ -91,13 +92,61 @@ public class SplashScreenActivity extends Activity implements AsyncHttpRequestHa
     public void onResponseRecieved(String response) {
         //login response returned
         //parse the response
-        AuthenticationReply authenticationReply = JsonParserHelper.parseLoginTryResponse(response);
+        final AuthenticationReply authenticationReply = JsonParserHelper.parseLoginTryResponse(response);
         if(authenticationReply != null && authenticationReply.mFound.compareTo("true")== 0)
         {
             Log.e("Authenticated", "HTTP");
             //authorized
-            //proceed to the main menu
-            this.proceedToNextActivity(MainMenuActivity.class);
+
+            //get the latest user details
+
+            //depending on the usertype we do the request
+            //then after fetching it, put it on the database, depending on which kind of user he is
+            String userDetailsURL = "";
+            if(authenticationReply.mUsertype.toLowerCase().compareTo(DenimContstants.USER_TYPE_VISITOR) == 0)
+            {
+                //build the visitor url
+                userDetailsURL = AsyncHttpClient.BuildSpecificVisitorDetailsApiUrl(authenticationReply.mId);
+            }
+            else if(authenticationReply.mUsertype.toLowerCase().compareTo(DenimContstants.USER_TYPE_EXHIBITOR) == 0)
+            {
+                //build the exhibitor url
+                userDetailsURL = AsyncHttpClient.BuildSpecificExhibitorDetailsApiUrl(authenticationReply.mId);
+            }
+
+            //now send the request with inplace AsyncHttpResponseHandler
+            AsyncHttpClient asyncHttpClient = new AsyncHttpClient(new AsyncHttpRequestHandler() {
+                @Override
+                public void onResponseRecieved(String response) {
+
+                    if(authenticationReply.mUsertype.toLowerCase().compareTo(DenimContstants.USER_TYPE_VISITOR) == 0)
+                    {
+                        AsyncVisitorHelper asyncVisitorHelper = new AsyncVisitorHelper(SplashScreenActivity.this, null);
+                        asyncVisitorHelper.processRecievedVisitorResponse(response);
+
+                    }
+                    else if(authenticationReply.mUsertype.toLowerCase().compareTo(DenimContstants.USER_TYPE_EXHIBITOR) == 0)
+                    {
+                        //handle the response as exhibitor
+                        AsyncExhibitorHelper asyncExhibitorHelper = new AsyncExhibitorHelper(SplashScreenActivity.this, null);
+                        asyncExhibitorHelper.processRecievedExhibitorResponse(response);
+                    }
+
+                    //now we can proceed to the main menu
+                    proceedToNextActivity(MainMenuActivity.class);
+                }
+
+                @Override
+                public void onHttpErrorOccured() {
+                    proceedToNextActivity(MainMenuActivity.class);
+                }
+            });
+
+            if(userDetailsURL != null)
+                asyncHttpClient.execute(userDetailsURL);
+            else
+                proceedToNextActivity(MainMenuActivity.class);
+
         }
         else
         {

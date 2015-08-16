@@ -26,7 +26,7 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
     public static final String LOCATION_API_URL = "http://apps.bangladeshdenimexpo.com/api/location.php";
     public static final String SCHEDULE_API_URL = "http://apps.bangladeshdenimexpo.com/api/schedule.php";
     public static final String EVENTMAP_API_URL = "http://apps.bangladeshdenimexpo.com/api/eventmap.php";
-    public static final String VISITOR_SUMMARY_API_URL = "http://apps.bangladeshdenimexpo.com/api/visitor_summary.php";
+    public static final String VISITOR_SUMMARY_API_URL = "http://visitor.bangladeshdenimexpo.com/index.php/test/TotalVisitor";
 
     private static final String VISITOR_API_BASE = "http://apps.bangladeshdenimexpo.com/api/visitors.php";
     public static final String BuildVisitorApiUrl(long offset, long limit)
@@ -50,6 +50,18 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
     {
         return LOGIN_API_BASE + "?username=" + URLEncoder.encode(username, "UTF-8") + "&password=" + URLEncoder.encode(password, "UTF-8");
     }
+
+
+    //these api are used @ login & splash screen to fetch the logged in user data
+    public static final String BuildSpecificVisitorDetailsApiUrl(String id)
+    {
+        return VISITOR_API_BASE + "?id="+ id;
+    }
+    public static final String BuildSpecificExhibitorDetailsApiUrl(String id)
+    {
+        return EXHIBITOR_API_BASE + "?id=" + id;
+    }
+
 
 
 

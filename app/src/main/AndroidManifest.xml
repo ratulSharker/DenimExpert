@@ -109,6 +109,11 @@
             android:name=".Activities.VisitorSummaryActivity"
             android:label="@string/title_activity_visitor_summary" >
         </activity>
+        <activity
+            android:name=".Activities.FeedbackActivity"
+            android:label="@string/title_activity_feedback"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

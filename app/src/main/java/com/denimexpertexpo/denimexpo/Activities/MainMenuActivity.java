@@ -79,9 +79,19 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
 
         if(mIsRegistered)
         {
+            String[] subtitleArr = resources.getStringArray(R.array.menu_sub_title_registered);
+
+
+            //get the logged in username from shared preference
+            SharedPreferences sharedPreferences = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE);
+            String username = sharedPreferences.getString(DenimContstants.SHARED_PREFS_USERNAME, null);
+
+            //appending username @ the last of the subtitle string
+            subtitleArr[subtitleArr.length - 1] =subtitleArr[subtitleArr.length - 1] +" "+  username;
+
             //loading registered menu item
             customAdapter = new MainMenuListAdapter(resources.getStringArray(R.array.menu_titles_registered),
-                                                    resources.getStringArray(R.array.menu_sub_title_registered),
+                                                    subtitleArr,
                                                     REGISTERED_ICON_LIST,
                                                     getApplicationContext());
 
@@ -139,14 +149,17 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
                 }
                 break;
                 case LIST_ITEM_REGISTERED_FEEDBACK: {
-                    Toast.makeText(this, "Feedback gui not ready yet", Toast.LENGTH_LONG).show();
+                    this.startActivity(FeedbackActivity.class);
                 }
                 break;
 
                 case LIST_ITEM_REGISTERED_LOGOUT: {
 
+                    SharedPreferences sharedPreferences = getSharedPreferences(DenimContstants.SHARED_PREFS_NAME, MODE_PRIVATE);
+                    String username = sharedPreferences.getString(DenimContstants.SHARED_PREFS_USERNAME, null);
+
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainMenuActivity.this);
-                    alertBuilder.setTitle("Warning");
+                    alertBuilder.setTitle("Warning (" + username + ")" );
                     alertBuilder.setMessage("You will be logged out, are you sure ?");
                     alertBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         @Override
@@ -156,6 +169,8 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
                             editor.remove(DenimContstants.SHARED_PREFS_USERNAME);
                             editor.remove(DenimContstants.SHARED_PREFS_PASSWORD);
                             editor.remove(DenimContstants.SHARED_PREFS_REGISTERED);
+                            editor.remove(DenimContstants.SHARED_PREFS_USER_TYPE);
+                            editor.remove(DenimContstants.SHARED_PREFS_USER_ID);
                             editor.commit();
 
                             Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage( getBaseContext().getPackageName() );
@@ -181,7 +196,6 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
                 break;
                 case LIST_ITEM_UNREGISTERED_VISITORS:
                 {
-                    //this.startActivity(VisitorActivity.class);
                     this.startActivity(VisitorSummaryActivity.class);
                 }
                 break;
@@ -199,7 +213,7 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
                 }
                 break;
                 case LIST_ITEM_UNREGISTERED_FEEDBACK: {
-                    Toast.makeText(this, "Feedback gui not ready yet", Toast.LENGTH_LONG).show();
+                    this.startActivity(FeedbackActivity.class);
                 }
                 break;
                 default:
