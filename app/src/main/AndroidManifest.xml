@@ -54,7 +54,8 @@
             android:label="@string/title_activity_barcode" />
         <activity
             android:name=".Activities.RegisrtationActivity"
-            android:label="@string/title_activity_regisrtation" />
+            android:label="@string/title_activity_regisrtation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.DirectionActivity"
             android:label="@string/title_activity_main"

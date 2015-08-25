@@ -62,6 +62,17 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
         return EXHIBITOR_API_BASE + "?id=" + id;
     }
 
+    private static final String FEEDBACK_API_BASE = "http://apps.bangladeshdenimexpo.com/api/feedback.php";
+    public static final String BuildFeedbackApiUrl(String username, String email, String comment, String rating)
+            throws UnsupportedEncodingException
+    {
+
+        return FEEDBACK_API_BASE + "?email="+URLEncoder.encode(email, "UTF-8")+
+                "&comment="+URLEncoder.encode(comment, "UTF-8")
+                +"&rating="+URLEncoder.encode(rating, "UTF-8")+
+                "&name="+URLEncoder.encode(username, "UTF-8");
+    }
+
 
 
 

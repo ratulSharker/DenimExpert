@@ -5,12 +5,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.denimexpertexpo.denimexpo.Fragments.RegistrationFormFragment;
-import com.denimexpertexpo.denimexpo.Fragments.RegistrationSuccessFragment;
+import com.denimexpertexpo.denimexpo.Fragments.SuccessThumbFragment;
 import com.denimexpertexpo.denimexpo.Interfaces.RegistrationEventHandler;
 import com.denimexpertexpo.denimexpo.R;
 import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
@@ -20,7 +19,6 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
 
     private static final String REG_FORM_FRAG_TAG = "REG_FORM";
     private static final String REG_SUCESS_FRAG_TAG = "REG_COMPLETED";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +37,9 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
 
 
         CustomStyling.addHomeBackButton(this, "Signup");
+
+
+
     }
 
 
@@ -58,7 +59,7 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
 
 
         //add the success frag
-        RegistrationSuccessFragment regCompFrag = new RegistrationSuccessFragment();
+        SuccessThumbFragment regCompFrag = new SuccessThumbFragment();
         fragmentTransaction.add(R.id.registration_holder, regCompFrag, RegisrtationActivity.REG_SUCESS_FRAG_TAG);
 
         fragmentTransaction.commit();
@@ -85,4 +86,6 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
 
         return true;
     }
+
+
 }

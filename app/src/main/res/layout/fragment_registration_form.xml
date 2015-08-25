@@ -25,7 +25,7 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/registration_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
@@ -35,7 +35,7 @@
             android:padding="@dimen/registration_register_button_padding_top_bottom" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/registration_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
@@ -56,27 +56,29 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/registration_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
             android:background="@drawable/signup_login_edit_text_style"
             android:gravity="center_horizontal"
             android:hint="Email"
-            android:padding="@dimen/registration_register_button_padding_top_bottom" />
+            android:padding="@dimen/registration_register_button_padding_top_bottom"
+            android:inputType="textWebEmailAddress"/>
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/registration_mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
             android:background="@drawable/signup_login_edit_text_style"
             android:gravity="center_horizontal"
             android:hint="Mobile"
-            android:padding="@dimen/registration_register_button_padding_top_bottom" />
+            android:padding="@dimen/registration_register_button_padding_top_bottom"
+            android:inputType="phone"/>
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/registration_industry_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
@@ -86,7 +88,7 @@
             android:padding="@dimen/registration_register_button_padding_top_bottom" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/registration_job_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
@@ -96,7 +98,7 @@
             android:padding="@dimen/registration_register_button_padding_top_bottom" />
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/registration_concerned_department"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
@@ -118,14 +120,15 @@
 
 
         <EditText
-            android:id="@+id/editText9"
+            android:id="@+id/registration_company_webpage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
             android:background="@drawable/signup_login_edit_text_style"
             android:gravity="center_horizontal"
             android:hint="company web page"
-            android:padding="@dimen/registration_register_button_padding_top_bottom" />
+            android:padding="@dimen/registration_register_button_padding_top_bottom"
+            android:inputType="textUri"/>
 
         <!-- TITLE 04 -->
         <TextView
@@ -139,7 +142,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/editText10"
+            android:id="@+id/registration_house_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/registration_edittext_margin"
@@ -155,7 +158,7 @@
             android:weightSum="2.0">
 
             <EditText
-                android:id="@+id/editText11"
+                android:id="@+id/registration_house_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/registration_edittext_margin"
@@ -166,7 +169,7 @@
                 android:padding="@dimen/registration_register_button_padding_top_bottom" />
 
             <EditText
-                android:id="@+id/editText12"
+                android:id="@+id/registration_level"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/registration_edittext_margin"
@@ -185,7 +188,7 @@
             android:weightSum="2.0">
 
             <EditText
-                android:id="@+id/editText13"
+                android:id="@+id/registration_road_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/registration_edittext_margin"
@@ -196,7 +199,7 @@
                 android:padding="@dimen/registration_register_button_padding_top_bottom" />
 
             <EditText
-                android:id="@+id/editText14"
+                android:id="@+id/registration_sector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/registration_edittext_margin"
@@ -216,7 +219,7 @@
             android:weightSum="2.0">
 
             <EditText
-                android:id="@+id/editText15"
+                android:id="@+id/registration_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/registration_edittext_margin"
@@ -227,7 +230,7 @@
                 android:padding="@dimen/registration_register_button_padding_top_bottom" />
 
             <EditText
-                android:id="@+id/editText16"
+                android:id="@+id/registration_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/registration_edittext_margin"
@@ -246,7 +249,7 @@
             android:weightSum="2.0">
 
             <EditText
-                android:id="@+id/editText17"
+                android:id="@+id/registration_state_province"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/registration_edittext_margin"
@@ -257,7 +260,7 @@
                 android:padding="@dimen/registration_register_button_padding_top_bottom" />
 
             <EditText
-                android:id="@+id/editText18"
+                android:id="@+id/registration_zipcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/registration_edittext_margin"
@@ -265,7 +268,8 @@
                 android:background="@drawable/signup_login_edit_text_style"
                 android:gravity="center_horizontal"
                 android:hint="ZipCode"
-                android:padding="@dimen/registration_register_button_padding_top_bottom" />
+                android:padding="@dimen/registration_register_button_padding_top_bottom"
+                android:inputType="numberDecimal"/>
 
         </LinearLayout>
 

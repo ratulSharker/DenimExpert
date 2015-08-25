@@ -5,6 +5,7 @@ import android.util.Log;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.AuthenticationReply;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.BarcodeTypeChecker;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Exhibitors;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.FeedbackReply;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Schedule;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.SitemapUpdateInfo;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Visitors;
@@ -187,5 +188,21 @@ public class JsonParserHelper  {
             Log.e("Visitor summary info", ex.toString());
         }
         return visitorsSummary;
+    }
+
+    public static FeedbackReply parseFeedbackResponse(String result)
+    {
+        FeedbackReply feedbackReply = null;
+        try {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            feedbackReply = objectMapper.readValue(result, FeedbackReply.class);
+
+        }catch (Exception ex)
+        {
+            Log.e("FEEDBACK REPLY", ex.toString());
+        }
+
+        return feedbackReply;
     }
 }

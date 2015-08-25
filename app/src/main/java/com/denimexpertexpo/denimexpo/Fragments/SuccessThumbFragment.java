@@ -12,14 +12,12 @@ import com.denimexpertexpo.denimexpo.R;
 /**
  * Created by ratul on 7/9/2015.
  */
-public class RegistrationSuccessFragment extends Fragment {
+public class SuccessThumbFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View regSuccess = inflater.inflate(R.layout.fragmemt_registration_successful, null);
-
+        View regSuccess = inflater.inflate(R.layout.fragmemt_successful_thumbs, null);
         return regSuccess;
     }
 }
