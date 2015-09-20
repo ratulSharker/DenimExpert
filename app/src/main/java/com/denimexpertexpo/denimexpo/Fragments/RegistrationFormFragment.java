@@ -2,6 +2,7 @@ package com.denimexpertexpo.denimexpo.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +14,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.denimexpertexpo.denimexpo.Adapters.SpinnerHintAdapter;
+import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
+import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpRequestHandler;
+import com.denimexpertexpo.denimexpo.BackendHttp.JsonParserHelper;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.RegistrationForm;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.RegistrationResponse;
 import com.denimexpertexpo.denimexpo.Interfaces.RegistrationEventHandler;
 import com.denimexpertexpo.denimexpo.R;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +32,7 @@ import java.util.Date;
 /**
  * Created by ratul on 7/8/2015.
  */
-public class RegistrationFormFragment extends Fragment {
+public class RegistrationFormFragment extends Fragment implements AsyncHttpRequestHandler {
 
     private RegistrationEventHandler registrationEventHandler;
 
@@ -69,6 +74,8 @@ public class RegistrationFormFragment extends Fragment {
 
     private ArrayList<String> mTitleArr;
     private ArrayList<String> mCountryArr;
+
+    private ProgressDialog registrationProgressDialouge;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -185,7 +192,20 @@ public class RegistrationFormFragment extends Fragment {
                     ObjectMapper objectMapper = new ObjectMapper();
 
                     try{
-                        Log.e("jackson", objectMapper.writeValueAsString(registrationForm));
+
+                        registrationProgressDialouge = new ProgressDialog(getActivity());
+                        registrationProgressDialouge.setTitle("Please wait");
+                        registrationProgressDialouge.setMessage("registering with the given info");
+                        registrationProgressDialouge.setCancelable(false);
+                        registrationProgressDialouge.show();
+
+                        String registrationData = objectMapper.writeValueAsString(registrationForm);
+                        Log.e("jackson", registrationData);
+                        //send the api for registration
+                        String resultingUrl = AsyncHttpClient.BuildRegistrationApiUrl(registrationData);
+                        Log.e("registration url", registrationData);
+                        AsyncHttpClient asyncHttpClient = new AsyncHttpClient(RegistrationFormFragment.this);
+                        asyncHttpClient.execute(resultingUrl);
                     }
                     catch (Exception ex)
                     {
@@ -252,5 +272,48 @@ public class RegistrationFormFragment extends Fragment {
         //select country
         //spnTitleSelect
         //private Spinner     spnCountrySelect;
+    }
+
+    /**
+     *
+     * async http request handler
+     */
+    public void onResponseRecieved(String response)
+    {
+        Log.e("registration data re", response);
+        RegistrationResponse registrationResponse = JsonParserHelper.parseRegistrationResponse(response);
+
+        registrationProgressDialouge.dismiss();
+
+        if(RegistrationResponse.isSuccess(registrationResponse.mIsSuccess))
+        {
+            if (registrationEventHandler != null) {
+                //now time to provide signal to activity that registration process is completed
+                registrationEventHandler.registrationProcessCompleted(getString(R.string.registration_completed_email_prefix) +
+                        mEmail.getText().toString() +
+                        getString(R.string.registration_completed_email_suffix));
+            }
+        }
+        else
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationFormFragment.this.getActivity());
+            builder.setTitle("Sorry");
+            builder.setMessage(registrationResponse.mErrMsg);
+            builder.setPositiveButton("ok", null);
+            builder.setNegativeButton("", null);
+            builder.create().show();
+        }
+    }
+    public void onHttpErrorOccured()
+    {
+
+        registrationProgressDialouge.dismiss();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationFormFragment.this.getActivity());
+        builder.setTitle("Sorry");
+        builder.setMessage("Check your internet connection, registration failed");
+        builder.setPositiveButton("ok", null);
+        builder.setNegativeButton("", null);
+        builder.create().show();
     }
 }

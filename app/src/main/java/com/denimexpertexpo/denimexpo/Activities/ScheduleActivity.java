@@ -10,6 +10,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denimexpertexpo.denimexpo.BackendHttp.AsyncHttpClient;
@@ -27,7 +29,12 @@ import com.denimexpertexpo.denimexpo.DenimDataClasses.Schedule;
 import com.denimexpertexpo.denimexpo.R;
 import com.denimexpertexpo.denimexpo.StaticStyling.CustomStyling;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ScheduleActivity extends Activity implements AsyncHttpRequestHandler
         , LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener {
@@ -37,14 +44,12 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
 
     private final String[] FROM = {
             ScheduleContract.Column.EVENT_NAME,
-            ScheduleContract.Column.START_TIME,
-            ScheduleContract.Column.END_TIME
+            ScheduleContract.Column.START_TIME
     };
 
     private final int[] TO = {
             R.id.schedule_list_item_event_name,
-            R.id.schedule_list_item_start,
-            R.id.schedule_list_item_end
+            R.id.schedule_list_item_time
     };
 
     private SimpleCursorAdapter mAdapter;
@@ -68,12 +73,54 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
         asyncHttpClient.execute(AsyncHttpClient.SCHEDULE_API_URL);
 
         mAdapter = new SimpleCursorAdapter(this, R.layout.schdeule_list_row, null, FROM, TO, 0);
+
+        mAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Cursor cursor, int i) {
+                if(view.getId() == R.id.schedule_list_item_time)
+                {
+                    String startTime = cursor.getString(cursor.getColumnIndex(ScheduleContract.Column.START_TIME));
+                    String endTime = cursor.getString(cursor.getColumnIndex(ScheduleContract.Column.END_TIME));
+
+                    Log.e("start time & end time", startTime + "~~~" + endTime);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+                    try{
+                        Date startDate = sdf.parse(startTime);
+                        Date endDate = sdf.parse(endTime);
+
+                        Calendar startCalendar = GregorianCalendar.getInstance();
+                        startCalendar.setTime(startDate);
+
+                        Calendar endCalendar = GregorianCalendar.getInstance();
+                        endCalendar.setTime(endDate);
+
+
+                        ((TextView) view).setText("(" + startCalendar.get(Calendar.HOUR) + " : " + startCalendar.get(Calendar.MINUTE) + " - " +
+                                endCalendar.get(Calendar.HOUR) + " : " + endCalendar.get(Calendar.MINUTE) + ")");
+
+                    }catch (ParseException ex)
+                    {
+                        Log.e("Schedule Activity", "Date format is wrong");
+                    }finally {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        });
+
         mListView.setAdapter(mAdapter);
 
         mListView.setOnItemClickListener(this);
 
         getLoaderManager().initLoader(LOADER_ID, null, this);
     }
+
+
 
 /*
     @Override

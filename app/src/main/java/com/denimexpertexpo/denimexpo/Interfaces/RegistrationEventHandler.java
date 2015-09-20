@@ -11,5 +11,5 @@ registration activity actually involved with two fragment. when registration pro
 the activity need to know about this event, so that it can switch to another fragment :)
  */
 public interface RegistrationEventHandler {
-    public void registrationProcessCompleted(String emailAddr);
+    public void registrationProcessCompleted(String msg);
 }

@@ -6,6 +6,8 @@ import com.denimexpertexpo.denimexpo.DenimDataClasses.AuthenticationReply;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.BarcodeTypeChecker;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Exhibitors;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.FeedbackReply;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.RegistrationForm;
+import com.denimexpertexpo.denimexpo.DenimDataClasses.RegistrationResponse;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Schedule;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.SitemapUpdateInfo;
 import com.denimexpertexpo.denimexpo.DenimDataClasses.Visitors;
@@ -204,5 +206,21 @@ public class JsonParserHelper  {
         }
 
         return feedbackReply;
+    }
+
+    public static RegistrationResponse parseRegistrationResponse(String result)
+    {
+        RegistrationResponse registrationResponse = null;
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            registrationResponse = objectMapper.readValue(result, RegistrationResponse.class);
+        }
+        catch (Exception ex)
+        {
+            Log.e("FEEDBACK REPLY", ex.toString());
+        }
+
+
+        return registrationResponse;
     }
 }

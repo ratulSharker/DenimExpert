@@ -24,4 +24,8 @@
     <string name="title_activity_visitor_summary">VisitorSummary</string>
     <string name="title_activity_feedback">FeedbackActivity</string>
 
+
+    <string name="registration_completed_email_prefix">Thanks Your Request is accepted. You will be notified by email (</string>
+    <string name="registration_completed_email_suffix">) shortly.</string>
+
 </resources>

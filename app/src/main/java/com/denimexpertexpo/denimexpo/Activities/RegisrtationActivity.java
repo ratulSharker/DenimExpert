@@ -46,8 +46,7 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
     /*
     RegistrationEventHandler callback implementer
      */
-    public void registrationProcessCompleted(String emailAddr) {
-        Toast.makeText(this, "Registration process completed : " + emailAddr, Toast.LENGTH_LONG).show();
+    public void registrationProcessCompleted(String msg) {
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
@@ -60,8 +59,12 @@ public class RegisrtationActivity extends Activity implements RegistrationEventH
 
         //add the success frag
         SuccessThumbFragment regCompFrag = new SuccessThumbFragment();
-        fragmentTransaction.add(R.id.registration_holder, regCompFrag, RegisrtationActivity.REG_SUCESS_FRAG_TAG);
 
+        Bundle bundle = new Bundle();
+        bundle.putString(SuccessThumbFragment.MSG_KEY, msg);
+        regCompFrag.setArguments(bundle);
+
+        fragmentTransaction.add(R.id.registration_holder, regCompFrag, RegisrtationActivity.REG_SUCESS_FRAG_TAG);
         fragmentTransaction.commit();
 
 

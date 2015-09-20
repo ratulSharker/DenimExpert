@@ -7,47 +7,27 @@
     >
 
 
-    <com.denimexpertexpo.denimexpo.StaticStyling.AutoResizeTextView
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="1dp"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="1"
         android:id="@+id/schedule_list_item_event_name"
         android:gravity="center"
-        android:layout_weight="35"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_weight="50"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
          />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="1dp"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/schedule_list_item_start"
-        android:gravity="right"
-        android:layout_weight="30"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
+        android:text="hi hello who are you"
+        android:id="@+id/schedule_list_item_time"
         android:gravity="center"
-        android:layout_weight="5"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/schedule_list_item_end"
-        android:gravity="left"
-        android:layout_weight="30"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_weight="50"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         />
 </LinearLayout>

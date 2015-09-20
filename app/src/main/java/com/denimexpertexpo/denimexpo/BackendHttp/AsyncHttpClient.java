@@ -73,6 +73,18 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
                 "&name="+URLEncoder.encode(username, "UTF-8");
     }
 
+    private static final String REGISTRATION_API_BASE = "http://apps.bangladeshdenimexpo.com/api/registration.php";
+    public static final String BuildRegistrationApiUrl(String data)
+    {
+        try{
+            return REGISTRATION_API_BASE + "?data=" + URLEncoder.encode(data, "UTF-8");
+        }catch (UnsupportedEncodingException ex)
+        {
+            Log.e("unsopported encoding", ex.toString());
+        }
+        return null;
+    }
+
 
 
 
