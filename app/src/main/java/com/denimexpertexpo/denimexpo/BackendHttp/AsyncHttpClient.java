@@ -42,7 +42,12 @@ public class AsyncHttpClient extends AsyncTask <String, String, String>{
 
     private static final String BARCODE_API_BASE = "http://apps.bangladeshdenimexpo.com/api/barcodeinfo.php";
     public static final String BuildBarcodeApiUrl(String gen_id){
-        return BARCODE_API_BASE + "?generated_id="+ gen_id;
+        try{
+            return BARCODE_API_BASE + "?generated_id="+ URLEncoder.encode(gen_id, "UTF-8");
+        }catch (UnsupportedEncodingException ex)
+        {
+            return BARCODE_API_BASE + "?generated_id="+ gen_id;
+        }
     }
 
     private static final String LOGIN_API_BASE = "http://exhibitor.bangladeshdenimexpo.com/index.php/test/LoginVerify";

@@ -1,28 +1,34 @@
 <resources>
     <string name="app_name">Denim Expo</string>
 
-    <string name="title_activity_signup_login">Authentication</string>
+
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main_menu">MainMenuActivity</string>
 
-    <string name="title_activity_barcode">BarcodeActivity</string>
+
+    <string name="title_activity_signup_login">Authentication</string>
+    <string name="title_activity_main_menu">Main Menu</string>
+    <string name="title_activity_barcode">Barcode</string>
     <string name="title_activiy_barcode_result">Rescan</string>
+    <string name="title_activity_main">Main</string>
+    <string name="title_activity_barcode_result">Barcode</string>
+    <string name="title_activity_regisrtation">Regisrtation</string>
+    <string name="title_activity_schedule">Schedule</string>
+    <string name="title_activity_schedule_details">Schedule Details</string>
+    <string name="title_activity_visitor">Visitor</string>
+    <string name="title_activity_visitor_details">Visitor details</string>
+    <string name="title_activity_exhibitor">Exhibitor List</string>
+    <string name="title_activity_sitemap">Eventmap</string>
+    <string name="title_activity_exhibitor_details">Exhibitor Details</string>
+    <string name="title_activity_visitor_summary">Visitor Summary</string>
+    <string name="title_activity_feedback">Feedback</string>
+
+
+
 
     <string name="main_menu_back_title">Main Menu</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_barcode_result">BarcodeResultActivity</string>
-    <string name="title_activity_regisrtation">RegisrtationActivity</string>
-    <string name="title_activity_schedule">ScheduleActivity</string>
-    <string name="title_activity_schedule_details">ScheduleDetailsActivity</string>
-    <string name="title_activity_visitor">VisitorActivity</string>
-    <string name="title_activity_visitor_details">VisitorDetailsActivity</string>
-    <string name="title_activity_exhibitor">ExhibitorActivity</string>
-    <string name="title_activity_sitemap">SitemapActivity</string>
-    <string name="title_activity_exhibitor_details">ExhibitorDetailsActivity</string>
-    <string name="title_activity_visitor_summary">VisitorSummary</string>
-    <string name="title_activity_feedback">FeedbackActivity</string>
+
 
 
     <string name="registration_completed_email_prefix">Thanks Your Request is accepted. You will be notified by email (</string>

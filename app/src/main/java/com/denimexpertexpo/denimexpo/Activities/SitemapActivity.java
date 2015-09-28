@@ -47,8 +47,6 @@ public class SitemapActivity extends Activity implements AsyncHttpImageHelper.on
         this.mImageView = (SubsamplingScaleImageView)findViewById(R.id.sitemap_image);
         this.mMsg = (TextView)findViewById(R.id.sitemap_msg);
 
-        CustomStyling.addHomeBackButton(this, "Event Map");
-
 
         //whenever app rotated, then get the saved image path
         if(savedInstanceState != null && savedInstanceState.containsKey(SAVED_IMG_PATH_KEY))

@@ -143,7 +143,7 @@ public class FeedbackFormFragment extends Fragment {
                                     if(FeedbackFormFragment.this.evtHandler != null)
                                     {
 
-                                        evtHandler.feedbackPostedSuccessfully("Thank you " + mNameField.getText().toString() + "for your valuable opinion.");
+                                        evtHandler.feedbackPostedSuccessfully("Thank you " + mNameField.getText().toString() + " for your valuable opinion.");
                                     }
 
                                 } else {

@@ -187,14 +187,14 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
 
         } else {
             this.apiProgressDialouge.dismiss();
-            Toast.makeText(this, response + " INVALID JSON", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, response + " INVALID JSON", Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     public void onHttpErrorOccured() {
         this.apiProgressDialouge.dismiss();
-        Toast.makeText(this, "Error in retrieveing api response", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Error in retrieveing direction", Toast.LENGTH_LONG).show();
     }
 
 
@@ -293,7 +293,7 @@ public class DirectionActivity extends FragmentActivity implements AsyncHttpRequ
     public void onDirectionException(Exception ex) {
 
         this.apiProgressDialouge.dismiss();
-        Toast.makeText(this, "Getting direction exception thrown", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Getting direction exception thrown", Toast.LENGTH_LONG).show();
     }
 
 

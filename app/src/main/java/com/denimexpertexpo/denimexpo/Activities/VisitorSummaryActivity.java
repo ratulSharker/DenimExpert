@@ -56,6 +56,8 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
         super.onWindowFocusChanged(hasFocus);
 
         if (hasFocus && isWebServiceCalled == false) {
+
+
             //start an webrequest thing
             AsyncHttpClient asyncHttpClient = new AsyncHttpClient(this);
             asyncHttpClient.execute(AsyncHttpClient.VISITOR_SUMMARY_API_URL);
@@ -188,22 +190,26 @@ public class VisitorSummaryActivity extends Activity implements AsyncHttpRequest
         int height = 0;
         int width = 0;
 
-        Log.e(targetTextView.getLayout().getHeight() + ":" + targetTextView.getLayout().getWidth(), textPaint.getTextSize() + "");
+        String targetText = targetTextView.getText().toString();
+
+        //everytime start from here :)
+        textPaint.setTextSize(12.0f);
 
         for(int holderHeight = targetTextView.getMeasuredHeight(), holderWidth = targetTextView.getMeasuredWidth();
-                holderHeight  > height + Math.abs(textPaint.ascent()) + Math.abs(textPaint.descent()) && holderWidth >width + 10;
+                holderHeight  > height + 5 + Math.abs(textPaint.getFontMetrics().top) + Math.abs(textPaint.getFontMetrics().bottom) && holderWidth >width + 10;
                 textPaint.setTextSize(textPaint.getTextSize() + 2))
         {
             Rect bounds = new Rect();
-            textPaint.getTextBounds("0",0,"0".length(),bounds);
+            textPaint.getTextBounds(targetText,0,targetText.length(),bounds);
+
             height = bounds.height();
             width = bounds.width();
 
-            Log.e(holderHeight + ":" + holderWidth, height + ":" + width + ":" + textPaint.getTextSize());
-
+            Log.e(">>" + holderHeight + ":" + holderWidth, height + ":" + width + ":" + textPaint.getTextSize());
         }
 
-        targetTextView.setTextSize(textPaint.getTextSize());
+        targetTextView.setTextSize(textPaint.getTextSize()-2.0f);
+        targetTextView.setGravity(Gravity.CENTER);
         Log.e("Setting font size", textPaint.getTextSize() + "");
     }
 }

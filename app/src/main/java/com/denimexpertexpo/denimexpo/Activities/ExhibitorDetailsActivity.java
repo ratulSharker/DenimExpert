@@ -113,7 +113,7 @@ public class ExhibitorDetailsActivity extends Activity {
                     this.mPhone.setText(phone);
                     this.mCompanyName.setText(comapnyName);
                     this.mWebsite.setText(website);
-                    this.mCompanyAddress.setText(companyAddress);
+                    this.mCompanyAddress.setText(companyAddress.trim());
                     this.mMobile.setText(mobile);
                     this.mIndustryType.setText(industryType);
                     this.mAnnualTurnover.setText(annualTurnover);
@@ -135,7 +135,7 @@ public class ExhibitorDetailsActivity extends Activity {
             this.mPhone.setText(exhibitor.mPhone);
             this.mCompanyName.setText(exhibitor.mCompanyName);
             this.mWebsite.setText(exhibitor.mWebsite);
-            this.mCompanyAddress.setText(exhibitor.mCompanyAddress);
+            this.mCompanyAddress.setText(exhibitor.mCompanyAddress.trim());
             this.mMobile.setText(exhibitor.mMobile);
             this.mIndustryType.setText(exhibitor.mIndustryType);
             this.mAnnualTurnover.setText(exhibitor.mIndustryType);
@@ -151,12 +151,14 @@ public class ExhibitorDetailsActivity extends Activity {
 
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_exhibitor_details, menu);
         return true;
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -98,7 +98,7 @@ public class BarcodeActivity extends Activity implements ZXingScannerView.Result
         //Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
         this.txtBarcodeStatus.setText("Scan completed");
-        Toast.makeText(this, rawResult.getText(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, rawResult.getText(), Toast.LENGTH_LONG).show();
 
 
         //TODO -- add a http request to make request to server
@@ -197,6 +197,6 @@ public class BarcodeActivity extends Activity implements ZXingScannerView.Result
     @Override
     public void onHttpErrorOccured() {
         this.progressDialog.dismiss();
-        Toast.makeText(this, "No internet connection, cant fetch the barcode result", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "No internet connection, can't fetch the barcode result", Toast.LENGTH_LONG).show();
     }
 }

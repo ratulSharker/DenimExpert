@@ -66,7 +66,7 @@ public class ScheduleDetailsActivity extends Activity {
             mLastUpdate.setText(mLastUpdate.getText() + lastUpdate);
         }
 
-        Toast.makeText(this, id + " clicked", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, id + " clicked", Toast.LENGTH_LONG).show();
     }
 /*
     @Override

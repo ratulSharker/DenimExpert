@@ -123,28 +123,28 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
                 break;
                 case LIST_ITEM_REGISTERED_VISITORS:
                 {
-                    Toast.makeText(this, "Visitor pressed", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "Visitor pressed", Toast.LENGTH_LONG).show();
                     //this.startActivity(VisitorActivity.class);
                     this.startActivity(VisitorSummaryActivity.class);
                 }
                 break;
                 case LIST_ITEM_REGISTERED_DIRECTION: {
-                    Toast.makeText(this, "Direction pressed", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "Direction pressed", Toast.LENGTH_LONG).show();
                     this.startActivity(DirectionActivity.class);
                 }
                 break;
                 case LIST_ITEM_REGISTERED_SITEMAP: {
-                    Toast.makeText(this, "Sitemap gui not ready yet", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "Sitemap gui not ready yet", Toast.LENGTH_LONG).show();
                     this.startActivity(SitemapActivity.class);
                 }
                 break;
                 case LIST_ITEM_REGISTERED_SCHEDULE: {
-                    Toast.makeText(this, "Schedule pressed", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "Schedule pressed", Toast.LENGTH_LONG).show();
                     this.startActivity(ScheduleActivity.class);
                 }
                 break;
                 case LIST_ITEM_REGISTERED_BARCODE: {
-                    Toast.makeText(this, "Barcode pressed", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "Barcode pressed", Toast.LENGTH_LONG).show();
                     this.startActivity(BarcodeActivity.class);
                 }
                 break;

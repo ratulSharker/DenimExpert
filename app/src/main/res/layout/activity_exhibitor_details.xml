@@ -29,13 +29,12 @@
             android:id="@+id/echibitor_details_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ratul Sharker"
+            android:text="Ratul Sharker 11111111111111111111111111111"
 
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="@id/textView16"
             android:layout_toEndOf="@+id/textView16"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_above="@+id/textView17"
             android:gravity="center_vertical"
             android:background="@drawable/visitor_exhibitor_details_field_background"
             />
@@ -47,7 +46,7 @@
 
             android:text="Email : "
             android:layout_alignLeft="@id/textView16"
-            android:layout_below="@id/textView16"
+            android:layout_below="@id/echibitor_details_name"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
             android:background="@drawable/registration_form_title_style"
@@ -57,11 +56,11 @@
             android:id="@+id/echibitor_details_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sharker.ratul.08@gmail.com"
+            android:text="Sharker.ratul.08@gmail.com 111111111111111111111111111111111111"
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/textView16"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_alignBottom="@+id/textView17"
+
             android:layout_alignTop="@+id/textView17"
             android:gravity="center_vertical"
             android:background="@drawable/visitor_exhibitor_details_field_background"/>
@@ -73,7 +72,7 @@
 
             android:text="Phone : "
             android:layout_alignLeft="@id/textView17"
-            android:layout_below="@id/textView17"
+            android:layout_below="@id/echibitor_details_email"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
             android:background="@drawable/registration_form_title_style"
@@ -177,6 +176,7 @@
             android:background="@drawable/visitor_exhibitor_details_field_background"
             />
 
+
         <TextView
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
@@ -192,15 +192,17 @@
             android:id="@+id/echibitor_details_industry_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Denim Fabric"
+            android:text="Denim Fabric "
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/textView23"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_alignBottom="@+id/textView23"
+
             android:layout_alignTop="@+id/textView23"
             android:gravity="center_vertical"
             android:background="@drawable/visitor_exhibitor_details_field_background"
             />
+
+
 
         <TextView
             android:id="@+id/textView24"
@@ -208,6 +210,7 @@
             android:layout_height="wrap_content"
             android:text="Annual Turnover : "
             android:layout_below="@id/echibitor_details_industry_type"
+
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
             android:background="@drawable/registration_form_title_style"

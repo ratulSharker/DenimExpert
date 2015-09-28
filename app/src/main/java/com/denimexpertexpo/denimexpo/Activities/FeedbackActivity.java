@@ -45,6 +45,8 @@ public class FeedbackActivity extends Activity implements FeedbackEventHandler{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
 
+
+
         FragmentManager fragMgr = getFragmentManager();
         FragmentTransaction fragTrans = fragMgr.beginTransaction();
         FeedbackFormFragment feedbackFormFragment = new FeedbackFormFragment();

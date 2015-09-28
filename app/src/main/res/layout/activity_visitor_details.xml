@@ -1,19 +1,21 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.denimexpertexpo.denimexpo.Activities.VisitorDetailsActivity"
-    android:background="@drawable/common_background">
+    android:background="@drawable/common_background"
+    android:scrollbars="none">
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
         <TextView
@@ -28,6 +30,20 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/light_ash"
             android:gravity="center_vertical"
+            android:background="@drawable/registration_form_title_style"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Ratul Sharker11111111111111111111"
+            android:gravity="center_vertical"
+            android:id="@+id/visitor_details_name_field"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView8"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
              />
 
         <TextView
@@ -36,11 +52,26 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView8"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView8"
+            android:layout_below="@+id/visitor_details_name_field"
             android:text="Phone : "
             android:textColor="@color/light_ash"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="8801921404767 111111111111111111111111111111"
+            android:gravity="center_vertical"
+            android:id="@+id/visitor_details_phone_field"
+            android:layout_alignTop="@+id/textView20"
+            android:layout_alignStart="@+id/visitor_details_name_field"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+
+            />
 
         <TextView
             android:id="@+id/textView21"
@@ -48,11 +79,25 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView8"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView20"
+            android:layout_below="@+id/visitor_details_phone_field"
             android:text="Email : "
             android:textColor="@color/light_ash"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Sharker.ratul.08@gmail.com 123456789012345667788"
+            android:gravity="center_vertical"
+            android:id="@+id/visitor_details_email_field"
+            android:layout_alignTop="@+id/textView21"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/visitor_details_id_field"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+            />
 
 
         <TextView
@@ -61,22 +106,53 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView8"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView21"
+            android:layout_below="@+id/visitor_details_email_field"
             android:text="ID : "
             android:textColor="@color/light_ash"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Zen14TY 11111111111111111111111111111111111"
+            android:gravity="center_vertical"
+            android:id="@+id/visitor_details_id_field"
+            android:layout_alignEnd="@+id/visitor_details_name_field"
+            android:layout_toEndOf="@+id/textView8"
+            android:layout_alignTop="@+id/textView9"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+            />
+
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView9"
+            android:layout_below="@+id/visitor_details_id_field"
             android:text="Company : "
             android:textColor="@color/light_ash"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Aamra Soft 1111111111111111111111111111"
+            android:gravity="center_vertical"
+            android:id="@+id/visitor_details_company_field"
+            android:layout_alignTop="@+id/textView10"
+            android:layout_alignEnd="@+id/visitor_details_id_field"
+            android:layout_toEndOf="@+id/textView10"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+            />
+
 
         <TextView
             android:id="@+id/textView11"
@@ -84,11 +160,27 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView10"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView10"
+            android:layout_below="@+id/visitor_details_company_field"
             android:text="Website"
             android:textColor="@color/light_ash"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="www.aamra.com 111111111111111111111111111111111111111"
+            android:gravity="center_vertical"
+            android:id="@+id/visitor_details_website_field"
+            android:layout_alignTop="@+id/textView11"
+            android:layout_alignEnd="@+id/visitor_details_company_field"
+            android:layout_toEndOf="@+id/textView11"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+
+            />
 
         <TextView
             android:id="@+id/textView12"
@@ -96,129 +188,96 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/textView11"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView11"
+            android:layout_below="@+id/visitor_details_website_field"
             android:text="Address : "
             android:textColor="@color/light_ash"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/textView15"
-            android:layout_alignParentStart="true"
-            android:text="Industry type : "
-            android:textColor="@color/light_ash"
-            android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/textView13"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:text="Department : "
-            android:textColor="@color/light_ash"
-            android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/textView14"
-            android:layout_alignEnd="@+id/textView13"
-            android:layout_alignParentStart="true"
-            android:textColor="@color/light_ash"
-            android:text="Job Title : "
-            android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"
+            />
 
         <TextView
             android:id="@+id/visitor_details_address_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView13"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView12"
             android:text="Road No:5 House No:18\nLevel:3\nLane:\nBlock:F\nSector:2\\\nArea:Mirpur\\\nDhaka 1216\\\nMirpur\\\nBangladesh\\\nRoad No:5 House No:18\\\nLevel:3\\\nLane:\\\nBlock:F\\\nSector:2\\\nArea:Mirpur\\\nDhaka 1216\\\nMirpur\\\nBangladesh"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+            />
+
 
         <TextView
+            android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ratul Sharker"
+            android:layout_below="@+id/visitor_details_address_field"
+            android:layout_alignParentStart="true"
+            android:text="Industry type : "
+            android:textColor="@color/light_ash"
             android:gravity="center_vertical"
-            android:id="@+id/visitor_details_name_field"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/textView8"
-            android:layout_above="@+id/textView20" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Zen14TY"
-            android:gravity="center_vertical"
-            android:id="@+id/visitor_details_id_field"
-            android:layout_alignEnd="@+id/visitor_details_name_field"
-            android:layout_toEndOf="@+id/textView8"
-            android:layout_above="@+id/textView10"
-            android:layout_below="@+id/textView21" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Aamra Soft"
-            android:gravity="center_vertical"
-            android:id="@+id/visitor_details_company_field"
-            android:layout_alignTop="@+id/textView10"
-            android:layout_alignEnd="@+id/visitor_details_id_field"
-            android:layout_toEndOf="@+id/textView10"
-            android:layout_above="@+id/textView11" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="www.aamra.com"
-            android:gravity="center_vertical"
-            android:id="@+id/visitor_details_website_field"
-            android:layout_alignTop="@+id/textView11"
-            android:layout_alignEnd="@+id/visitor_details_company_field"
-            android:layout_toEndOf="@+id/textView11"
-            android:layout_above="@+id/textView12" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Garments"
+            android:text="Garments 11111111111111111111111111111111111111111111"
             android:gravity="center_vertical"
             android:id="@+id/visitor_details_industry_type_field"
-            android:layout_above="@+id/textView15"
-            android:layout_alignEnd="@+id/visitor_details_website_field"
-            android:layout_toEndOf="@+id/textView13" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/textView13"
+            android:layout_toEndOf="@+id/textView13"
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+            />
+
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView13"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/light_ash"
+            android:text="Job Title : "
+            android:gravity="center_vertical"
+            android:layout_below="@+id/visitor_details_industry_type_field"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Designer"
+            android:text="Designer 11111111111111111111111111111111111"
             android:id="@+id/visitor_details_job_title_field"
             android:gravity="center_vertical"
-            android:layout_below="@+id/visitor_details_industry_type_field"
+            android:layout_alignTop="@id/textView15"
             android:layout_alignStart="@+id/visitor_details_industry_type_field"
             android:layout_alignEnd="@+id/visitor_details_website_field"
-            android:layout_above="@+id/textView14" />
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+
+            />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visitor_details_job_title_field"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="Department : "
+            android:textColor="@color/light_ash"
+            android:gravity="center_vertical"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/registration_form_title_style"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -228,35 +287,16 @@
             android:gravity="center_vertical"
             android:id="@+id/visitor_details_department_field"
             android:layout_alignParentBottom="true"
+            android:layout_alignTop="@id/textView14"
             android:layout_alignStart="@+id/visitor_details_job_title_field"
             android:layout_alignEnd="@+id/visitor_details_website_field"
-            android:layout_below="@+id/visitor_details_job_title_field" />
+            android:background="@drawable/visitor_exhibitor_details_field_background"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="8801921404767"
-            android:gravity="center_vertical"
-            android:id="@+id/visitor_details_phone_field"
-            android:layout_below="@+id/textView8"
-            android:layout_alignStart="@+id/visitor_details_name_field"
-            android:layout_alignParentEnd="true"
-            android:layout_above="@+id/textView21" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Sharker.ratul.08@gmail.com"
-            android:gravity="center_vertical"
-            android:id="@+id/visitor_details_email_field"
-            android:layout_alignTop="@+id/textView21"
-            android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/visitor_details_id_field"
-            android:layout_above="@+id/textView9" />
+
 
 
     </RelativeLayout>
 
-</LinearLayout>
+</ScrollView>

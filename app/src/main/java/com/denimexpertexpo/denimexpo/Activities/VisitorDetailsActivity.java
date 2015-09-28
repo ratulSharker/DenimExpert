@@ -68,7 +68,7 @@ public class VisitorDetailsActivity extends Activity {
                     String phone = cursor.getString(cursor.getColumnIndex(VisitorContract.Column.PHONE));
                     String company = cursor.getString(cursor.getColumnIndex(VisitorContract.Column.COMPANY_NAME));
                     String website = cursor.getString(cursor.getColumnIndex(VisitorContract.Column.WEBSITE));
-                    String address = cursor.getString(cursor.getColumnIndex(VisitorContract.Column.ADDRESS));
+                    String address = cursor.getString(cursor.getColumnIndex(VisitorContract.Column.ADDRESS)).trim();
                     String industry = cursor.getString(cursor.getColumnIndex(VisitorContract.Column.INDUSTRY_TYPE));
                     String jobTitle = cursor.getString(cursor.getColumnIndex(VisitorContract.Column.JOB_TITLE));
                     String department = cursor.getString(cursor.getColumnIndex(VisitorContract.Column.DEPARTMENT));
@@ -110,12 +110,14 @@ public class VisitorDetailsActivity extends Activity {
 
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_visitor_details, menu);
         return true;
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

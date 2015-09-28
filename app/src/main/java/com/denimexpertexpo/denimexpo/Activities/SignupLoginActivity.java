@@ -96,7 +96,7 @@ public class SignupLoginActivity extends Activity implements AsyncHttpRequestHan
             @Override
             public void onClick(View v) {
                 //handle the register button request
-                Toast.makeText(SignupLoginActivity.this, "Skip clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SignupLoginActivity.this, "Skip clicked", Toast.LENGTH_SHORT).show();
 
                 proceedToMainMenuWithRegistration(false);
             }
@@ -130,13 +130,14 @@ public class SignupLoginActivity extends Activity implements AsyncHttpRequestHan
     @Override
     public void onResponseRecieved(String response) {
         Log.e("response", response);
-        mProgressDialog.setTitle("Authenticated");
-        mProgressDialog.setMessage("getting user details");
+
 
         //parse the response
         final AuthenticationReply authenticationReply = JsonParserHelper.parseLoginTryResponse(response);
         if(authenticationReply != null && authenticationReply.mFound.compareTo("true")== 0)
         {
+            mProgressDialog.setTitle("Authenticated");
+            mProgressDialog.setMessage("getting user details");
             Log.e("Authenticated", "Authenticated");
 
             //save the last authorized credential to the sharedPreferences
@@ -197,6 +198,7 @@ public class SignupLoginActivity extends Activity implements AsyncHttpRequestHan
         }
         else
         {
+            mProgressDialog.dismiss();
             this.showOkAlertDialouge("Unauthorized", "Wrong username or password");
         }
     }

@@ -62,7 +62,6 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        CustomStyling.addHomeBackButton(this, "Schedules");
 
         mListView = (ListView) findViewById(R.id.schedule_list);
         mListFooterView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_list_view, null, false);
@@ -222,8 +221,6 @@ public class ScheduleActivity extends Activity implements AsyncHttpRequestHandle
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-
-
         Intent detailsIntent = new Intent(ScheduleActivity.this, ScheduleDetailsActivity.class);
         detailsIntent.putExtra(ScheduleDetailsActivity.ID_KEY, id);
         startActivity(detailsIntent);
