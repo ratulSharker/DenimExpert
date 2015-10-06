@@ -37,7 +37,7 @@ public class SplashScreenActivity extends Activity implements AsyncHttpRequestHa
         setContentView(R.layout.activity_splash_screen);
 
         CustomStyling.setCustomFontToTextView(this, "big_title_gipsiero.otf", R.id.splash_screen_title);
-        //this.checkDPI();
+
     }
 
     @Override

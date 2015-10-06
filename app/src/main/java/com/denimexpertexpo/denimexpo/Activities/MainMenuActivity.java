@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.denimexpertexpo.denimexpo.Adapters.MainMenuListAdapter;
 import com.denimexpertexpo.denimexpo.Constants.DenimContstants;
 import com.denimexpertexpo.denimexpo.R;
+import com.denimexpertexpo.denimexpo.Util.VersionUpgrader;
 
 
 public class MainMenuActivity extends Activity implements android.widget.AdapterView.OnItemClickListener {
@@ -107,6 +110,53 @@ public class MainMenuActivity extends Activity implements android.widget.Adapter
 
         this.mListView.setAdapter(customAdapter);
         this.mListView.setOnItemClickListener(this);
+
+
+
+        //checking the app version will reside here
+        final VersionUpgrader versionUpgrader = new VersionUpgrader(getApplicationContext());
+        Log.e("Version upgrader", versionUpgrader.getRunningAppVersion());
+
+        versionUpgrader.fetchPlayStoreAppVersion(new VersionUpgrader.AppStoreVersionFetchListener() {
+            @Override
+            public void versionFetchCompleted(String remoteVersion, Boolean isError) {
+                if(isError)
+                {
+                    Log.e("Cant fetch ", "sorry ");
+                }
+                else
+                {
+                    Log.e("latest version", remoteVersion);
+
+                    if(remoteVersion.compareTo(versionUpgrader.getRunningAppVersion()) != 0)
+                    {
+                        //show the dialouge
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainMenuActivity.this);
+                        builder.setTitle("Upgrade");
+                        builder.setMessage("Upgrade the app from 'Play Store' to the latest version");
+                        builder.setCancelable(true);
+
+                        builder.setPositiveButton("show me", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                                try {
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                                } catch (android.content.ActivityNotFoundException anfe) {
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                                }
+                            }
+                        });
+                        builder.setNegativeButton("later", null);
+                        builder.create().show();
+                    }
+
+                }
+            }
+        });
+
+
     }
 
 
